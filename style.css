@@ -952,9 +952,51 @@ margin-top: 20px;
     .max-width{
         padding: 0 70px;
     }
-    .home .home-content .text-1{
-        font-size: 120px;
-    }
+
+    @keyframes bg-animation {
+        0% {
+          --bg-1-x: 50%;
+          --bg-2-x: 80%;
+          --bg-3-x: 70%;
+        }
+        25% {
+          --bg-1-x: 30%;
+          --bg-2-x: 50%;
+          --bg-3-x: 70%;
+        }
+        50% {
+          --bg-1-x: 10%;
+          --bg-2-x: 40%;
+          --bg-3-x: 50%;
+        }
+        75% {
+          --bg-1-x: 70%;
+          --bg-2-x: 20%;
+          --bg-3-x: 40%;
+        }
+        100% {
+          --bg-1-x: 50%;
+          --bg-2-x: 80%;
+          --bg-3-x: 70%;
+        }
+      }
+      
+    .home .home-content .text-1 {
+        font-size: 140px;
+        font-weight: bold;
+        background: radial-gradient(
+            circle at var(--bg-1-x) var(--bg-2-x),
+            #ff008c,
+            #4af,
+            #f0c
+          );
+        background-size: 200% 200%;
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        animation: bg-animation 10s linear infinite;
+      }
+      
     .home .home-content .text-2{
         font-size: 40px;
     }
