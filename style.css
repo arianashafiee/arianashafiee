@@ -153,13 +153,75 @@ nav ul li a:hover{
 }
 
 
-.home .home-content .text-1{
-    margin-top: 11vh;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 140px;
-    font-weight: bold;
-    display: inline-block;
+.home .home-content .text-1 {
+    width: 100%;
+    height: 100%;
+    position: absolute; /* Positions the text absolutely within its container */
+    top: 0;
+    left: 0;
+    display: grid; /* Aligns the content within the text block */
+    place-items: center; /* Centers the content both horizontally and vertically */
+    z-index: 2; /* Ensures the text remains on top of other elements */
+    margin-top: 11vh; /* Maintains the original top margin */
+    text-align: left; /* Keeps the text aligned to the left */
 }
+
+.home .home-content .text-1 h1 {
+    color: white; /* Text color */
+    font-size: max(72px, 15vw); /* Dynamic font size scaling */
+    font-weight: 650; /* Bold font weight */
+    font-stretch: 110%; /* Slightly stretched font */
+    letter-spacing: 0.04em; /* Adds consistent letter spacing */
+    background: var(--bg-grain), conic-gradient(from 140deg at calc(var(--bg-1-x) * 1%) 90%, radial-gradient(ellipse at calc(var(--bg-2-x) * 1%) calc(var(--bg-2-y) * 1%), white 12%, white 12%, white 12%)); /* Adds grainy and gradient background effects */
+    background-repeat: repeat; /* Repeats the background for texture */
+    background-size: 500px, cover; /* Sets the size of the background texture */
+    background-blend-mode: color-burn; /* Adds blend mode for vibrant effects */
+    background-clip: text; /* Clips the background to the text */
+    -webkit-background-clip: text; /* Ensures compatibility with WebKit browsers */
+    -webkit-text-fill-color: transparent; /* Fills text with the background */
+    opacity: 1; /* Ensures full visibility of the text */
+    animation: bg 20s linear infinite; /* Adds animated background effect */
+    text-align: left; /* Ensures text alignment remains left */
+}
+
+@keyframes bg {
+    0% {
+        --bg-1-x: calc(50 / 2); /* Initial gradient positions */
+        --bg-2-y: calc(80 / 2);
+        --bg-2-x: calc(70 / 2);
+        --bg-3-y: calc(40 / 2);
+        --bg-3-x: calc(90 / 2);
+    }
+    25% {
+        --bg-1-x: 30; /* Intermediate gradient positions */
+        --bg-2-y: 50;
+        --bg-2-x: 80;
+        --bg-3-y: 20;
+        --bg-3-x: 70;
+    }
+    50% {
+        --bg-1-x: 10; /* Midpoint of animation */
+        --bg-2-y: 40;
+        --bg-2-x: 30;
+        --bg-3-y: 80;
+        --bg-3-x: 50;
+    }
+    75% {
+        --bg-1-x: 70; /* Near end positions */
+        --bg-2-y: 20;
+        --bg-2-x: 50;
+        --bg-3-y: 30;
+        --bg-3-x: 40;
+    }
+    100% {
+        --bg-1-x: calc(50 / 2); /* Resets to initial positions */
+        --bg-2-y: calc(80 / 2);
+        --bg-2-x: calc(70 / 2);
+        --bg-3-y: calc(40 / 2);
+        --bg-3-x: calc(90 / 2);
+    }
+}
+
 .home .home-content .text-2{
     font-family: 'Open Sans', sans-serif;
     font-size: 36px;
@@ -953,50 +1015,98 @@ margin-top: 20px;
         padding: 0 70px;
     }
 
-    @keyframes bg-animation {
-        0% {
-          --bg-1-x: 50%;
-          --bg-2-x: 80%;
-          --bg-3-x: 70%;
+    @property --bg-1-x {
+        syntax: "<number>";
+        inherits: true;
+        initial-value: 0;
+    }
+    @property --bg-2-x {
+        syntax: "<number>";
+        inherits: true;
+        initial-value: 0;
+    }
+    @property --bg-2-y {
+        syntax: "<number>";
+        inherits: true;
+        initial-value: 0;
+    }
+    @property --bg-3-x {
+        syntax: "<number>";
+        inherits: true;
+        initial-value: 0;
+    }
+    @property --bg-3-y {
+        syntax: "<number>";
+        inherits: true;
+        initial-value: 0;
+    }
+    :root {
+        --bg-color: hsl(540, 60%, 10%);
+        --bg-grain: url(images/noise.svg);
+        --shadow-size: max(140px, 40vw);
+        --shadow-size-fallback: 40vw;
+        --shadow-blur: 60;
+        --color-1: #6328da;
+        --color-2: #ff1bff;
+        --color-3: #008cea;
+        --bg-1-x: 0;
+        --bg-1-y: 0;
+        --bg-2-x: 0;
+        --bg-2-y: 0;
+        --bg-3-x: 0;
+        --bg-3-y: 0;
+    }
+    
+    @supports (color: color(display-p3 1 1 1)) {
+        :root {
+            --color-1: color(display-p3 0.36 0.17 0.82);
+            --color-2: color(display-p3 0.95 0.04 0.95);
+            --color-3: color(display-p3 0.01 0.53 0.99);
         }
-        25% {
-          --bg-1-x: 30%;
-          --bg-2-x: 50%;
-          --bg-3-x: 70%;
-        }
-        50% {
-          --bg-1-x: 10%;
-          --bg-2-x: 40%;
-          --bg-3-x: 50%;
-        }
-        75% {
-          --bg-1-x: 70%;
-          --bg-2-x: 20%;
-          --bg-3-x: 40%;
-        }
-        100% {
-          --bg-1-x: 50%;
-          --bg-2-x: 80%;
-          --bg-3-x: 70%;
-        }
-      }
-      
-    .home .home-content .text-1 {
-        font-size: 140px;
-        font-weight: bold;
-        background: radial-gradient(
-            circle at var(--bg-1-x) var(--bg-2-x),
-            #ff008c,
-            #4af,
-            #f0c
-          );
-        background-size: 200% 200%;
-        background-clip: text;
-        -webkit-background-clip: text;
-        color: transparent;
-        animation: bg-animation 10s linear infinite;
-      }
-      
+    }
+    
+    body {
+        font-family: 'Montserrat', sans-serif;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        background: #fff;
+        z-index: 1;
+        position: relative;
+    }
+    
+    body::before {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        background: radial-gradient(circle var(--shadow-size, var(--shadow-size-fallback)) at 20vw 50vh, var(--color-1), transparent 0),
+                    radial-gradient(circle var(--shadow-size, var(--shadow-size-fallback)) at 100vw 50vh, var(--color-2), transparent 0),
+                    radial-gradient(circle var(--shadow-size, var(--shadow-size-fallback)) at 50vw 100vh, var(--color-3), transparent 0);
+        top: 0;
+        left: 0;
+        opacity: 0.5;
+        filter: blur(calc(var(--shadow-blur) * 1px));
+        mix-blend-mode: hue;
+    }
+    
+    body::after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        filter: contrast(145%) brightness(650%) invert(100%);
+        mix-blend-mode: screen;
+        background-size: 500px;
+    }
+    .home .home-content .text-1{
+        font-size: 120px;
+    }
     .home .home-content .text-2{
         font-size: 40px;
     }
