@@ -153,80 +153,23 @@ nav ul li a:hover{
 }
 
 
-/* Apply Custom Properties and Animation */
-@property --bg-1-x {
-    syntax: "<number>";
-    inherits: true;
-    initial-value: 50;
-}
-@property --bg-2-x {
-    syntax: "<number>";
-    inherits: true;
-    initial-value: 80;
-}
-@property --bg-3-x {
-    syntax: "<number>";
-    inherits: true;
-    initial-value: 70;
-}
-
-:root {
-    --color-1: #ff008c;
-    --color-2: #4af;
-    --color-3: #f0c;
-    --bg-1-x: 50%;
-    --bg-2-x: 80%;
-    --bg-3-x: 70%;
-}
-
-@keyframes bg-animation {
-    0% {
-        --bg-1-x: 50%;
-        --bg-2-x: 80%;
-        --bg-3-x: 70%;
-    }
-    25% {
-        --bg-1-x: 30%;
-        --bg-2-x: 50%;
-        --bg-3-x: 70%;
-    }
-    50% {
-        --bg-1-x: 10%;
-        --bg-2-x: 40%;
-        --bg-3-x: 50%;
-    }
-    75% {
-        --bg-1-x: 70%;
-        --bg-2-x: 20%;
-        --bg-3-x: 40%;
-    }
-    100% {
-        --bg-1-x: 50%;
-        --bg-2-x: 80%;
-        --bg-3-x: 70%;
-    }
-}
-
-.home .home-content .text-1 {
-    font-size: 140px;
+.text-1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px; /* Adjust as needed */
+    position: relative;
+  }
+  
+  .text-1 svg {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .text-1 text {
+    font-family: 'Open Sans', sans-serif;
     font-weight: bold;
-    background: radial-gradient(
-        circle at var(--bg-1-x),
-        var(--color-1),
-        var(--color-2),
-        var(--color-3)
-    );
-    background-size: 200% 200%;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-    animation: bg-animation 10s linear infinite;
-    text-align: left; /* Keep the text left-aligned */
-    margin-top: 11vh; /* Maintain the position */
-}
-
-
+  }
   
 .home .home-content .text-2{
     font-family: 'Open Sans', sans-serif;
