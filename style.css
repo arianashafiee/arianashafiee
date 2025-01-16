@@ -138,17 +138,20 @@ nav ul li a:hover{
     display: flex;
     justify-content: space-between;
 }
-.home img{
-    overflow:visible;
-    -webkit-filter: drop-shadow(0px 18px 40px rgba(67,153,255,.5));
-    filter: drop-shadow(0px 18px 40px rgba(67,153,255,.5));
-    width: 400px;
-    height: auto;
-    margin-top: 3vh;
-    object-fit:contain;
-    margin-left: 60px;
-
+.home img {
+    width: 100%; /* Ensures the image scales to fit the container */
+    max-width: 400px; /* Keeps the image size under control */
+    height: auto; /* Maintains the aspect ratio */
+    margin-top: 3vh; /* Adds space from the top */
+    object-fit: cover; /* Ensures the image fills the container */
+    margin-left: auto; /* Centers the image horizontally */
+    margin-right: auto; /* Centers the image horizontally */
+    display: block; /* Prevents extra space below the image */
+    border-radius: 10px; /* Optional: Adds rounded corners */
+    -webkit-filter: drop-shadow(0px 18px 40px rgba(67, 153, 255, 0.5)); /* Adds a shadow */
+    filter: drop-shadow(0px 18px 40px rgba(67, 153, 255, 0.5));
 }
+
 
 .home .home-content .text-1{
     margin-top: 11vh;
