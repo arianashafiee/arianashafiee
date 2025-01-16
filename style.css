@@ -153,80 +153,32 @@ nav ul li a:hover{
 }
 
 
-/* CSS Custom Properties */
+/* Apply Custom Properties and Animation */
 @property --bg-1-x {
     syntax: "<number>";
     inherits: true;
-    initial-value: 0;
+    initial-value: 50;
 }
 @property --bg-2-x {
     syntax: "<number>";
     inherits: true;
-    initial-value: 0;
-}
-@property --bg-2-y {
-    syntax: "<number>";
-    inherits: true;
-    initial-value: 0;
+    initial-value: 80;
 }
 @property --bg-3-x {
     syntax: "<number>";
     inherits: true;
-    initial-value: 0;
-}
-@property --bg-3-y {
-    syntax: "<number>";
-    inherits: true;
-    initial-value: 0;
+    initial-value: 70;
 }
 
 :root {
-    --bg-color: hsl(540, 60%, 10%);
-    --bg-grain: url(images/noise.svg);
-    --shadow-size: max(140px, 40vw);
-    --shadow-size-fallback: 40vw;
-    --shadow-blur: 60;
-    --color-1: #6328da;
-    --color-2: #ff1bff;
-    --color-3: #008cea;
-    --bg-1-x: 0;
-    --bg-1-y: 0;
-    --bg-2-x: 0;
-    --bg-2-y: 0;
-    --bg-3-x: 0;
-    --bg-3-y: 0;
+    --color-1: #ff008c;
+    --color-2: #4af;
+    --color-3: #f0c;
+    --bg-1-x: 50%;
+    --bg-2-x: 80%;
+    --bg-3-x: 70%;
 }
 
-@supports (color: color(display-p3 1 1 1)) {
-    :root {
-        --color-1: color(display-p3 0.36 0.17 0.82);
-        --color-2: color(display-p3 0.95 0.04 0.95);
-        --color-3: color(display-p3 0.01 0.53 0.99);
-    }
-}
-
-/* Home Content Text-1 Styling */
-.home .home-content .text-1 {
-    position: relative; /* Keeps the text relative within the container */
-    margin-top: 11vh;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 140px;
-    font-weight: bold;
-    text-align: left; /* Ensures text remains left-aligned */
-    background: radial-gradient(
-        circle at var(--bg-1-x) var(--bg-2-x),
-        var(--color-1),
-        var(--color-2),
-        var(--color-3)
-    );
-    background-size: 200% 200%;
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    animation: bg-animation 20s linear infinite;
-}
-
-/* Gradient Animation Keyframes */
 @keyframes bg-animation {
     0% {
         --bg-1-x: 50%;
@@ -255,46 +207,25 @@ nav ul li a:hover{
     }
 }
 
-/* Body Background Enhancements */
-body::before {
-    content: '';
-    position: absolute;
-    display: block;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    background: radial-gradient(circle var(--shadow-size, var(--shadow-size-fallback)) at 20vw 50vh, var(--color-1), transparent 0),
-                radial-gradient(circle var(--shadow-size, var(--shadow-size-fallback)) at 100vw 50vh, var(--color-2), transparent 0),
-                radial-gradient(circle var(--shadow-size, var(--shadow-size-fallback)) at 50vw 100vh, var(--color-3), transparent 0);
-    top: 0;
-    left: 0;
-    opacity: 0.5;
-    filter: blur(calc(var(--shadow-blur) * 1px));
-    mix-blend-mode: hue;
+.home .home-content .text-1 {
+    font-size: 140px;
+    font-weight: bold;
+    background: radial-gradient(
+        circle at var(--bg-1-x),
+        var(--color-1),
+        var(--color-2),
+        var(--color-3)
+    );
+    background-size: 200% 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: bg-animation 10s linear infinite;
+    text-align: left; /* Keep the text left-aligned */
+    margin-top: 11vh; /* Maintain the position */
 }
 
-body::after {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    filter: contrast(145%) brightness(650%) invert(100%);
-    mix-blend-mode: screen;
-    background-size: 500px;
-}
-
-/* Ensures Consistency Across Layouts */
-body, html {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
   
 .home .home-content .text-2{
