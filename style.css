@@ -319,38 +319,12 @@ body::after {
     display: inline-block;
     background: transparent;
 }
-
-/* Neon Button Styling for Resume */
-:root {
-    --glow-color: #01fff4;
-    --black: #1a1e23;
-    --shadow: #ffffff50;
-}
-
-*, *::after, *::before {
-    box-sizing: border-box;
-}
-
-html, body {
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-}
-
-body {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: var(--black);
-}
-
-.neon-btn {
+.home .links .resume a {
     position: relative;
-    color: var(--glow-color);
+    color: #01fff4; /* Glow color */
     cursor: pointer;
     padding: 0.35em 1.2em;
-    border: 0.15em solid var(--glow-color);
+    border: 0.15em solid #01fff4;
     border-radius: 0.8em;
     background: none;
     perspective: 2em;
@@ -358,76 +332,68 @@ body {
     font-size: 2.5em;
     font-weight: 600;
     letter-spacing: 1em;
-    box-shadow: inset 0 0 0.5em 0 var(--glow-color), 0 0 0.5em 0 var(--glow-color);
+    box-shadow: inset 0 0 0.5em 0 #01fff4, 0 0 0.5em 0 #01fff4;
     animation: border-flicker 2s linear infinite;
+    transition: all 0.3s ease;
 }
 
-.neon-text {
+.home .links .resume a:hover {
+    color: black; /* Text changes to black on hover */
+    text-shadow: none;
+    background: #01fff4; /* Glow effect fills the button */
+    box-shadow: 0 0 2em 0.2em #01fff4;
+    border-color: black;
+}
+
+.home .links .resume a .neon-text {
     float: left;
     margin-right: -0.8em;
-    text-shadow: 0 0 0.125em var(--shadow), 0 0 0.45em var(--glow-color);
+    text-shadow: 0 0 0.125em #ffffff50, 0 0 0.45em #01fff4;
     animation: text-flicker 3s linear infinite;
 }
 
-.faulty-letter {
+.home .links .resume a .faulty-letter {
     opacity: 0.5;
     animation: faulty-flicker 2s linear infinite;
 }
 
-.neon-btn::before {
+.home .links .resume a::before,
+.home .links .resume a::after {
     content: "";
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
+    pointer-events: none;
+}
+
+.home .links .resume a::before {
     opacity: 0.7;
     filter: blur(1em);
-    background: var(--glow-color);
-    pointer-events: none;
+    background: #01fff4;
     transform: translateY(120%) rotateX(95deg) scale(1, 0.35);
 }
 
-.neon-btn::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+.home .links .resume a::after {
     opacity: 0;
     z-index: -1;
     border-radius: 0.6em;
-    background-color: var(--glow-color);
-    box-shadow: 0 0 2em 0.2em var(--glow-color);
+    background-color: #01fff4;
+    box-shadow: 0 0 2em 0.2em #01fff4;
     transition: opacity 100ms linear;
 }
 
-.neon-btn:hover {
-    color: var(--black);
-    text-shadow: none;
-    animation: none;
-}
-
-.neon-btn:hover .neon-text {
-    animation: none;
-}
-
-.neon-btn:hover::before {
+.home .links .resume a:hover::before {
     filter: blur(1.5em);
     opacity: 1;
 }
 
-.neon-btn:hover::after {
+.home .links .resume a:hover::after {
     opacity: 1;
 }
 
-.neon-btn:hover .faulty-letter {
-    animation: none;
-    text-shadow: none;
-    opacity: 1;
-}
-
+/* Keyframes for flicker animations */
 @keyframes faulty-flicker {
     0% { opacity: 0.1; }
     2% { opacity: 0.1; }
@@ -475,8 +441,6 @@ body {
     border: 3px solid #4399FF;
     transition: all 0.3s ease;
 }
-
-
 
 .home .home-content .links .contact a:hover{
     color:white;
