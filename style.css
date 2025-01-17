@@ -138,25 +138,32 @@ nav ul li a:hover{
     display: flex;
     justify-content: space-between;
 }
+
+/* Adjust the typing text to have a smaller width */
+.typing {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 1.5em; /* Adjust size if necessary */
+    color: #01fff4; /* Set the font color to neon blue */
+    max-width: 60%; /* Restrict the width of the typing text */
+    margin: 0 auto; /* Center the typing text */
+    text-align: center; /* Center align the text */
+}
+
+/* Adjust the image to have more space */
 .home img {
-    width: 100%; /* Ensures the image scales to fit the container */
-    max-width: 400px; /* Keeps the image size under control */
-    height: auto; /* Maintains the aspect ratio */
-    margin-top: 3vh; /* Adds space from the top */
-    object-fit: cover; /* Ensures the image fills the container */
-    margin-left: auto; /* Centers the image horizontally */
-    margin-right: auto; /* Centers the image horizontally */
-    display: block; /* Prevents extra space below the image */
+    width: 100%; /* Ensure the image scales to fit the container */
+    max-width: 500px; /* Increase the maximum width for the image */
+    height: auto; /* Maintain the aspect ratio */
+    margin-top: 3vh; /* Add space from the top */
+    object-fit: cover; /* Ensure the image fills the container */
+    margin-left: auto; /* Center the image horizontally */
+    margin-right: auto; /* Center the image horizontally */
+    display: block; /* Prevent extra space below the image */
     border-radius: 10px; /* Optional: Adds rounded corners */
     -webkit-filter: drop-shadow(0px 18px 40px rgba(67, 153, 255, 0.5)); /* Adds a shadow */
     filter: drop-shadow(0px 18px 40px rgba(67, 153, 255, 0.5));
 }
 
-.typing {
-    font-family: "Courier New", Courier, monospace;
-    font-size: 1.5em; /* Adjust size if necessary */
-    color: #01fff4; /* Set the font color to neon blue */
-}
 
 /* CSS Custom Properties */
 @property --bg-1-x {
