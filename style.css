@@ -307,17 +307,15 @@ body::after {
     margin-top: 12.5px;
     font-weight: normal;
 }
-.home .home-content .text-3{
-    min-width: 100%;
-    width: 0px;
-    line-height: 1.8;
-    display: block;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 24px;
-    color: #6C7999;
-    margin-top: 25px;
-    font-weight:lighter;
+.home .home-content .text-3 {
+    font-family: 'Montserrat', sans-serif; /* Match text-1 font */
+    font-size: 24px; /* Keep size consistent */
+    color: white; /* Change color to white */
+    font-weight: bold; /* Make it bold */
+    margin-top: 25px; /* Maintain spacing */
+    line-height: 1.8; /* Ensure proper line spacing */
 }
+
 /* Resume */
 .home .links  li{
     margin-top: 75px;
