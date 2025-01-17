@@ -147,6 +147,7 @@ nav ul li a:hover{
     max-width: 60%; /* Restrict the width of the typing text */
     margin: 0 auto; /* Center the typing text */
     text-align: center; /* Center align the text */
+    text-transform: uppercase; 
 }
 
 /* Adjust the image to have more space */
