@@ -314,14 +314,6 @@ body::after {
     margin-top: 12.5px;
     font-weight: normal;
 }
-.home .home-content .text-3 {
-    font-family: 'Montserrat', sans-serif; /* Match text-1 font */
-    font-size: 24px; /* Keep size consistent */
-    color: white; /* Change color to white */
-    font-weight: bold; /* Make it bold */
-    margin-top: 25px; /* Maintain spacing */
-    line-height: 1.8; /* Ensure proper line spacing */
-}
 
 /* Resume */
 .home .links  li{
@@ -1072,9 +1064,7 @@ margin-top: 20px;
     .home .home-content .text-2{
         font-size: 40px;
     }
-    .home .home-content .text-3{
-        font-size: 26px;
-    }
+  
     .navbar .logo a{
         font-size: 25px;
     }
@@ -1100,9 +1090,7 @@ margin-top: 20px;
     .home .home-content .text-2{
         font-size: 36px;
     }
-    .home .home-content .text-3{
-        font-size: 22px;
-    }
+  
     .home .home-content a{
         font-size: 23px;
         padding: 10px 30px;
@@ -1220,10 +1208,6 @@ margin-top: 20px;
     .home .home-content .text-2{
         font-size: 30px;
     }
-    .home .home-content .text-3{
-        font-size: 19px;
-    }
-    
     .home img{
         width: 300px;
     }
@@ -1256,9 +1240,6 @@ margin-top: 20px;
     }
     .home .home-content .text-2{
         font-size: 26px;
-    }
-    .home .home-content .text-3{
-        font-size: 17px;
     }
     .home img{
         width: 275px;
@@ -1326,9 +1307,7 @@ margin-top: 20px;
     .home .home-content .text-2{
         font-size: 44px;
     }
-    .home .home-content .text-3{
-        font-size: 24px;
-    }
+
     .home{
         background:white;
     }
@@ -1446,9 +1425,7 @@ margin-top: 20px;
     .home .home-content .text-2{
         font-size: 44px;
     }
-    .home .home-content .text-3{
-        font-size: 24px;
-    }
+  
     .home{
         background:white;
     }
@@ -1530,10 +1507,7 @@ margin-top: 20px;
     .home .home-content .text-2{
         font-size: 40px;
     }
-    .home .home-content .text-3{
-        font-size: 22px;
-        line-height: 2;
-    }
+
     .news .links .fox{
         padding-left: 8vw;
         padding-right: 8vw;
@@ -1592,10 +1566,7 @@ margin-top: 20px;
     .home .home-content .text-2{
         font-size: 40px;
     }
-    .home .home-content .text-3{
-        font-size: 20px;
-        line-height: 2;
-    }
+
 
     .input-fields .input,
     .msg textarea{
@@ -1647,10 +1618,7 @@ margin-top: 20px;
         .home .home-content .text-2{
             font-size: 33px;
         }
-        .home .home-content .text-3{
-            font-size: 19px;
-            line-height: 2;
-        }
+      
     }
         @media (max-width: 460px){
             .overview{
@@ -1673,10 +1641,7 @@ margin-top: 20px;
             .home .home-content .text-2{
                 font-size: 27px;
             }
-            .home .home-content .text-3{
-                font-size: 16px;
-                line-height: 2;
-            }
+         
             .home .links .contact a{
                 padding: 20px 23.5vw;
         
@@ -1740,10 +1705,7 @@ margin-top: 20px;
             .home .home-content .text-2{
                 font-size: 24px;
             }
-            .home .home-content .text-3{
-                font-size: 14px;
-                line-height: 2;
-            }
+         
             .testimonial .carousel .card .quote{
                 font-size: 14px;
             
