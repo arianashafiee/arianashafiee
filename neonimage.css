@@ -81,31 +81,30 @@
     margin-top: 0.5rem;
   }
   
-  /* Combined Container for Two Images */
-  .combined-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  /* Ampersand Styling */
+  .ampersand .svg-text {
+    font-size: 4rem; /* Very large font for ampersand */
+    color: var(--text-outline-color); /* Black fill */
+    -webkit-text-stroke: 2px var(--glow-color); /* Thick blue outline */
+    text-shadow: 
+      0 0 10px var(--glow-color), 
+      0 0 40px var(--glow-color); /* Intense glow */
+  }
+  
+  /* Major Container */
+  .major-container {
     position: relative;
-    gap: 1rem; /* Space between images and text */
+    width: calc(200px * 2 + 2rem); /* Spans the width of two images + gap */
     text-align: center;
+    margin: 0 auto;
   }
   
-  /* Combined Images */
-  .combined-container .svg-item {
-    margin: 0; /* Ensure no extra margin between images */
-  }
-  
-  /* Text Spanning Two Images */
-  .combined-text {
-    position: relative;
-    font-size: 2.5rem; /* Large font size for "Major" */
-    font-weight: bold;
-    color: var(--text-outline-color); /* Black text for contrast */
+  .major-container .svg-text {
+    font-size: 2.5rem; /* Large text for major */
+    color: var(--text-outline-color); /* Black fill */
     -webkit-text-stroke: 1.5px var(--glow-color); /* Blue outline */
     text-shadow: 
       0 0 10px var(--glow-color), 
       0 0 30px var(--glow-color); /* Intense glow */
-    text-align: center;
   }
   
