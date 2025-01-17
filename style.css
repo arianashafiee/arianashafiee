@@ -319,38 +319,7 @@ body::after {
     display: inline-block;
     background: transparent;
 }
-.home .links .resume a{
-    display:inline;
-    border-radius: 100px;
-    color:white;
-    background: #4399FF;
-    font-size: 30px;
-    padding: 16px 66px;
-    transition: all 0.3s ease;
-}
-.home .links .contact a{
-    display:inline;
-    border-radius: 100px;
-    color:#4399FF;
-    background: white;
-    font-size: 30px;
-    margin-left: 40px;
-    padding: 12px 40px;
-    border: 3px solid #4399FF;
-    transition: all 0.3s ease;
-}
 
-
-.home .home-content .links .resume a:hover{
-    color:#4399FF;
-    padding: 14px 60px;
-    border: 3px solid #4399FF;
-    background: white;
-}
-.home .home-content .links .contact a:hover{
-    color:white;
-    background:#4399FF ;
-}
 
 /* News Section */
 .news .links{
@@ -1101,13 +1070,6 @@ margin-top: 20px;
     .navbar.sticky .logo a{
         font-size: 20px;
     }
-    .home .links .resume a{
-        font-size: 26px;
-        padding: 16px 66px;
-    }
-    .home .home-content .links .resume a:hover{
-        padding: 13px 60px;
-    }
     .home .links .contact a{
         font-size: 26px;
         margin-left: 15px;
@@ -1134,18 +1096,7 @@ margin-top: 20px;
         font-size: 23px;
         padding: 10px 30px;
     }
-    .home .links .resume a{
-        font-size: 24px;
-        padding: 16px 66px;
-    }
-    .home .home-content .links .resume a:hover{
-        padding: 13px 60px;
-    }
-    .home .links .contact a{
-        font-size: 24px;
-        margin-left: 10px;
-        padding: 12px 40px;
-    }
+
     .max-width{
         padding: 0 60px;
     }
@@ -1298,19 +1249,6 @@ margin-top: 20px;
     .home .home-content .text-3{
         font-size: 17px;
     }
-
-    .home .links .resume a{
-        font-size: 21px;
-        padding: 16px 62px;
-    }
-    .home .home-content .links .resume a:hover{
-        padding: 13px 57px;
-    }
-    .home .links .contact a{
-        font-size: 21px;
-        margin-left: 10px;
-        padding: 13px 40px;
-    }
     .home img{
         width: 275px;
     }
@@ -1336,19 +1274,6 @@ margin-top: 20px;
     }
     .yurgo-content img{
         width: calc(50% - 10px);
-    }
-
-    .home .links .resume a{
-        font-size: 19px;
-        padding: 15px 55px;
-    }
-    .home .home-content .links .resume a:hover{
-        padding: 13px 52px;
-    }
-    .home .links .contact a{
-        font-size: 19px;
-        margin-left: 10px;
-        padding: 13px 38px;
     }
     .projects .content .box2 .header{
         font-size: 15px;
@@ -1385,23 +1310,6 @@ margin-top: 20px;
     .soccer-legend-content img{
         width: calc(50% - 10px);
         
-    }
-    .home .links .resume a{
-        font-size: 28px;
-        padding: 22px 30vw;
-    }
-    .home .home-content .links .resume a:hover{
-        padding: 20px 29vw;
-    }
-    
-    .home .links .resume{
-        width: 100%;
-    }
-    .home .links .contact a{
-        font-size: 28px;
-        padding: 20px 25.5vw;
-        margin-left: 0px;
-
     }
 
     .home .home-content .text-2{
@@ -1563,27 +1471,7 @@ margin-top: 20px;
     .msg{
       width: 100%;
     }
-    .home .links .resume a{
-        font-size: 28px;
-        padding: 22px 30vw;
-    }
-    .home .home-content .links .resume a:hover{
-        padding: 20px 29vw;
-    }
-    
-    .home .links .resume{
-        width: 100%;
-    }
-    .home .links .contact a{
-        font-size: 28px;
-        padding: 20px 25.5vw;
-        margin-left: 0px;
 
-    }
-    
-    .home .links .contact{
-        margin-left: 0;
-    }
     .what-i-do .content .card{
         width: calc(50% - 10px);
         }
@@ -1751,15 +1639,6 @@ margin-top: 20px;
         .home .home-content .text-3{
             font-size: 19px;
             line-height: 2;
-        }
-        .home .links .contact a{
-            padding: 20px 24vw;
-            font-size: 22px;
-
-        }
-        .home .links .resume a{
-            font-size: 22px;
-
         }
     }
         @media (max-width: 460px){
