@@ -152,6 +152,12 @@ nav ul li a:hover{
     filter: drop-shadow(0px 18px 40px rgba(67, 153, 255, 0.5));
 }
 
+.typing {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 1.5em; /* Adjust size if necessary */
+    color: #01fff4; /* Set the font color to neon blue */
+}
+
 /* CSS Custom Properties */
 @property --bg-1-x {
     syntax: "<number>";
