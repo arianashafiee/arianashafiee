@@ -1,75 +1,58 @@
+/* General Reset */
 :root {
-    --glow-color: #01fff4; /* Neon button glow color */
-    --black: #000000; /* Background color */
-    --shadow: #ffffff50; /* Glow shadow */
+    --glow-color: #01fff4; /* Neon glow color */
+    --hover-text-color: #ffffff; /* Text color on hover */
   }
   
-  body {
-    background: var(--black);
-    font-family: "Roboto", sans-serif; /* Use Roboto font for the text */
-    color: white;
-  }
-  
-  /* SVG Container Section */
   .svg-container {
-    display: flex;
-    justify-content: space-between; /* Distribute images evenly in a row */
-    align-items: center; /* Center-align images */
-    gap: 40px; /* Space between SVG items */
-    padding: 30px 10px; /* Add padding around the section */
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    padding: 4rem 2rem;
+    background-color: #000; /* Dark background for contrast */
+    text-align: center;
   }
   
-  /* SVG Wrapper */
+  .svg-wrapper {
+    display: flex;
+    justify-content: space-around; /* Evenly spaced items */
+    align-items: center;
+    gap: 2rem; /* Spacing between SVGs */
+    flex-wrap: wrap; /* Ensure responsiveness */
+  }
+  
   .svg-item {
     position: relative;
     display: flex;
-    flex-direction: column; /* Stack SVG and text */
+    flex-direction: column;
     align-items: center;
-    text-align: center;
-    gap: 10px; /* Space between SVG and text */
+    gap: 1rem;
     transition: transform 0.3s ease;
   }
   
-  /* All SVGs: Consistent Size and Glow */
   .glowing-svg {
-    height: 200px; /* Increased height for larger images */
-    width: auto; /* Maintain aspect ratio */
-    fill: none;
-    stroke: var(--glow-color); /* Neon glow outline color */
-    stroke-width: 1.5; /* Outline thickness */
-    filter: drop-shadow(0 0 1em var(--glow-color)); /* Base glow effect */
+    width: auto; /* Adjust size as needed */
+    height: 200px;
+    filter: drop-shadow(0 0 5px var(--glow-color));
     transition: filter 0.3s ease, transform 0.3s ease;
   }
   
-  /* Hover Effect: Intensify Glow */
-  .svg-container:hover .glowing-svg {
-    filter: drop-shadow(0 0 3em var(--glow-color)); /* Brighter glow on hover */
-    transform: scale(1.1); /* Slight zoom effect */
+  .svg-item:hover .glowing-svg {
+    filter: drop-shadow(0 0 15px var(--glow-color));
+    transform: scale(1.1); /* Slight zoom on hover */
   }
   
-  /* SVG Text */
   .svg-text {
-    font-size: 1.2rem; /* Text size */
-    color: var(--glow-color); /* Matches the neon glow */
-    text-transform: uppercase; /* Uppercase text for consistency */
-    opacity: 1; /* Always visible */
-    text-align: center;
+    opacity: 0; /* Hidden by default */
+    color: var(--hover-text-color);
+    font-size: 3rem;
+    font-weight: bold;
+    transition: opacity 0.3s ease;
   }
   
-  /* Optional Media Query: Adjust for Smaller Screens */
-  @media (max-width: 768px) {
-    .svg-container {
-      flex-wrap: wrap; /* Allow images to wrap into rows */
-      gap: 20px; /* Reduce space between items */
-    }
+  .svg-container:hover .svg-text {
+    opacity: 1; /* Reveal text when hovering over the container */
+  }
   
-    .glowing-svg {
-      height: 150px; /* Smaller images for smaller screens */
-    }
-  
-    .svg-text {
-      font-size: 1rem; /* Adjust text size */
-    }
+  .svg-container:hover .glowing-svg {
+    filter: drop-shadow(0 0 20px var(--glow-color));
+    transform: scale(1.2);
   }
   
