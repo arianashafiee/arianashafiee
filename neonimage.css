@@ -15,13 +15,14 @@
   .svg-container {
     padding: 4rem 2rem;
     text-align: center;
-    max-width: 100%; /* Prevent content from overflowing */
+    max-width: 100%;
+    overflow-x: hidden; /* Prevent overflow */
   }
   
   .svg-wrapper {
     display: flex;
+    justify-content: space-between; /* Spread items across the width */
     align-items: center; /* Center items vertically */
-    gap: 0; /* Default gap */
   }
   
   .svg-item {
@@ -31,6 +32,14 @@
     align-items: center;
     text-align: center;
     transition: transform 0.3s ease;
+  }
+  
+  .first-item {
+    margin-left: 0; /* Stick close to the left edge */
+  }
+  
+  .last-item {
+    margin-right: 0; /* Stick close to the right edge */
   }
   
   .glowing-svg {
@@ -52,11 +61,11 @@
     left: 50%; /* Center horizontally */
     transform: translate(-50%, -50%); /* Perfect centering */
     opacity: 0; /* Hidden by default */
-    text-align: center; /* Center text */
+    text-align: center;
     font-weight: bold;
-    line-height: 1.2; /* Adjust line spacing */
+    line-height: 1.2;
     z-index: 10; /* Ensure text is above the image */
-    color: var(--text-outline-color); /* Black text */
+    color: var(--text-outline-color);
     -webkit-text-stroke: 1px var(--text-outline-color); /* Black outline */
     text-shadow: 
       0 0 10px var(--glow-color), 
@@ -71,7 +80,7 @@
   
   /* Large font for first two words */
   .large-text {
-    font-size: 3rem; /* Large text */
+    font-size: 3rem;
   }
   
   .subtitle {
@@ -79,28 +88,23 @@
   }
   
   .smaller {
-    font-size: 1rem; /* Further reduced for "Dean's List Student" */
+    font-size: 1rem;
   }
   
   .ampersand .svg-text {
-    font-size: 4rem; /* Large ampersand */
+    font-size: 4rem; /* Larger font for ampersand */
     -webkit-text-stroke: 2px var(--text-outline-color); /* Black outline */
     text-shadow: 
       0 0 10px var(--glow-color), 
       0 0 40px var(--glow-color); /* Intense glow */
   }
   
-  .major-container .svg-text {
-    font-size: 3rem; /* Consistent font size */
-    -webkit-text-stroke: 1.5px var(--text-outline-color);
-    text-shadow: 
-      0 0 10px var(--glow-color), 
-      0 0 30px var(--glow-color); /* Intense glow */
+  /* Adjust spacing for the first and last items */
+  .first-item {
+    margin-left: 2rem; /* Close to the left edge */
   }
   
-  /* Gap Containers */
-  .gap-container {
-    width: var(--custom-gap); /* Customizable gap */
-    height: 1px; /* Invisible container for spacing */
+  .last-item {
+    margin-right: 2rem; /* Close to the right edge */
   }
   
