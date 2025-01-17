@@ -1,7 +1,7 @@
 :root {
     --glow-color: #01fff4; /* Neon glow color */
     --text-outline-color: #000; /* Black text for contrast */
-    --gap-between-images: 2rem; /* Adjust gap between images */
+    --custom-gap: 2rem; /* Default gap value */
   }
   
   body {
@@ -10,18 +10,23 @@
     font-family: "Roboto", sans-serif;
     background-color: #000; /* Dark background */
     color: white;
+    overflow-x: hidden; /* Prevent horizontal overflow */
   }
   
   .svg-container {
     padding: 4rem 2rem;
     text-align: center;
+    max-width: 100%; /* Prevent content from overflowing */
+    overflow-x: hidden; /* Extra safety */
   }
   
   .svg-wrapper {
     display: flex;
-    justify-content: space-evenly; /* Spread items evenly */
-    align-items: flex-start; /* Align all items to the top */
-    gap: var(--gap-between-images); /* Space between items */
+    justify-content: space-evenly; /* Space items evenly */
+    align-items: center; /* Center items vertically */
+    gap: 0; /* Default gap */
+    position: relative;
+    flex-wrap: nowrap; /* Keep all items on one line */
   }
   
   .svg-item {
@@ -45,9 +50,17 @@
     transform: scale(1.1); /* Slight zoom */
   }
   
+  /* Text over images */
   .svg-text {
-    margin-top: 0.5rem;
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Perfect centering */
+    opacity: 0; /* Hidden by default */
+    text-align: center; /* Center text */
     font-weight: bold;
+    line-height: 1.2; /* Adjust line spacing */
+    z-index: 10; /* Ensure text is above the image */
     color: var(--text-outline-color); /* Black text */
     -webkit-text-stroke: 1px var(--text-outline-color); /* Black outline */
     text-shadow: 
@@ -56,6 +69,12 @@
       0 0 40px var(--glow-color); /* Intense glow */
   }
   
+  /* Reveal text on hover */
+  .svg-container:hover .svg-text {
+    opacity: 1; /* Show text */
+  }
+  
+  /* Large font for first two words */
   .large-text {
     font-size: 3rem; /* Large text */
   }
@@ -76,15 +95,21 @@
       0 0 40px var(--glow-color); /* Intense glow */
   }
   
-  .major {
+  .major-container {
     margin-top: 1rem; /* Space below "Computer Science" and "Cognitive Science" */
   }
   
-  .major .svg-text {
+  .major-container .svg-text {
     font-size: 3rem; /* Consistent font size */
     -webkit-text-stroke: 1.5px var(--text-outline-color);
     text-shadow: 
       0 0 10px var(--glow-color), 
       0 0 30px var(--glow-color); /* Intense glow */
+  }
+  
+  /* Gap Containers */
+  .gap-container {
+    width: var(--custom-gap); /* Customizable gap */
+    height: 1px; /* Invisible gap for spacing */
   }
   
