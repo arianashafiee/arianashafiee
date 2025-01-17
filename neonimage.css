@@ -1,6 +1,7 @@
 :root {
     --glow-color: #01fff4; /* Neon glow color */
     --text-outline-color: #000; /* Black text for contrast */
+    --default-gap: 2rem; /* Default gap between images */
   }
   
   body {
@@ -18,10 +19,9 @@
   
   .svg-wrapper {
     display: flex;
-    justify-content: space-around; /* Space items evenly */
-    align-items: center;
-    gap: 2rem; /* Space between items */
-    flex-wrap: wrap; /* Wrap content on smaller screens */
+    justify-content: center; /* Center all items */
+    align-items: flex-end; /* Align items to the bottom */
+    flex-wrap: wrap; /* Wrap for responsiveness */
     position: relative;
   }
   
@@ -58,7 +58,7 @@
     font-weight: bold;
     line-height: 1.2; /* Adjust line spacing */
     color: var(--text-outline-color); /* Black text */
-    -webkit-text-stroke: 1px var(--glow-color); /* Neon outline for text */
+    -webkit-text-stroke: 1.5px var(--glow-color); /* Neon outline for text */
     text-shadow: 
       0 0 10px var(--glow-color), 
       0 0 20px var(--glow-color), 
@@ -77,34 +77,39 @@
   
   /* Smaller font for subtitles */
   .subtitle {
-    font-size: 1.5rem; /* Adjust size for smaller text */
-    margin-top: 0.5rem;
+    font-size: 3rem; /* Matches "Environmental" */
   }
   
   /* Ampersand Styling */
-  .ampersand .svg-text {
-    font-size: 4rem; /* Very large font for ampersand */
-    color: var(--text-outline-color); /* Black fill */
+  .ampersand {
+    font-size: 5rem; /* Very large font for ampersand */
+    margin: 0 2rem; /* Adds space between ampersand and surrounding images */
+    font-weight: bold;
+    color: var(--text-outline-color);
     -webkit-text-stroke: 2px var(--glow-color); /* Thick blue outline */
     text-shadow: 
       0 0 10px var(--glow-color), 
       0 0 40px var(--glow-color); /* Intense glow */
+    display: flex;
+    align-items: center;
   }
   
-  /* Major Container */
-  .major-container {
-    position: relative;
-    width: calc(200px * 2 + 2rem); /* Spans the width of two images + gap */
-    text-align: center;
-    margin: 0 auto;
-  }
-  
-  .major-container .svg-text {
-    font-size: 2.5rem; /* Large text for major */
-    color: var(--text-outline-color); /* Black fill */
+  /* Major Text Centered */
+  .major-text {
+    font-size: 3rem; /* Matches size of "Computer Science" and "Cognitive Science" */
+    font-weight: bold;
+    color: var(--text-outline-color); /* Black text */
     -webkit-text-stroke: 1.5px var(--glow-color); /* Blue outline */
     text-shadow: 
       0 0 10px var(--glow-color), 
-      0 0 30px var(--glow-color); /* Intense glow */
+      0 0 40px var(--glow-color); /* Intense glow */
+    margin-top: 1rem;
+    text-align: center;
+  }
+  
+  /* Gap Containers for Custom Gaps */
+  .gap-container {
+    width: var(--gap-between-images);
+    height: 1px; /* Invisible gap */
   }
   
