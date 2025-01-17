@@ -1,12 +1,12 @@
 :root {
     --glow-color: #01fff4; /* Neon glow color */
-    --hover-text-color: #ffffff; /* Text color */
+    --text-outline-color: #000; /* Black text for contrast */
   }
   
   body {
     margin: 0;
     padding: 0;
-    font-family: "Roboto", sans-serif; /* All text in Roboto */
+    font-family: "Roboto", sans-serif; /* Use Roboto font */
     background-color: #000; /* Dark background */
     color: white;
   }
@@ -38,51 +38,74 @@
   .glowing-svg {
     height: 200px; /* Set consistent height */
     width: auto; /* Maintain aspect ratio */
-    filter: drop-shadow(0 0 5px var(--glow-color)); /* Base glow */
+    filter: drop-shadow(0 0 10px var(--glow-color)); /* Base glow */
     transition: filter 0.3s ease, transform 0.3s ease; /* Smooth hover */
   }
   
-  /* Hover effect for the container */
-  .svg-container:hover .svg-text {
-    opacity: 1; /* Reveal text */
-  }
-  
   .svg-container:hover .glowing-svg {
-    filter: drop-shadow(0 0 15px var(--glow-color)); /* Intensify glow */
+    filter: drop-shadow(0 0 40px var(--glow-color)); /* Very intense glow */
     transform: scale(1.1); /* Slight zoom */
   }
   
-  /* Text centered over images */
+  /* Text over images */
   .svg-text {
     position: absolute;
     top: 50%; /* Center vertically */
     left: 50%; /* Center horizontally */
     transform: translate(-50%, -50%); /* Perfect centering */
     opacity: 0; /* Hidden by default */
-    color: var(--glow-color); /* Neon glow color */
-    text-shadow: 0 0 10px var(--glow-color); /* Glow effect */
-    font-size: 1.5rem; /* Default font size */
+    text-align: center; /* Center text */
     font-weight: bold;
     line-height: 1.2; /* Adjust line spacing */
-    text-align: center; /* Center text */
+    color: var(--text-outline-color); /* Black text */
+    -webkit-text-stroke: 1px var(--glow-color); /* Neon outline for text */
+    text-shadow: 
+      0 0 10px var(--glow-color), 
+      0 0 20px var(--glow-color), 
+      0 0 40px var(--glow-color); /* Intense glow */
   }
   
-  /* Subtitle for smaller text */
+  /* Reveal text on container hover */
+  .svg-container:hover .svg-text {
+    opacity: 1; /* Show text */
+  }
+  
+  /* Large font for first two words */
+  .large-text {
+    font-size: 3rem; /* Larger font size */
+  }
+  
+  /* Smaller font for subtitles */
   .subtitle {
-    font-size: 1rem;
-    color: var(--hover-text-color); /* Faint glow for subtitles */
-    text-shadow: 0 0 5px var(--hover-text-color);
+    font-size: 1.5rem; /* Adjust size for smaller text */
+    margin-top: 0.5rem;
   }
   
-  /* Ampersand Styling */
-  .ampersand .svg-text {
-    font-size: 2rem; /* Larger font for ampersand */
-    color: var(--glow-color);
+  /* Combined Container for Two Images */
+  .combined-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    gap: 1rem; /* Space between images and text */
+    text-align: center;
   }
   
-  /* Major text below Computer & Cognitive Science */
-  .major-text .svg-text {
-    font-size: 1.5rem; /* Spans the width of two images */
-    color: var(--glow-color);
+  /* Combined Images */
+  .combined-container .svg-item {
+    margin: 0; /* Ensure no extra margin between images */
+  }
+  
+  /* Text Spanning Two Images */
+  .combined-text {
+    position: relative;
+    font-size: 2.5rem; /* Large font size for "Major" */
+    font-weight: bold;
+    color: var(--text-outline-color); /* Black text for contrast */
+    -webkit-text-stroke: 1.5px var(--glow-color); /* Blue outline */
+    text-shadow: 
+      0 0 10px var(--glow-color), 
+      0 0 30px var(--glow-color); /* Intense glow */
+    text-align: center;
   }
   
