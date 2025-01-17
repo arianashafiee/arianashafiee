@@ -1,58 +1,62 @@
-/* General Reset */
 :root {
     --glow-color: #01fff4; /* Neon glow color */
-    --hover-text-color: #ffffff; /* Text color on hover */
+    --black: #000000; /* Background color */
+    --shadow: #ffffff50; /* Glow shadow */
   }
   
+  body {
+    background: var(--black); /* Dark background */
+    color: white;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  /* SVG Container Section */
   .svg-container {
-    padding: 4rem 2rem;
-    background-color: #000; /* Dark background for contrast */
-    text-align: center;
-  }
-  
-  .svg-wrapper {
     display: flex;
-    justify-content: space-around; /* Evenly spaced items */
-    align-items: center;
-    gap: 2rem; /* Spacing between SVGs */
-    flex-wrap: wrap; /* Ensure responsiveness */
+    justify-content: space-around; /* Evenly distribute the images */
+    align-items: center; /* Center-align items vertically */
+    gap: 50px; /* Space between images */
+    padding: 50px 0;
   }
   
+  /* SVG Image Wrapper */
   .svg-item {
     position: relative;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Stack SVG and text vertically */
     align-items: center;
-    gap: 1rem;
+    text-align: center;
+    gap: 10px; /* Space between SVG and text */
     transition: transform 0.3s ease;
   }
   
+  /* SVG Images */
   .glowing-svg {
-    width: 150px; /* Adjust size as needed */
-    height: auto;
-    filter: drop-shadow(0 0 5px var(--glow-color));
-    transition: filter 0.3s ease, transform 0.3s ease;
+    height: 250px; /* Consistent height for all SVGs */
+    width: auto; /* Maintain aspect ratio */
+    fill: none;
+    stroke: var(--glow-color); /* Glow color matches the stroke */
+    stroke-width: 1.5; /* Outline thickness */
+    filter: drop-shadow(0 0 5px var(--glow-color)); /* Base glow */
+    transition: filter 0.3s ease, transform 0.3s ease; /* Smooth hover transition */
   }
   
-  .svg-item:hover .glowing-svg {
-    filter: drop-shadow(0 0 15px var(--glow-color));
-    transform: scale(1.1); /* Slight zoom on hover */
-  }
-  
-  .svg-text {
-    opacity: 0; /* Hidden by default */
-    color: var(--hover-text-color);
-    font-size: 1rem;
-    font-weight: bold;
-    transition: opacity 0.3s ease;
-  }
-  
-  .svg-container:hover .svg-text {
-    opacity: 1; /* Reveal text when hovering over the container */
-  }
-  
+  /* Hover Effect for the Entire SVG Container */
   .svg-container:hover .glowing-svg {
-    filter: drop-shadow(0 0 20px var(--glow-color));
-    transform: scale(1.2);
+    filter: drop-shadow(0 0 15px var(--glow-color)); /* Brighter glow */
+    transform: scale(1.1); /* Slight zoom effect */
+  }
+  
+  /* SVG Text */
+  .svg-text {
+    font-size: 1rem;
+    color: var(--glow-color); /* Matches the glow color */
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease; /* Smooth fade-in */
+  }
+  
+  /* Hover Effect for the Entire SVG Container */
+  .svg-container:hover .svg-text {
+    opacity: 1; /* Show text when the container is hovered */
   }
   
