@@ -28,8 +28,8 @@
   }
   
   .glowing-svg {
-    width: auto; /* Adjust size as needed */
     height: 200px;
+    width: auto; /* Adjust size as needed */
     filter: drop-shadow(0 0 5px var(--glow-color));
     transition: filter 0.3s ease, transform 0.3s ease;
   }
