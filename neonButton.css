@@ -29,7 +29,7 @@ html, body {
 
 .button-container {
     display: flex;
-    gap: 50px; /* Increased space between buttons */
+    gap: 150px; /* Increased space between buttons */
 }
 
 .neon-btn {
