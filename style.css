@@ -319,117 +319,15 @@ body::after {
     display: inline-block;
     background: transparent;
 }
-.home .links .resume a {
-    position: relative;
-    color: #01fff4; /* Glow color */
-    cursor: pointer;
-    padding: 0.35em 1.2em;
-    border: 0.15em solid #01fff4;
-    border-radius: 0.8em;
-    background: none;
-    perspective: 2em;
-    font-family: "Poppins", sans-serif;
-    font-size: 2.5em;
-    font-weight: 600;
-    letter-spacing: 1em;
-    box-shadow: inset 0 0 0.5em 0 #01fff4, 0 0 0.5em 0 #01fff4;
-    animation: border-flicker 2s linear infinite;
+.home .links .resume a{
+    display:inline;
+    border-radius: 100px;
+    color:white;
+    background: #4399FF;
+    font-size: 30px;
+    padding: 16px 66px;
     transition: all 0.3s ease;
 }
-
-.home .links .resume a:hover {
-    color: black; /* Text changes to black on hover */
-    text-shadow: none;
-    background: #01fff4; /* Glow effect fills the button */
-    box-shadow: 0 0 2em 0.2em #01fff4;
-    border-color: black;
-}
-
-.home .links .resume a .neon-text {
-    float: left;
-    margin-right: -0.8em;
-    text-shadow: 0 0 0.125em #ffffff50, 0 0 0.45em #01fff4;
-    animation: text-flicker 3s linear infinite;
-}
-
-.home .links .resume a .faulty-letter {
-    opacity: 0.5;
-    animation: faulty-flicker 2s linear infinite;
-}
-
-.home .links .resume a::before,
-.home .links .resume a::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    pointer-events: none;
-}
-
-.home .links .resume a::before {
-    opacity: 0.7;
-    filter: blur(1em);
-    background: #01fff4;
-    transform: translateY(120%) rotateX(95deg) scale(1, 0.35);
-}
-
-.home .links .resume a::after {
-    opacity: 0;
-    z-index: -1;
-    border-radius: 0.6em;
-    background-color: #01fff4;
-    box-shadow: 0 0 2em 0.2em #01fff4;
-    transition: opacity 100ms linear;
-}
-
-.home .links .resume a:hover::before {
-    filter: blur(1.5em);
-    opacity: 1;
-}
-
-.home .links .resume a:hover::after {
-    opacity: 1;
-}
-
-/* Keyframes for flicker animations */
-@keyframes faulty-flicker {
-    0% { opacity: 0.1; }
-    2% { opacity: 0.1; }
-    4% { opacity: 0.5; }
-    19% { opacity: 0.5; }
-    21% { opacity: 0.1; }
-    23% { opacity: 1; }
-    80% { opacity: 0.5; }
-    83% { opacity: 0.4; }
-    87% { opacity: 1; }
-}
-
-@keyframes text-flicker {
-    0% { opacity: 0.1; }
-    2% { opacity: 1; }
-    8% { opacity: 0.1; }
-    9% { opacity: 1; }
-    12% { opacity: 0.1; }
-    20% { opacity: 1; }
-    25% { opacity: 0.3; }
-    30% { opacity: 1; }
-    70% { opacity: 0.7; }
-    72% { opacity: 0.2; }
-    77% { opacity: 0.9; }
-    100% { opacity: 0.9; }
-}
-
-@keyframes border-flicker {
-    0% { opacity: 0.1; }
-    2% { opacity: 1; }
-    4% { opacity: 0.1; }
-    8% { opacity: 1; }
-    70% { opacity: 0.7; }
-    100% { opacity: 1; }
-}
-
 .home .links .contact a{
     display:inline;
     border-radius: 100px;
@@ -442,6 +340,13 @@ body::after {
     transition: all 0.3s ease;
 }
 
+
+.home .home-content .links .resume a:hover{
+    color:#4399FF;
+    padding: 14px 60px;
+    border: 3px solid #4399FF;
+    background: white;
+}
 .home .home-content .links .contact a:hover{
     color:white;
     background:#4399FF ;
