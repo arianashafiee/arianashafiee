@@ -21,7 +21,7 @@
   
   .svg-wrapper {
     display: flex;
-    justify-content: space-between; /* Spread items across the width */
+    justify-content: space-between; /* Distribute items across the width */
     align-items: center; /* Center items vertically */
   }
   
@@ -80,7 +80,7 @@
   
   /* Large font for first two words */
   .large-text {
-    font-size: 3rem;
+    font-size: 3rem; /* Larger font size for "ENVIRONMENTAL" and "STUDIES" */
   }
   
   .subtitle {
@@ -88,23 +88,14 @@
   }
   
   .smaller {
-    font-size: 1rem;
+    font-size: 1rem; /* Reduced size for "Dean's List Student" */
   }
   
   .ampersand .svg-text {
-    font-size: 4rem; /* Larger font for ampersand */
+    font-size: 4rem; /* Larger ampersand */
     -webkit-text-stroke: 2px var(--text-outline-color); /* Black outline */
     text-shadow: 
       0 0 10px var(--glow-color), 
       0 0 40px var(--glow-color); /* Intense glow */
-  }
-  
-  /* Adjust spacing for the first and last items */
-  .first-item {
-    margin-left: 2rem; /* Close to the left edge */
-  }
-  
-  .last-item {
-    margin-right: 2rem; /* Close to the right edge */
   }
   
