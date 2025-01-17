@@ -1,77 +1,89 @@
-/* Root Variables */
 :root {
     --glow-color: #01fff4; /* Neon glow color */
-    --hover-text-color: #ffffff; /* Text color for subtitles */
+    --hover-text-color: #ffffff; /* Text color */
   }
   
-  /* General Reset */
   body {
     margin: 0;
     padding: 0;
-    font-family: "Roboto", sans-serif; /* Ensure Roboto is used */
-    background-color: #000; /* Dark background for contrast */
+    font-family: "Roboto", sans-serif; /* All text in Roboto */
+    background-color: #000; /* Dark background */
     color: white;
     text-transform: uppercase; /* All text in uppercase */
   }
   
-  /* SVG Container */
   .svg-container {
     padding: 4rem 2rem;
     text-align: center;
   }
   
-  /* SVG Wrapper */
   .svg-wrapper {
     display: flex;
-    justify-content: space-around; /* Distribute items evenly */
-    align-items: center; /* Center align items */
+    justify-content: space-around; /* Space items evenly */
+    align-items: center;
     gap: 2rem; /* Space between items */
     flex-wrap: wrap; /* Wrap content on smaller screens */
+    position: relative;
   }
   
-  /* Individual SVG Item */
   .svg-item {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem; /* Spacing between SVG and text */
-    transition: transform 0.3s ease;
+    justify-content: center;
     text-align: center;
+    transition: transform 0.3s ease;
   }
   
-  /* Glowing SVGs */
   .glowing-svg {
-    height: 200px; /* Set consistent height for all SVGs */
+    height: 200px; /* Set consistent height */
     width: auto; /* Maintain aspect ratio */
     filter: drop-shadow(0 0 5px var(--glow-color)); /* Base glow */
-    transition: filter 0.3s ease, transform 0.3s ease; /* Smooth hover transition */
+    transition: filter 0.3s ease, transform 0.3s ease; /* Smooth hover */
   }
   
-  /* Hover Effect */
-  .svg-item:hover .glowing-svg {
-    filter: drop-shadow(0 0 15px var(--glow-color)); /* Intensify glow on hover */
-    transform: scale(1.1); /* Slight zoom on hover */
+  /* Hover effect for the container */
+  .svg-container:hover .svg-text {
+    opacity: 1; /* Reveal text */
   }
   
-  /* Title Above SVG */
-  .svg-title {
-    font-size: 1.5rem; /* Large font size for titles */
+  .svg-container:hover .glowing-svg {
+    filter: drop-shadow(0 0 15px var(--glow-color)); /* Intensify glow */
+    transform: scale(1.1); /* Slight zoom */
+  }
+  
+  /* Text centered over images */
+  .svg-text {
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Perfect centering */
+    opacity: 0; /* Hidden by default */
+    color: var(--glow-color); /* Neon glow color */
+    text-shadow: 0 0 10px var(--glow-color); /* Glow effect */
+    font-size: 1.5rem; /* Default font size */
     font-weight: bold;
-    color: var(--glow-color);
-    text-shadow: 0 0 10px var(--glow-color); /* Glow effect for titles */
-    line-height: 1.2; /* Line height for multi-line text */
-    width: 100%; /* Full width to span the SVG */
-    text-align: center;
-    margin: 0; /* Remove extra margin */
+    line-height: 1.2; /* Adjust line spacing */
+    text-align: center; /* Center text */
   }
   
-  /* Subtitle Below SVG */
-  .svg-subtitle {
-    font-size: 1rem; /* Smaller font size for subtitles */
-    color: var(--hover-text-color);
-    text-shadow: 0 0 5px var(--hover-text-color); /* Glow effect */
-    line-height: 1.2;
-    margin: 0; /* Remove extra margin */
+  /* Subtitle for smaller text */
+  .subtitle {
+    font-size: 1rem;
+    color: var(--hover-text-color); /* Faint glow for subtitles */
+    text-shadow: 0 0 5px var(--hover-text-color);
+  }
+  
+  /* Ampersand Styling */
+  .ampersand .svg-text {
+    font-size: 2rem; /* Larger font for ampersand */
+    color: var(--glow-color);
+  }
+  
+  /* Major text below Computer & Cognitive Science */
+  .major-text .svg-text {
+    font-size: 1.5rem; /* Spans the width of two images */
+    color: var(--glow-color);
   }
   
