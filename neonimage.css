@@ -1,7 +1,6 @@
 :root {
     --glow-color: #01fff4; /* Neon glow color */
     --text-outline-color: #000; /* Black text for contrast */
-    --custom-gap: 2rem; /* Default gap value */
   }
   
   body {
@@ -17,16 +16,12 @@
     padding: 4rem 2rem;
     text-align: center;
     max-width: 100%; /* Prevent content from overflowing */
-    overflow-x: hidden; /* Extra safety */
   }
   
   .svg-wrapper {
     display: flex;
-    justify-content: space-evenly; /* Space items evenly */
     align-items: center; /* Center items vertically */
     gap: 0; /* Default gap */
-    position: relative;
-    flex-wrap: nowrap; /* Keep all items on one line */
   }
   
   .svg-item {
@@ -95,10 +90,6 @@
       0 0 40px var(--glow-color); /* Intense glow */
   }
   
-  .major-container {
-    margin-top: 1rem; /* Space below "Computer Science" and "Cognitive Science" */
-  }
-  
   .major-container .svg-text {
     font-size: 3rem; /* Consistent font size */
     -webkit-text-stroke: 1.5px var(--text-outline-color);
@@ -110,6 +101,6 @@
   /* Gap Containers */
   .gap-container {
     width: var(--custom-gap); /* Customizable gap */
-    height: 1px; /* Invisible gap for spacing */
+    height: 1px; /* Invisible container for spacing */
   }
   
