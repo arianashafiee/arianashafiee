@@ -5,7 +5,7 @@
     text-decoration: none;
 
 }
-body {background-color:white;}
+body {background-color: black;}
 
 .max-width{
     padding: 0 200px;
@@ -129,7 +129,7 @@ nav ul li a:hover{
 
 /* home section styling */
 .home{
-    background: white;
+    background: black;
     color: #2D3F70;
     overflow:visible;
 
