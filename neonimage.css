@@ -16,13 +16,12 @@
     padding: 4rem 2rem;
     text-align: center;
     max-width: 100%;
-    overflow-x: hidden; /* Prevent overflow */
   }
   
   .svg-wrapper {
     display: flex;
-    justify-content: space-between; /* Distribute items across the width */
-    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Distribute items */
+    align-items: center;
   }
   
   .svg-item {
@@ -35,11 +34,11 @@
   }
   
   .first-item {
-    margin-left: 0; /* Stick close to the left edge */
+    margin-left: 0; /* Remove any unnecessary padding/margin */
   }
   
   .last-item {
-    margin-right: 0; /* Stick close to the right edge */
+    margin-right: 0; /* Remove any unnecessary padding/margin */
   }
   
   .glowing-svg {
@@ -97,5 +96,14 @@
     text-shadow: 
       0 0 10px var(--glow-color), 
       0 0 40px var(--glow-color); /* Intense glow */
+  }
+  
+  /* Adjust the first and last items to stick to the edges */
+  .first-item {
+    margin-left: -2rem; /* Push closer to the left edge */
+  }
+  
+  .last-item {
+    margin-right: -2rem; /* Push closer to the right edge */
   }
   
