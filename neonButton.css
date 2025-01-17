@@ -23,7 +23,8 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 30vh; /* Reduced height */
+    height: 30vh; /* Reduced height for the entire section */
+    padding-top: 10px; /* Reduced padding above the buttons */
     background: var(--black);
 }
 
