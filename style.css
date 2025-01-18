@@ -1,4 +1,11 @@
-* {
+:root {
+    --nav-bg-color: #000; /* Black background */
+    --nav-text-color: #fff; /* White text */
+    --hover-color: #01fff4; /* Neon blue hover */
+    --font-family: "Poppins", sans-serif; /* Font for navbar */
+  }
+  
+  * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -19,20 +26,20 @@
     scroll-behavior: smooth;
   }
   
-  /* Navbar styling */
+  /* Navbar Styling */
   .navbar {
-    background-color: black; /* Always black background */
+    background-color: transparent; /* Initially transparent */
     position: fixed;
     z-index: 100;
-    padding: 30px 0;
+    padding: 20px 0;
     width: 100%;
-    font-family: 'Poppins', sans-serif; /* Use Poppins font */
-    transition: all 0.3s ease;
+    font-family: var(--font-family);
+    transition: background-color 0.3s ease, padding 0.3s ease;
   }
   
   .navbar.sticky {
-    padding: 15px 0;
-    background-color: black; /* Black when sticky */
+    background-color: var(--nav-bg-color); /* Black when scrolled */
+    padding: 15px 0; /* Slightly smaller padding */
   }
   
   .navbar .max-width {
@@ -42,41 +49,42 @@
   }
   
   .navbar .logo a {
-    color: #fff; /* White text */
-    font-size: 36px; /* Increased font size for logo */
+    color: var(--nav-text-color);
+    font-size: 40px;
     font-weight: bold;
-    text-transform: uppercase; /* All caps */
+    text-transform: uppercase;
     transition: color 0.3s ease;
   }
   
   nav ul {
     display: flex;
     align-items: center;
-    gap: 50px; /* Add spacing between menu items */
+    justify-content: space-between;
+    flex: 1;
+    margin-left: 2rem;
+    gap: 4rem; /* Evenly spaced menu items */
   }
   
   nav ul li {
     list-style: none;
-    display: inline-block;
   }
   
   nav ul li a {
-    color: #fff; /* White text */
-    font-size: 20px; /* Increased font size */
+    color: var(--nav-text-color);
+    font-size: 22px;
     font-weight: bold;
-    text-transform: uppercase; /* All caps */
-    line-height: 50px;
+    text-transform: uppercase;
     display: block;
     transition: color 0.3s ease;
   }
   
   nav ul li a:hover {
-    color: #01fff4; /* Neon blue on hover */
+    color: var(--hover-color);
   }
   
-  /* Dropdown menu */
+  /* Dropdown Styling */
   .dropdown:hover > ul {
-    top: 70px;
+    top: 100%;
     opacity: 1;
     visibility: visible;
   }
@@ -85,50 +93,46 @@
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: black; /* Black dropdown background */
-    border-top: 3px solid #01fff4; /* Neon blue border */
+    background-color: var(--nav-bg-color);
+    border-top: 3px solid var(--hover-color);
     opacity: 0;
     visibility: hidden;
-    transition: top 0.3s ease, opacity 0.3s ease;
-    box-shadow: 0px 18px 40px rgba(67, 153, 255, 0.2);
-    padding: 10px 0;
+    transition: opacity 0.3s ease, top 0.3s ease;
+    padding: 0.5rem 0;
+    z-index: 10;
   }
   
   nav ul ul li {
-    position: relative;
     padding: 10px;
-    width: 200px; /* Wider dropdown items */
+    width: 200px;
   }
   
   nav ul ul li a {
-    color: #fff; /* White text for dropdown */
-    font-size: 18px; /* Increased dropdown font size */
-    text-transform: uppercase; /* All caps */
+    color: var(--nav-text-color);
+    font-size: 18px;
+    font-weight: normal;
+    text-transform: uppercase;
     transition: color 0.3s ease;
   }
   
   nav ul ul li a:hover {
-    color: #01fff4; /* Neon blue on hover */
+    color: var(--hover-color);
   }
   
-  /* Menu button */
-  .menu-btn {
-    color: #01fff4; /* Neon blue color */
-    font-size: 25px; /* Larger menu button */
-    cursor: pointer;
-    display: none;
-  }
-  
-  /* Responsive Design for Smaller Screens */
+  /* Responsive Design */
   @media screen and (max-width: 768px) {
     nav ul {
-      display: none; /* Hide menu for mobile */
+      display: none;
     }
   
     .menu-btn {
-      display: block; /* Show menu button */
+      display: block;
+      color: var(--nav-text-color);
+      font-size: 30px;
+      cursor: pointer;
     }
   }
+  
   
 .home-all{
     display: flex;
@@ -1762,7 +1766,6 @@ margin-top: 20px;
         
         }
     
-
 
 
 
