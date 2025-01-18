@@ -3,130 +3,158 @@
     --nav-text-color: #fff; /* White text for navbar items */
     --hover-color: #01fff4; /* Neon blue hover color */
     --font-family: 'Poppins', sans-serif; /* Font for navbar and titles */
-  }
-  
-  /* Styles scoped to the navbar */
-  .main {
+}
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-family);
+    background-color: black;
+}
+
+/* Navbar Styles */
+.main {
     width: 100%;
-    font-family: var(--font-family); /* Apply Poppins font */
-    background-color: var(--nav-bg-color); /* Navbar background */
+    font-family: var(--font-family);
+    background-color: var(--nav-bg-color);
     position: relative;
-  }
-  
-  .main .navbar {
+}
+
+.main .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 1rem 3rem; /* Adjusted for more spacing */
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
-    text-transform: uppercase; /* Force uppercase text */
-  }
-  
-  .main .logo a {
-    font-size: 1.8rem; /* Larger font size for logo */
-    font-weight: bold; /* Bold text for logo */
-    color: var(--nav-text-color);
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-  
-  .main .logo a:hover {
-    color: var(--hover-color); /* Hover effect for logo */
-  }
-  
-  .main .menu {
-    display: flex;
-    gap: 2.5rem; /* Add spacing between menu items */
-  }
-  
-  .main .menu li {
-    list-style: none;
-  }
-  
-  .main .menu a {
-    font-size: 1.2rem; /* Increased font size for menu items */
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+/* Navbar Background When Sticky */
+.main .navbar.sticky {
+    background-color: var(--nav-bg-color);
+    padding: 0.8rem 3rem;
+}
+
+.main .logo a {
+    font-size: 2rem; /* Increased size for visibility */
     font-weight: bold;
     color: var(--nav-text-color);
     text-decoration: none;
     transition: color 0.3s ease;
-    letter-spacing: 1.5px; /* Space between letters */
-  }
-  
-  .main .menu a:hover {
-    color: var(--hover-color); /* Neon blue hover effect */
-  }
-  
-  .main .dropdown .drop {
+}
+
+.main .logo a:hover {
+    color: var(--hover-color);
+}
+
+/* Navigation Menu */
+.main .menu {
+    display: flex;
+    gap: 3rem; /* Increased spacing between menu items */
+}
+
+.main .menu li {
+    list-style: none;
+}
+
+.main .menu a {
+    font-size: 1.3rem; /* Slightly larger text */
+    font-weight: bold;
+    color: var(--nav-text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    letter-spacing: 2px; /* Added extra letter spacing */
+    text-transform: uppercase;
+}
+
+.main .menu a:hover {
+    color: var(--hover-color);
+}
+
+/* Dropdown Menu */
+.main .dropdown .drop {
     position: relative;
     display: inline-block;
-  }
-  
-  .main .dropdown ul {
+}
+
+.main .dropdown ul {
     position: absolute;
-    top: 100%; /* Position below the dropdown item */
+    top: 100%;
     left: 0;
-    background-color: var(--nav-bg-color); /* Match navbar background */
-    border-top: 3px solid var(--hover-color); /* Neon hover border */
+    background-color: var(--nav-bg-color);
+    border-top: 3px solid var(--hover-color);
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
     z-index: 100;
     padding: 0.5rem 0;
     text-align: left;
-    box-shadow: 0px 10px 20px rgba(0, 255, 255, 0.2); /* Subtle shadow */
-  }
-  
-  .main .dropdown:hover ul {
+    box-shadow: 0px 10px 20px rgba(0, 255, 255, 0.2);
+}
+
+.main .dropdown:hover ul {
     opacity: 1;
     visibility: visible;
-  }
-  
-  .main .dropdown ul li {
-    padding: 0.5rem 1rem;
-  }
-  
-  .main .dropdown ul li a {
-    font-size: 1rem; /* Slightly smaller for dropdown items */
+}
+
+.main .dropdown ul li {
+    padding: 0.7rem 1.5rem; /* Slightly larger padding for dropdown items */
+}
+
+.main .dropdown ul li a {
+    font-size: 1rem;
     font-weight: bold;
     color: var(--nav-text-color);
     text-transform: uppercase;
     transition: color 0.3s ease;
-  }
-  
-  .main .dropdown ul li a:hover {
-    color: var(--hover-color);
-  }
-  
-  .main .menu-btn {
-    display: none; /* Hide menu button for larger screens */
-  }
-  
-  @media screen and (max-width: 768px) {
-    .main .menu {
-      display: none; /* Hide menu on small screens */
-    }
-  
-    .main .menu-btn {
-      display: block; /* Show menu button */
-      font-size: 2rem;
-      color: var(--nav-text-color);
-      cursor: pointer;
-    }
-  }
-  
-  
+}
 
-/* home section styling */
-.home{
+.main .dropdown ul li a:hover {
+    color: var(--hover-color);
+}
+
+/* Menu Button for Mobile */
+.main .menu-btn {
+    display: none;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+    .main .menu {
+        display: none;
+    }
+
+    .main .menu-btn {
+        display: block;
+        font-size: 2rem;
+        color: var(--nav-text-color);
+        cursor: pointer;
+    }
+}
+
+/* Home Section Styling */
+.home {
     background: black;
     color: #2D3F70;
-    overflow:visible;
-
+    overflow: visible;
 }
-.home-all{
+
+.home-all {
     display: flex;
     justify-content: space-between;
 }
