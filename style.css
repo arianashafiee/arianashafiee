@@ -1,7 +1,7 @@
 :root {
-    --nav-bg-color: rgba(0, 0, 0, 0.9); /* Black with slight opacity for scrolling */
+    --nav-bg-color: rgba(0, 0, 0, 0.9); /* Black when scrolling */
     --nav-transparent: transparent; /* Transparent background */
-    --nav-text-color: #fff; /* White text */
+    --nav-text-color: #fff; /* White text color */
     --hover-color: #01fff4; /* Neon blue hover color */
     --font-family: "Poppins", sans-serif; /* Font for the navbar */
   }
@@ -18,7 +18,7 @@
   }
   
   .max-width {
-    padding: 0 200px;
+    padding: 0 100px; /* Reduce side padding */
     max-width: 1900px;
     margin: auto;
   }
@@ -39,8 +39,8 @@
   }
   
   .navbar.sticky {
-    background-color: var(--nav-bg-color); /* Black when scrolling */
-    padding: 15px 0; /* Reduced padding for scrolling */
+    background-color: var(--nav-bg-color); /* Black background */
+    padding: 15px 0; /* Smaller padding on scroll */
   }
   
   .navbar .max-width {
@@ -51,7 +51,7 @@
   
   .navbar .logo a {
     color: var(--nav-text-color);
-    font-size: 35px;
+    font-size: 35px; /* Larger font for logo */
     font-weight: bold;
     text-transform: uppercase;
     transition: color 0.3s ease;
@@ -60,10 +60,10 @@
   nav ul {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; /* Equal spacing for all menu items */
     flex: 1;
     margin-left: 2rem;
-    gap: 4rem; /* Evenly space menu items */
+    gap: 3rem; /* Adjust spacing between menu items */
   }
   
   nav ul li {
@@ -73,7 +73,7 @@
   
   nav ul li a {
     color: var(--nav-text-color);
-    font-size: 20px;
+    font-size: 20px; /* Larger font for menu items */
     font-weight: bold;
     text-transform: uppercase;
     display: block;
@@ -81,33 +81,33 @@
   }
   
   nav ul li a:hover {
-    color: var(--hover-color);
+    color: var(--hover-color); /* Neon blue on hover */
   }
   
   /* Dropdown Styling */
   .dropdown:hover > ul {
-    top: 100%;
+    top: 100%; /* Align dropdown directly below the parent */
     opacity: 1;
     visibility: visible;
   }
   
   nav ul ul {
     position: absolute;
-    top: 100%; /* Align directly under the parent */
+    top: 100%;
     left: 0;
-    background-color: var(--nav-bg-color);
+    background-color: var(--nav-bg-color); /* Dropdown background color */
     border-top: 3px solid var(--hover-color);
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, top 0.3s ease;
-    padding: 1rem 0;
+    padding: 0.5rem 0;
     z-index: 10;
-    width: 200px; /* Dropdown width */
+    width: 200px; /* Set dropdown width */
   }
   
   nav ul ul li {
     padding: 10px;
-    width: 100%; /* Stretch items to the dropdown width */
+    width: 100%;
     text-align: left;
   }
   
@@ -120,6 +120,12 @@
   
   nav ul ul li a:hover {
     color: var(--hover-color);
+  }
+  
+  /* Align navbar text vertically */
+  .navbar ul li a {
+    display: flex;
+    align-items: center;
   }
   
   /* Remove the checkbox */
@@ -136,10 +142,11 @@
     .menu-btn {
       display: block;
       color: var(--nav-text-color);
-      font-size: 30px;
+      font-size: 30px; /* Larger menu button */
       cursor: pointer;
     }
   }
+  
   
   
   
