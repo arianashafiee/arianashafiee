@@ -34,15 +34,30 @@
   }
   
   .first-item {
-    margin-left: 0; /* Remove any unnecessary padding/margin */
+    margin-left: -2rem; /* Push closer to the left edge */
   }
   
   .last-item {
-    margin-right: 0; /* Remove any unnecessary padding/margin */
+    margin-right: -2rem; /* Push closer to the right edge */
   }
   
+  /* Add extra space between specific items */
+  .svg-wrapper .svg-item:nth-child(4) {
+    margin-right: 4rem; /* Add space before ENVIRONMENTAL STUDIES MINOR */
+  }
+  
+  /* Ampersand Styling */
+  .ampersand .svg-text {
+    font-size: 4rem; /* Larger ampersand */
+    -webkit-text-stroke: 2px var(--text-outline-color); /* Black outline */
+    text-shadow: 
+      0 0 10px var(--glow-color), 
+      0 0 40px var(--glow-color); /* Intense glow */
+  }
+  
+  /* Glow Effect for SVGs */
   .glowing-svg {
-    height: 200px; /* Set consistent height */
+    height: 200px; /* Consistent height for all SVGs */
     width: auto; /* Maintain aspect ratio */
     filter: drop-shadow(0 0 10px var(--glow-color)); /* Base glow */
     transition: filter 0.3s ease, transform 0.3s ease;
@@ -88,22 +103,5 @@
   
   .smaller {
     font-size: 1rem; /* Reduced size for "Dean's List Student" */
-  }
-  
-  .ampersand .svg-text {
-    font-size: 4rem; /* Larger ampersand */
-    -webkit-text-stroke: 2px var(--text-outline-color); /* Black outline */
-    text-shadow: 
-      0 0 10px var(--glow-color), 
-      0 0 40px var(--glow-color); /* Intense glow */
-  }
-  
-  /* Adjust the first and last items to stick to the edges */
-  .first-item {
-    margin-left: -2rem; /* Push closer to the left edge */
-  }
-  
-  .last-item {
-    margin-right: -2rem; /* Push closer to the right edge */
   }
   
