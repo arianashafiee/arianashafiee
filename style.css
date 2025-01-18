@@ -150,19 +150,17 @@ nav ul li a:hover{
     text-transform: uppercase; 
 }
 
-/* Adjust the image to have more space */
 .home img {
     width: 100%; /* Ensure the image scales to fit the container */
-    max-width: 500px; /* Increase the maximum width for the image */
-    height: auto; /* Maintain the aspect ratio */
-    margin-top: 3vh; /* Add space from the top */
-    object-fit: cover; /* Ensure the image fills the container */
-    margin-left: auto; /* Center the image horizontally */
-    margin-right: auto; /* Center the image horizontally */
-    display: block; /* Prevent extra space below the image */
+    height: 100%; /* Allow the image to take up the container's height */
+    max-width: 500px; /* Maximum width to prevent the image from becoming too large */
+    max-height: 100%; /* Prevent the image from overflowing vertically */
+    margin: auto; /* Center the image within its container */
+    object-fit: contain; /* Scale the image to fit without cropping */
+    display: block; /* Remove extra spacing below the image */
     border-radius: 10px; /* Optional: Adds rounded corners */
-    -webkit-filter: drop-shadow(0px 18px 40px rgba(67, 153, 255, 0.5)); /* Adds a shadow */
-    filter: drop-shadow(0px 18px 40px rgba(67, 153, 255, 0.5));
+    -webkit-filter: drop-shadow(0px 18px 40px rgba(67, 153, 255, 0.5)); /* Shadow effect */
+    filter: drop-shadow(0px 18px 40px rgba(67, 153, 255, 0.5)); /* Shadow effect */
 }
 
 
