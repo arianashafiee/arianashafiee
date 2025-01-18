@@ -15,6 +15,7 @@
   .svg-container {
     padding: 4rem 2rem;
     text-align: center;
+    max-width: 100%;
   }
   
   .svg-wrapper {
@@ -32,25 +33,25 @@
     transition: transform 0.3s ease;
   }
   
+  /* Custom Spacing for Images */
   .first-item {
-    margin-left: 1rem; /* Close to the left edge */
+    margin-left: 0; /* Close to the left edge */
   }
   
-  .last-item {
-    margin-right: 1rem; /* Close to the right edge */
-  }
-  
-  /* Add custom spacing between adjacent images */
   .second-item {
-    margin-left: 3rem; /* Space between 1st and 2nd image */
+    margin-left: 2rem; /* Space between 1st and 2nd image */
   }
   
   .third-item {
-    margin-left: 6rem; /* Space between 2nd and 3rd image */
+    margin-left: 6rem; /* Larger space between 2nd and 3rd image */
   }
   
   .fourth-item {
-    margin-left: 8rem; /* Larger space between 3rd and 4th image */
+    margin-left: 1rem; /* Reduced space between 3rd and 4th image */
+  }
+  
+  .last-item {
+    margin-right: 0; /* Close to the right edge */
   }
   
   /* Glow Effect for SVGs */
