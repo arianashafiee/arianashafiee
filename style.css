@@ -192,9 +192,8 @@
 }
 
 :root {
-    --glow-color: #01fff4; /* Neon blue color */
+    --glow-color: #4398ff80; /* Neon blue color */
   }
-  
   .home img {
       width: 100%; /* Ensure the image scales to fit the container */
       max-width: 500px; /* Maximum width */
