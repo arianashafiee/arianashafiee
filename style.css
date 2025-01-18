@@ -1,4 +1,3 @@
-/* General Reset */
 * {
     margin: 0;
     padding: 0;
@@ -25,7 +24,7 @@
     background-color: transparent; /* Start transparent */
     position: fixed;
     z-index: 100;
-    padding: 20px 0; /* Adjusted padding */
+    padding: 30px 0; /* Even padding */
     width: 100%;
     font-family: 'Open Sans', sans-serif;
     transition: all 0.3s ease;
@@ -36,21 +35,15 @@
     padding: 15px 0;
   }
   
-  /* Navbar Layout: Equal Spacing for Title and Sections */
   .navbar .max-width {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Distribute items evenly */
-    gap: 1.5rem; /* Minimal gap between sections */
-  }
-  
-  .navbar .logo {
-    white-space: nowrap; /* Prevent title from breaking onto multiple lines */
+    justify-content: space-between; /* Evenly distribute all items */
   }
   
   .navbar .logo a {
     color: #fff; /* White main title */
-    font-size: 28px; /* Adjusted font size */
+    font-size: 36px; /* Larger font for main title */
     font-weight: bold;
     text-transform: uppercase;
     transition: all 0.3s ease;
@@ -59,7 +52,8 @@
   nav ul {
     display: flex;
     align-items: center;
-    gap: 1.5rem; /* Reduced gap between sections */
+    justify-content: space-between; /* Even spacing for all titles */
+    width: 100%; /* Full navbar width */
   }
   
   nav ul li {
@@ -68,27 +62,40 @@
   
   nav ul li a {
     color: #fff; /* White text */
-    font-size: 18px; /* Consistent font size */
+    font-size: 20px; /* Larger font for all titles */
     font-weight: bold;
     text-transform: uppercase;
-    white-space: nowrap; /* Prevent sections from breaking */
+    line-height: 50px;
+    margin: 0 20px; /* Space between titles */
     transition: color 0.3s ease, text-decoration 0.3s ease;
+    position: relative;
+  }
+  
+  /* Specific Styling for "What I Do" */
+  nav ul li.dropdown a {
+    font-size: 22px; /* Larger font for menu title */
   }
   
   nav ul li a:hover {
     color: #4399FF; /* Neon blue hover */
   }
   
-  /* Dropdown Styling */
   nav ul li.dropdown:hover > a {
-    text-decoration: underline; /* Underline on hover for dropdown */
+    text-decoration: underline; /* Underline "What I Do" on hover */
+  }
+  
+  /* Dropdown Styling */
+  .dropdown:hover > ul {
+    top: 70px;
+    opacity: 1;
+    visibility: visible;
   }
   
   nav ul ul {
     position: absolute;
     top: 100%;
     left: 0; /* Align dropdown under "What I Do" */
-    background-color: black;
+    background-color: black; /* Match navbar background */
     border-top: 3px solid #4399FF;
     opacity: 0;
     visibility: hidden;
@@ -98,20 +105,14 @@
     width: 220px; /* Wider dropdown for column layout */
   }
   
-  .dropdown:hover > ul {
-    top: 70px;
-    opacity: 1;
-    visibility: visible;
-  }
-  
   nav ul ul li {
     padding: 10px 15px; /* Adjust spacing for dropdown items */
   }
   
   nav ul ul li a {
-    color: #fff;
-    font-size: 18px;
-    text-transform: capitalize;
+    color: #fff; /* White text */
+    font-size: 18px; /* Consistent font size */
+    text-transform: capitalize; /* Capitalize dropdown items */
     transition: color 0.3s ease;
   }
   
@@ -119,20 +120,30 @@
     color: #4399FF; /* Neon blue hover */
   }
   
-  /* Responsive Fixes for Navbar */
+  /* Menu Button */
+  .menu-btn {
+    color: #4399FF;
+    font-size: 23px;
+    cursor: pointer;
+    display: none;
+  }
+  
+  /* Responsive Fixes for Dropdown on Mobile */
   @media screen and (max-width: 768px) {
     nav ul {
       display: none; /* Hide navbar on smaller screens */
     }
   
     .menu-btn {
-      display: block;
-      font-size: 23px;
-      cursor: pointer;
+      display: block; /* Show menu button */
+    }
+  
+    .menu-btn i.active::before {
+      content: "\f00d"; /* Font Awesome close icon */
     }
   
     .navbar .menu.active {
-      display: flex;
+      display: flex; /* Show menu on mobile */
       flex-direction: column;
       align-items: flex-start;
       background: black;
@@ -141,10 +152,9 @@
       left: 0;
       height: 100vh;
       width: 100%;
+      z-index: 99;
       padding-top: 80px;
     }
-  
-  
   
     nav ul ul {
       position: static; /* Dropdown behaves like a block */
@@ -174,7 +184,7 @@
     font-family: "Courier New", Courier, monospace;
     font-size: 1.5em; /* Adjust size if necessary */
     color: #01fff4; /* Set the font color to neon blue */
-    max-width: 60%; /* Restrict the width of the typing text */
+    max-width: 50%; /* Restrict the width of the typing text */
     margin: 0 auto; /* Center the typing text */
     text-align: center; /* Center align the text */
     text-transform: uppercase; 
@@ -182,7 +192,7 @@
 }
 
 :root {
-    --glow-color: #4399FF80; /* Neon blue color */
+    --glow-color: #01fff4; /* Neon blue color */
   }
   
   .home img {
