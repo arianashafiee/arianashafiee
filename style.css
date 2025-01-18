@@ -184,7 +184,7 @@
     font-family: "Courier New", Courier, monospace;
     font-size: 1.5em; /* Adjust size if necessary */
     color: #01fff4; /* Set the font color to neon blue */
-    max-width: 60%; /* Restrict the width of the typing text */
+    max-width: 50%; /* Restrict the width of the typing text */
     margin: 0 auto; /* Center the typing text */
     text-align: center; /* Center align the text */
     text-transform: uppercase; 
@@ -196,9 +196,8 @@
   }
   
   .home img {
-      width: 100%; /* Ensure the image scales to fit the container */
-      max-width: 500px; /* Maximum width */
-      height: auto; /* Maintain the aspect ratio */
+    height: 100%; /* Maintain the aspect ratio */
+      width: auto; /* Ensure the image scales to fit the container */      
       margin-top: 3vh; /* Add space from the top */
       margin-left: auto; /* Center the image horizontally */
       margin-right: auto; /* Center the image horizontally */
