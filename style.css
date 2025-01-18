@@ -197,6 +197,7 @@
   
   .home img {
     height: 100%; /* Maintain the aspect ratio */
+    max-height: 1000px;
       width: auto; /* Ensure the image scales to fit the container */      
       margin-top: 3vh; /* Add space from the top */
       margin-left: auto; /* Center the image horizontally */
