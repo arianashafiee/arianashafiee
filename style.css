@@ -1,8 +1,9 @@
 :root {
-    --nav-bg-color: #000; /* Black background */
+    --nav-bg-color: rgba(0, 0, 0, 0.9); /* Black with slight opacity for scrolling */
+    --nav-transparent: transparent; /* Transparent background */
     --nav-text-color: #fff; /* White text */
-    --hover-color: #01fff4; /* Neon blue hover */
-    --font-family: "Poppins", sans-serif; /* Font for navbar */
+    --hover-color: #01fff4; /* Neon blue hover color */
+    --font-family: "Poppins", sans-serif; /* Font for the navbar */
   }
   
   * {
@@ -28,7 +29,7 @@
   
   /* Navbar Styling */
   .navbar {
-    background-color: transparent; /* Initially transparent */
+    background-color: var(--nav-transparent); /* Transparent background */
     position: fixed;
     z-index: 100;
     padding: 20px 0;
@@ -38,8 +39,8 @@
   }
   
   .navbar.sticky {
-    background-color: var(--nav-bg-color); /* Black when scrolled */
-    padding: 15px 0; /* Slightly smaller padding */
+    background-color: var(--nav-bg-color); /* Black when scrolling */
+    padding: 15px 0; /* Reduced padding for scrolling */
   }
   
   .navbar .max-width {
@@ -50,7 +51,7 @@
   
   .navbar .logo a {
     color: var(--nav-text-color);
-    font-size: 40px;
+    font-size: 35px;
     font-weight: bold;
     text-transform: uppercase;
     transition: color 0.3s ease;
@@ -62,16 +63,17 @@
     justify-content: space-between;
     flex: 1;
     margin-left: 2rem;
-    gap: 4rem; /* Evenly spaced menu items */
+    gap: 4rem; /* Evenly space menu items */
   }
   
   nav ul li {
     list-style: none;
+    position: relative;
   }
   
   nav ul li a {
     color: var(--nav-text-color);
-    font-size: 22px;
+    font-size: 20px;
     font-weight: bold;
     text-transform: uppercase;
     display: block;
@@ -91,32 +93,38 @@
   
   nav ul ul {
     position: absolute;
-    top: 100%;
+    top: 100%; /* Align directly under the parent */
     left: 0;
     background-color: var(--nav-bg-color);
     border-top: 3px solid var(--hover-color);
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, top 0.3s ease;
-    padding: 0.5rem 0;
+    padding: 1rem 0;
     z-index: 10;
+    width: 200px; /* Dropdown width */
   }
   
   nav ul ul li {
     padding: 10px;
-    width: 200px;
+    width: 100%; /* Stretch items to the dropdown width */
+    text-align: left;
   }
   
   nav ul ul li a {
     color: var(--nav-text-color);
-    font-size: 18px;
-    font-weight: normal;
+    font-size: 18px; /* Dropdown font size */
     text-transform: uppercase;
     transition: color 0.3s ease;
   }
   
   nav ul ul li a:hover {
     color: var(--hover-color);
+  }
+  
+  /* Remove the checkbox */
+  input[type="checkbox"].check {
+    display: none;
   }
   
   /* Responsive Design */
@@ -132,6 +140,7 @@
       cursor: pointer;
     }
   }
+  
   
   
 .home-all{
