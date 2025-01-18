@@ -19,12 +19,12 @@
     scroll-behavior: smooth;
   }
   
-  /* Navbar styling */
+  /* Navbar Styling */
   .navbar {
-    background-color: transparent; /* Start as transparent */
+    background-color: transparent; /* Start transparent */
     position: fixed;
     z-index: 100;
-    padding: 30px 0;
+    padding: 30px 0; /* Even padding */
     width: 100%;
     font-family: 'Open Sans', sans-serif;
     transition: all 0.3s ease;
@@ -35,111 +35,135 @@
     padding: 15px 0;
   }
   
-  .navbar.sticky .logo a {
-    font-size: 27px;
-  }
-  
   .navbar .max-width {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; /* Evenly distribute all items */
   }
   
   .navbar .logo a {
-    color: #fff; /* White text */
-    font-size: 30px;
-    font-weight: bold; /* Make the logo bold */
-    text-transform: uppercase; /* Ensure the logo is uppercase */
+    color: #fff; /* White main title */
+    font-size: 36px; /* Larger font for main title */
+    font-weight: bold;
+    text-transform: uppercase;
     transition: all 0.3s ease;
   }
   
-  /* Dropdown */
-  .dropdown:hover > ul {
-    top: 70px;
-    opacity: 1;
-    visibility: visible;
-  }
-  
-  .dropdown.sticky:hover > ul {
-    top: 58px;
-    opacity: 1;
-    visibility: visible;
-  }
-  
-  nav ul ul {
-    position: absolute;
-    top: 100px;
-    border-top: 3px solid #4399FF;
-    opacity: 0;
-    visibility: hidden;
-    transition: top 0.3s ease, opacity 0.3s ease;
-    margin-left: 0; /* Align dropdown under "What I Do" */
-    text-align: center;
-    box-shadow: 0px 18px 40px rgba(67, 153, 255, 0.2);
-  }
-  
-  nav ul ul li {
-    position: relative;
-    padding: 10px;
-    display: list-item;
-    float: 0;
-    width: 150px;
-    background-color: black; /* Match navbar background */
-  }
-  
-  nav ul ul li a {
-    color: #fff; /* White text */
-    font-size: 16px;
-    font-weight: normal;
-    display: block;
-    transition: color 0.3s ease;
-    line-height: normal;
-  }
-  
-  nav ul ul li a:hover {
-    color: #4399FF; /* Neon blue hover */
-  }
-  
-  .show,
-  .icon,
-  .check {
-    display: none;
-  }
-  
-  /* Menu styling */
   nav ul {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Even spacing between items */
+    justify-content: space-between; /* Even spacing for all titles */
+    width: 100%; /* Full navbar width */
   }
   
   nav ul li {
     list-style: none;
-    display: inline-block;
   }
   
   nav ul li a {
     color: #fff; /* White text */
-    font-size: 20px; /* Increased font size */
-    font-weight: bold; /* Bold text */
-    text-transform: uppercase; /* All caps */
+    font-size: 20px; /* Larger font for all titles */
+    font-weight: bold;
+    text-transform: uppercase;
     line-height: 50px;
-    margin-left: 50px; /* Adjust for more spacing between titles */
-    display: block;
-    transition: color 0.3s ease;
+    margin: 0 20px; /* Space between titles */
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+    position: relative;
+  }
+  
+  /* Specific Styling for "What I Do" */
+  nav ul li.dropdown a {
+    font-size: 22px; /* Larger font for menu title */
   }
   
   nav ul li a:hover {
     color: #4399FF; /* Neon blue hover */
   }
   
-  /* Menu button */
+  nav ul li.dropdown:hover > a {
+    text-decoration: underline; /* Underline "What I Do" on hover */
+  }
+  
+  /* Dropdown Styling */
+  .dropdown:hover > ul {
+    top: 70px;
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  nav ul ul {
+    position: absolute;
+    top: 100%;
+    left: 0; /* Align dropdown under "What I Do" */
+    background-color: black; /* Match navbar background */
+    border-top: 3px solid #4399FF;
+    opacity: 0;
+    visibility: hidden;
+    transition: top 0.3s ease, opacity 0.3s ease;
+    box-shadow: 0px 18px 40px rgba(67, 153, 255, 0.2);
+    padding: 1rem 0;
+    width: 220px; /* Wider dropdown for column layout */
+  }
+  
+  nav ul ul li {
+    padding: 10px 15px; /* Adjust spacing for dropdown items */
+  }
+  
+  nav ul ul li a {
+    color: #fff; /* White text */
+    font-size: 18px; /* Consistent font size */
+    text-transform: capitalize; /* Capitalize dropdown items */
+    transition: color 0.3s ease;
+  }
+  
+  nav ul ul li a:hover {
+    color: #4399FF; /* Neon blue hover */
+  }
+  
+  /* Menu Button */
   .menu-btn {
     color: #4399FF;
     font-size: 23px;
     cursor: pointer;
     display: none;
   }
+  
+  /* Responsive Fixes for Dropdown on Mobile */
+  @media screen and (max-width: 768px) {
+    nav ul {
+      display: none; /* Hide navbar on smaller screens */
+    }
+  
+    .menu-btn {
+      display: block; /* Show menu button */
+    }
+  
+    .menu-btn i.active::before {
+      content: "\f00d"; /* Font Awesome close icon */
+    }
+  
+    .navbar .menu.active {
+      display: flex; /* Show menu on mobile */
+      flex-direction: column;
+      align-items: flex-start;
+      background: black;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100%;
+      z-index: 99;
+      padding-top: 80px;
+    }
+  
+    nav ul ul {
+      position: static; /* Dropdown behaves like a block */
+      width: 100%; /* Full-width dropdown */
+      border-top: none;
+      box-shadow: none;
+    }
+  }
+  
   
   /* Home section styling */
   .home {
