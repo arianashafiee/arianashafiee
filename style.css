@@ -1,156 +1,140 @@
-/* Global Reset */
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
-  }
-  
-  body {
-    background-color: black;
-  }
-  
-  .max-width {
+
+}
+body {background-color: black;}
+
+.max-width{
     padding: 0 200px;
     max-width: 1900px;
     margin: auto;
-  }
-  
-  html {
+
+
+}
+html{
     scroll-behavior: smooth;
+}
+
+:root {
+    --nav-bg-color: #000; /* Background color for the navbar */
+    --nav-text-color: #fff; /* White text for navbar items */
+    --hover-color: #01fff4; /* Neon blue hover color */
+    --font-family: 'Poppins', sans-serif; /* Font for navbar and titles */
   }
   
-  /* Root Variables */
-  :root {
-    --nav-bg-color: black; /* Navbar background color */
-    --nav-text-color: white; /* Navbar text color */
-    --hover-color: #01fff4; /* Neon blue hover effect */
-    --font-family: 'Poppins', sans-serif; /* Font for the navbar and titles */
+  /* Styles scoped to the navbar */
+  .main {
+    width: 100%;
+    font-family: var(--font-family); /* Apply Poppins font */
+    background-color: var(--nav-bg-color); /* Navbar background */
+    position: relative;
   }
   
-  /* Navbar Styling */
-  .navbar {
+  .main .navbar {
     display: flex;
-    justify-content: space-between; /* Spread out items evenly */
+    justify-content: space-between;
+    gap: 3rem;
     align-items: center;
-    background-color: var(--nav-bg-color);
-    padding: 20px 0;
-    font-family: var(--font-family);
+    padding: 1rem 2rem;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
-    text-transform: uppercase;
+    text-transform: uppercase; /* Force uppercase text */
   }
   
-  /* Logo Section */
-  .navbar .logo {
-    flex: 1; /* Take equal space */
-    text-align: left; /* Align logo to the left */
-  }
-  
-  .navbar .logo a {
-    font-size: 1.8rem; /* Adjust logo font size */
-    font-weight: bold;
+  .main .logo a {
+    font-size: 1.8rem; /* Larger font size for logo */
+    font-weight: bold; /* Bold text for logo */
     color: var(--nav-text-color);
     text-decoration: none;
     transition: color 0.3s ease;
   }
   
-  .navbar .logo a:hover {
-    color: var(--hover-color);
+  .main .logo a:hover {
+    color: var(--hover-color); /* Hover effect for logo */
   }
   
-  /* Menu Section */
-  .navbar nav {
-    flex: 3; /* Take equal space */
-  }
-  
-  .navbar nav ul {
+  .main .menu {
     display: flex;
-    justify-content: space-between; /* Distribute menu items evenly */
-    align-items: center;
+    gap: 2.5rem; /* Add spacing between menu items */
+  }
+  
+  .main .menu li {
     list-style: none;
-    width: 100%;
   }
   
-  .navbar nav ul li {
-    position: relative;
-  }
-  
-  .navbar nav ul li a {
-    font-size: 1.2rem; /* Adjust menu item font size */
+  .main .menu a {
+    font-size: 1.2rem; /* Increased font size for menu items */
     font-weight: bold;
     color: var(--nav-text-color);
     text-decoration: none;
     transition: color 0.3s ease;
-    letter-spacing: 1px;
-    padding: 0 15px; /* Add padding around each menu item */
+    letter-spacing: 1.5px; /* Space between letters */
   }
   
-  .navbar nav ul li a:hover {
-    color: var(--hover-color);
+  .main .menu a:hover {
+    color: var(--hover-color); /* Neon blue hover effect */
   }
   
-  /* Dropdown Menu Styling */
-  .navbar nav ul li.dropdown:hover ul {
+  .main .dropdown .drop {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .main .dropdown ul {
+    position: absolute;
+    top: 100%; /* Position below the dropdown item */
+    left: 0;
+    background-color: var(--nav-bg-color); /* Match navbar background */
+    border-top: 3px solid var(--hover-color); /* Neon hover border */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 100;
+    padding: 0.5rem 0;
+    text-align: left;
+    box-shadow: 0px 10px 20px rgba(0, 255, 255, 0.2); /* Subtle shadow */
+  }
+  
+  .main .dropdown:hover ul {
     opacity: 1;
     visibility: visible;
   }
   
-  .navbar nav ul li ul {
-    position: absolute;
-    top: 100%; /* Position dropdown below the parent */
-    left: 50%; /* Center dropdown under the parent */
-    transform: translateX(-50%);
-    background-color: var(--nav-bg-color);
-    border-top: 3px solid var(--hover-color);
-    padding: 0.5rem 0;
-    visibility: hidden;
-    opacity: 0;
-    transition: all 0.3s ease;
-    z-index: 999;
-    box-shadow: 0px 8px 20px rgba(0, 255, 255, 0.2);
+  .main .dropdown ul li {
+    padding: 0.5rem 1rem;
   }
   
-  .navbar nav ul li ul li {
-    text-align: center;
-  }
-  
-  .navbar nav ul li ul li a {
-    font-size: 1rem; /* Smaller font size for dropdown items */
+  .main .dropdown ul li a {
+    font-size: 1rem; /* Slightly smaller for dropdown items */
     font-weight: bold;
-    padding: 10px 20px; /* Add padding for dropdown items */
     color: var(--nav-text-color);
+    text-transform: uppercase;
+    transition: color 0.3s ease;
   }
   
-  .navbar nav ul li ul li a:hover {
+  .main .dropdown ul li a:hover {
     color: var(--hover-color);
   }
   
-  /* Responsive Design for Smaller Screens */
-  @media (max-width: 768px) {
-    .navbar nav ul {
-      display: none; /* Hide menu items on smaller screens */
+  .main .menu-btn {
+    display: none; /* Hide menu button for larger screens */
+  }
+  
+  @media screen and (max-width: 768px) {
+    .main .menu {
+      display: none; /* Hide menu on small screens */
     }
   
-    .navbar .menu-btn {
-      display: block;
+    .main .menu-btn {
+      display: block; /* Show menu button */
       font-size: 2rem;
       color: var(--nav-text-color);
       cursor: pointer;
-    }
-  
-    .navbar .menu-btn.active + nav ul {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      background-color: var(--nav-bg-color);
-      padding: 1rem;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
     }
   }
   
@@ -1795,6 +1779,5 @@ margin-top: 20px;
         
         }
     
-
 
 
