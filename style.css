@@ -1,190 +1,160 @@
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
-  }
-  
-  body {
-    background-color: black;
-  }
-  
-  .max-width {
+
+}
+body {background-color: black;}
+
+.max-width{
     padding: 0 200px;
     max-width: 1900px;
     margin: auto;
-  }
-  
-  html {
+
+
+}
+html{
     scroll-behavior: smooth;
+}
+:root {
+    --nav-bg-color: #000; /* Background color for the navbar */
+    --nav-text-color: #fff; /* White text for navbar items */
+    --hover-color: #01fff4; /* Neon blue hover color */
+    --font-family: 'Poppins', sans-serif; /* Font for navbar and titles */
   }
   
-  /* Navbar Styling */
-  .navbar {
-    background-color: transparent; /* Start transparent */
-    position: fixed;
-    z-index: 100;
-    padding: 30px 0; /* Even padding */
+  /* Styles scoped to the navbar */
+  .main {
     width: 100%;
-    font-family: 'Open Sans', sans-serif;
-    transition: all 0.3s ease;
-  }
-  
-  .navbar.sticky {
-    background: black; /* Turn black on scroll */
-    padding: 15px 0;
-  }
-  
-  .navbar .max-width {
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Evenly distribute all items */
-  }
-  
-  .navbar .logo a {
-    color: #fff; /* White main title */
-    font-size: 36px; /* Larger font for main title */
-    font-weight: bold;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-  }
-  
-  nav ul {
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Even spacing for all titles */
-    width: 100%; /* Full navbar width */
-  }
-  
-  nav ul li {
-    list-style: none;
-  }
-  
-  nav ul li a {
-    color: #fff; /* White text */
-    font-size: 20px; /* Larger font for all titles */
-    font-weight: bold;
-    text-transform: uppercase;
-    line-height: 50px;
-    margin: 0 20px; /* Space between titles */
-    transition: color 0.3s ease, text-decoration 0.3s ease;
+    font-family: var(--font-family); /* Apply Poppins font */
+    background-color: var(--nav-bg-color); /* Navbar background */
     position: relative;
   }
   
-  /* Specific Styling for "What I Do" */
-  nav ul li.dropdown a {
-    font-size: 22px; /* Larger font for menu title */
+  .main .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    text-transform: uppercase; /* Force uppercase text */
   }
   
-  nav ul li a:hover {
-    color: #4399FF; /* Neon blue hover */
+  .main .logo a {
+    font-size: 1.8rem; /* Larger font size for logo */
+    font-weight: bold; /* Bold text for logo */
+    color: var(--nav-text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
   }
   
-  nav ul li.dropdown:hover > a {
-    text-decoration: underline; /* Underline "What I Do" on hover */
+  .main .logo a:hover {
+    color: var(--hover-color); /* Hover effect for logo */
   }
   
-  /* Dropdown Styling */
-  .dropdown:hover > ul {
-    top: 70px;
+  .main .menu {
+    display: flex;
+    gap: 2.5rem; /* Add spacing between menu items */
+  }
+  
+  .main .menu li {
+    list-style: none;
+  }
+  
+  .main .menu a {
+    font-size: 1.2rem; /* Increased font size for menu items */
+    font-weight: bold;
+    color: var(--nav-text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    letter-spacing: 1.5px; /* Space between letters */
+  }
+  
+  .main .menu a:hover {
+    color: var(--hover-color); /* Neon blue hover effect */
+  }
+  
+  .main .dropdown .drop {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .main .dropdown ul {
+    position: absolute;
+    top: 100%; /* Position below the dropdown item */
+    left: 0;
+    background-color: var(--nav-bg-color); /* Match navbar background */
+    border-top: 3px solid var(--hover-color); /* Neon hover border */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 100;
+    padding: 0.5rem 0;
+    text-align: left;
+    box-shadow: 0px 10px 20px rgba(0, 255, 255, 0.2); /* Subtle shadow */
+  }
+  
+  .main .dropdown:hover ul {
     opacity: 1;
     visibility: visible;
   }
   
-  nav ul ul {
-    position: absolute;
-    top: 100%;
-    left: 0; /* Align dropdown under "What I Do" */
-    background-color: black; /* Match navbar background */
-    border-top: 3px solid #4399FF;
-    opacity: 0;
-    visibility: hidden;
-    transition: top 0.3s ease, opacity 0.3s ease;
-    box-shadow: 0px 18px 40px rgba(67, 153, 255, 0.2);
-    padding: 1rem 0;
-    width: 220px; /* Wider dropdown for column layout */
+  .main .dropdown ul li {
+    padding: 0.5rem 1rem;
   }
   
-  nav ul ul li {
-    padding: 10px 15px; /* Adjust spacing for dropdown items */
-  }
-  
-  nav ul ul li a {
-    color: #fff; /* White text */
-    font-size: 18px; /* Consistent font size */
-    text-transform: capitalize; /* Capitalize dropdown items */
+  .main .dropdown ul li a {
+    font-size: 1rem; /* Slightly smaller for dropdown items */
+    font-weight: bold;
+    color: var(--nav-text-color);
+    text-transform: uppercase;
     transition: color 0.3s ease;
   }
   
-  nav ul ul li a:hover {
-    color: #4399FF; /* Neon blue hover */
+  .main .dropdown ul li a:hover {
+    color: var(--hover-color);
   }
   
-  /* Menu Button */
-  .menu-btn {
-    color: #4399FF;
-    font-size: 23px;
-    cursor: pointer;
-    display: none;
+  .main .menu-btn {
+    display: none; /* Hide menu button for larger screens */
   }
   
-  /* Responsive Fixes for Dropdown on Mobile */
   @media screen and (max-width: 768px) {
-    nav ul {
-      display: none; /* Hide navbar on smaller screens */
+    .main .menu {
+      display: none; /* Hide menu on small screens */
     }
   
-    .menu-btn {
+    .main .menu-btn {
       display: block; /* Show menu button */
+      font-size: 2rem;
+      color: var(--nav-text-color);
+      cursor: pointer;
     }
-  
-    .menu-btn i.active::before {
-      content: "\f00d"; /* Font Awesome close icon */
-    }
-  
-    .navbar .menu.active {
-      display: flex; /* Show menu on mobile */
-      flex-direction: column;
-      align-items: flex-start;
-      background: black;
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100vh;
-      width: 100%;
-      z-index: 99;
-      padding-top: 80px;
-    }
-  
-    nav ul ul {
-      position: static; /* Dropdown behaves like a block */
-      width: 100%; /* Full-width dropdown */
-      border-top: none;
-      box-shadow: none;
-    }
-  }
-  
-  
-  /* Home section styling */
-  .home {
-    background: black;
-    color: #2D3F70;
-    overflow: visible;
-  }
-  
-  .home-all {
-    display: flex;
-    justify-content: space-between;
   }
   
 
+/* home section styling */
+.home{
+    background: black;
+    color: #2D3F70;
+    overflow:visible;
+
+}
+.home-all{
+    display: flex;
+    justify-content: space-between;
+}
 
 /* Adjust the typing text to have a smaller width */
 .typing {
     font-family: "Courier New", Courier, monospace;
     font-size: 1.5em; /* Adjust size if necessary */
     color: #01fff4; /* Set the font color to neon blue */
-    max-width: 50%; /* Restrict the width of the typing text */
+    max-width: 60%; /* Restrict the width of the typing text */
     margin: 0 auto; /* Center the typing text */
     text-align: center; /* Center align the text */
     text-transform: uppercase; 
@@ -192,8 +162,9 @@
 }
 
 :root {
-    --glow-color: #4398ff80; /* Neon blue color */
+    --glow-color: #01fff4; /* Neon blue color */
   }
+  
   .home img {
       width: 100%; /* Ensure the image scales to fit the container */
       max-width: 500px; /* Maximum width */
