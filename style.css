@@ -49,27 +49,30 @@
     transition: all 0.3s ease;
   }
   
-  nav ul {
+  /* Reduced Spacing Between Navbar Sections */
+nav ul {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Even spacing for all titles */
-    width: 100%; /* Full navbar width */
-  }
+    justify-content: space-between;
+    gap: 2rem; /* Reduced gap between menu items (adjust as needed) */
+    width: 100%; /* Ensure items span the full width */
+}
+
+nav ul li a {
+    color: #fff; /* White text */
+    font-size: 20px; /* Consistent font size */
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 50px;
+    margin: 0 10px; /* Reduce margin between titles */
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+    position: relative;
+}
   
   nav ul li {
     list-style: none;
   }
-  
-  nav ul li a {
-    color: #fff; /* White text */
-    font-size: 20px; /* Larger font for all titles */
-    font-weight: bold;
-    text-transform: uppercase;
-    line-height: 50px;
-    margin: 0 20px; /* Space between titles */
-    transition: color 0.3s ease, text-decoration 0.3s ease;
-    position: relative;
-  }
+
   
   /* Specific Styling for "What I Do" */
   nav ul li.dropdown a {
@@ -192,7 +195,7 @@
 }
 
 :root {
-    --glow-color: #01fff4; /* Neon blue color */
+    --glow-color: #4399FF80; /* Neon blue color */
   }
   
   .home img {
