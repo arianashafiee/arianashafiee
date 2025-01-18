@@ -184,7 +184,7 @@
     font-family: "Courier New", Courier, monospace;
     font-size: 1.5em; /* Adjust size if necessary */
     color: #01fff4; /* Set the font color to neon blue */
-    max-width: 50%; /* Restrict the width of the typing text */
+    max-width: 60%; /* Restrict the width of the typing text */
     margin: 0 auto; /* Center the typing text */
     text-align: center; /* Center align the text */
     text-transform: uppercase; 
