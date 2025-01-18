@@ -13,7 +13,7 @@
   }
   
   .svg-container {
-    padding: 4rem 2rem;
+    padding: 0rem 0rem;
     text-align: center;
     max-width: 100%;
   }
@@ -34,11 +34,11 @@
   }
   
   .first-item {
-    margin-left: -2rem; /* Push closer to the left edge */
+    margin-left: 0; /* Push closer to the left edge */
   }
   
   .last-item {
-    margin-right: -2rem; /* Push closer to the right edge */
+    margin-right: 0; /* Push closer to the right edge */
   }
   
   /* Add extra space between specific items */

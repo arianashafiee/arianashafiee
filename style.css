@@ -1,151 +1,150 @@
+
 :root {
-    --nav-bg-color: #000; /* Background color for the navbar */
+    --nav-bg-color: #000; /* Black background for navbar */
     --nav-text-color: #fff; /* White text for navbar items */
     --hover-color: #01fff4; /* Neon blue hover color */
-    --font-family: 'Poppins', sans-serif; /* Font for navbar and titles */
-}
-
-/* General Reset */
-* {
+    --font-family: 'Poppins', sans-serif; /* Font for navbar */
+  }
+  
+  body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    margin: 0;
-    font-family: var(--font-family);
-    background-color: black;
-}
-
-/* Navbar Styles */
-.main {
+    font-family: var(--font-family); /* Use Poppins font */
+  }
+  
+  .main {
     width: 100%;
     font-family: var(--font-family);
-    background-color: var(--nav-bg-color);
-    position: relative;
-}
-
-.main .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 3rem; /* Adjusted for more spacing */
     position: fixed;
-    top: 0;
-    width: 100%;
+    top: 0.75rem;
+    left: 0;
     z-index: 1000;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-}
-
-/* Navbar Background When Sticky */
-.main .navbar.sticky {
-    background-color: var(--nav-bg-color);
-    padding: 0.8rem 3rem;
-}
-
-.main .logo a {
-    font-size: 2rem; /* Increased size for visibility */
-    font-weight: bold;
-    color: var(--nav-text-color);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.main .logo a:hover {
-    color: var(--hover-color);
-}
-
-/* Navigation Menu */
-.main .menu {
+    background-color: transparent; /* Start transparent */
+    transition: background-color 0.3s ease; /* Smooth transition for background */
+  }
+  
+  .main.scrolled {
+    background-color: var(--nav-bg-color); /* Turn black when scrolled */
+  }
+  
+  .navbar {
     display: flex;
-    gap: 3rem; /* Increased spacing between menu items */
-}
-
-.main .menu li {
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0 1rem 0rem;
+    max-width: 100%;
+  }
+  
+  .logo a {
+    font-size: 2rem; /* Larger font size for the logo */
+    font-weight: bold; /* Bold logo text */
+    color: var(--nav-text-color);
+    text-decoration: none;
+  }
+  
+  .menu {
+    display: flex;
+    justify-content: space-evenly; /* Evenly distribute menu items */
+    flex: 1; /* Allow menu to take remaining space */
+  }
+  
+  .menu li {
     list-style: none;
-}
-
-.main .menu a {
-    font-size: 1.3rem; /* Slightly larger text */
+  }
+  
+  .menu li a {
+    font-size: 1rem; /* Font size for menu items */
     font-weight: bold;
     color: var(--nav-text-color);
     text-decoration: none;
+    text-transform: uppercase; /* Ensure text is uppercase */
     transition: color 0.3s ease;
-    letter-spacing: 2px; /* Added extra letter spacing */
-    text-transform: uppercase;
-}
-
-.main .menu a:hover {
-    color: var(--hover-color);
-}
-
-/* Dropdown Menu */
-.main .dropdown .drop {
+  }
+  
+  .menu li a:hover {
+    color: var(--hover-color); /* Neon blue hover effect */
+  }
+  
+  /* Responsive Adjustments */
+  @media screen and (max-width: 768px) {
+    .navbar {
+      padding: 1rem; /* Reduce padding for smaller screens */
+    }
+  
+    .menu {
+      flex-direction: column; /* Stack items vertically on smaller screens */
+      display: none; /* Initially hidden */
+    }
+  
+    .menu.active {
+      display: flex; /* Show menu when active */
+    }
+  
+    .menu li {
+      margin-bottom: 0rem; /* Add spacing between menu items */
+    }
+  
+    .menu li a {
+      font-size: 1.2rem; /* Larger font for better readability on smaller screens */
+    }
+  }
+  
+  .menu-btn {
+    display: none;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .menu-btn {
+      display: block;
+      font-size: 2rem;
+      color: var(--nav-text-color);
+      cursor: pointer;
+    }
+  }
+  
+  .menu li a:hover {
+    color: var(--hover-color); /* Change color on hover */
+  }
+  
+  .menu .dropdown {
     position: relative;
-    display: inline-block;
-}
-
-.main .dropdown ul {
+  }
+  
+  .menu .dropdown ul {
     position: absolute;
-    top: 100%;
+    top: 100%; /* Align directly below "What I Do" */
     left: 0;
     background-color: var(--nav-bg-color);
-    border-top: 3px solid var(--hover-color);
+    border-top: 3px solid var(--hover-color); /* Neon blue border */
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s ease;
-    z-index: 100;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    box-shadow: 0px 10px 20px rgba(0, 255, 255, 0.2); /* Subtle shadow */
     padding: 0.5rem 0;
-    text-align: left;
-    box-shadow: 0px 10px 20px rgba(0, 255, 255, 0.2);
-}
-
-.main .dropdown:hover ul {
+    z-index: 10;
+  }
+  
+  .menu .dropdown:hover ul {
     opacity: 1;
     visibility: visible;
-}
-
-.main .dropdown ul li {
-    padding: 0.7rem 1.5rem; /* Slightly larger padding for dropdown items */
-}
-
-.main .dropdown ul li a {
-    font-size: 1rem;
-    font-weight: bold;
+  }
+  
+  .menu .dropdown ul li {
+    padding: 0.5rem 2rem;
+  }
+  
+  .menu .dropdown ul li a {
+    font-size: 0.8rem; /* Slightly smaller for dropdown items */
     color: var(--nav-text-color);
     text-transform: uppercase;
     transition: color 0.3s ease;
-}
-
-.main .dropdown ul li a:hover {
+  }
+  
+  .menu .dropdown ul li a:hover {
     color: var(--hover-color);
-}
+  }
+  
 
-/* Menu Button for Mobile */
-.main .menu-btn {
-    display: none;
-}
-
-/* Responsive Adjustments */
-@media screen and (max-width: 768px) {
-    .main .menu {
-        display: none;
-    }
-
-    .main .menu-btn {
-        display: block;
-        font-size: 2rem;
-        color: var(--nav-text-color);
-        cursor: pointer;
-    }
-}
 
 /* Home Section Styling */
 .home {
@@ -164,7 +163,7 @@ body {
     font-family: "Courier New", Courier, monospace;
     font-size: 1.5em; /* Adjust size if necessary */
     color: #01fff4; /* Set the font color to neon blue */
-    max-width: 60%; /* Restrict the width of the typing text */
+    max-width: 40%; /* Restrict the width of the typing text */
     margin: 0 auto; /* Center the typing text */
     text-align: center; /* Center align the text */
     text-transform: uppercase; 
@@ -177,13 +176,13 @@ body {
   
   .home img {
       width: 100%; /* Ensure the image scales to fit the container */
-      max-width: 500px; /* Maximum width */
+      max-width: 400px; /* Maximum width */
       height: auto; /* Maintain the aspect ratio */
-      margin-top: 3vh; /* Add space from the top */
+      margin-top: 0vh; /* Add space from the top */
       margin-left: auto; /* Center the image horizontally */
       margin-right: auto; /* Center the image horizontally */
       display: block; /* Prevent extra space below the image */
-      border-radius: 10px; /* Optional: Adds rounded corners */
+      border-radius: 5px; /* Optional: Adds rounded corners */
       object-fit: contain; /* Ensure the image fits its container without cropping */
   
       /* Intense neon glow around the image */
@@ -252,7 +251,7 @@ body {
 body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
-    background-color: white;
+    background-color: black;
     position: relative;
 }
 
@@ -285,7 +284,7 @@ body::after {
 }
 
 .home .home-content .text-1 h1 {
-    margin-top: 11vh;
+    margin-top: 5vh;
     font-family: 'Montserrat', sans-serif;
     font-size: max(72px, 10vw);
     font-weight: bold;
@@ -406,7 +405,7 @@ section{
 
 .what-i-do .content .card{
     width: calc(33% - 115px);
-    background: white;
+    background: black;
     text-align: center;
     padding-top: 30px;
     padding-bottom: 25px;
@@ -428,14 +427,14 @@ section{
 .what-i-do .content .link a{
     border-radius: 100px;
     color:#4399FF;
-    background: white;
+    background: black;
     font-size: 18px;
     padding: 12px 50px;
     border: 2px solid #4399FF;
     transition: all 0.3s ease;
 }
 .what-i-do .content .link a:hover{
-    color:white;
+    color:black;
     background:#4399FF ;
 }
 .what-i-do .content img{
@@ -468,7 +467,7 @@ section{
     z-index: -100;
     max-width: 100%;
     margin: auto;
-    background: white;
+    background: black;
     text-align: left;
     padding-top: 30px;
     padding-bottom: 25px;
@@ -536,7 +535,7 @@ section{
 
 .projects .content .card{
     width: 100%;
-    background: white;
+    background: black;
     text-align: left;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -558,7 +557,7 @@ section{
 }
 
 .projects .content .link a:hover{
-    color:white;
+    color:black;
     background:#4399FF ;
 }
 
@@ -601,7 +600,7 @@ section{
 .projects .content .link a{
     border-radius: 100px;
     color:#4399FF;
-    background: white;
+    background: black;
     font-size: 16px;
     padding: 12px 50px;
     border: 2px solid #4399FF;
@@ -687,7 +686,7 @@ section{
     width: 100%;
     padding: 60px;
     border-radius: 5px;
-    background-color: white;
+    background-color: black;
     box-shadow: 0px 18px 50px rgba(67,153,255,.15);
     
   }
@@ -1018,7 +1017,7 @@ margin-top: 20px;
         margin-top: 70px;
         padding-bottom: 50px;
         color:#2D3F70;
-        background-color: white;
+        background-color: black;
     }
     .footer .container{
         display: flex;
@@ -1187,7 +1186,7 @@ margin-top: 20px;
     }
     .navbar .menu{
         position: fixed;
-        background: white;
+        background: black;
         height: 100vh;
         width: 100%;
         left: -100%;
@@ -1197,7 +1196,7 @@ margin-top: 20px;
         transition: all 0.3s ease;
     }
     .navbar .menu .drop{
-        padding-left: 20px;
+        padding-left: 0px;
     }
 
     .navbar .menu.active{
@@ -1341,7 +1340,7 @@ margin-top: 20px;
     }
 
     .home{
-        background:white;
+        background:black;
     }
     .home img{
         display: none;
@@ -1459,7 +1458,7 @@ margin-top: 20px;
     }
   
     .home{
-        background:white;
+        background:black;
     }
     .home img{
         visibility:hidden;
@@ -1531,7 +1530,7 @@ margin-top: 20px;
         width: calc(100% - 100px);
         }
     .home{
-        background:white;
+        background:black;
     }
     .max-width{
         padding: 0 23px;
@@ -1702,7 +1701,7 @@ margin-top: 20px;
             .what-i-do .content .link a{
                 border-radius: 100px;
                 color:#4399FF;
-                background: white;
+                background: black;
                 font-size: 14px;
                 padding: 8px 30px;
             }
