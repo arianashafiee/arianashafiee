@@ -17,115 +17,125 @@ body {background-color: black;}
 html{
     scroll-behavior: smooth;
 }
-/* navbar styling */
-.navbar{
-    background-color: white;
-    position: fixed;
-    z-index: 100;
-    padding: 30px 0;
+:root {
+    --nav-bg-color: #000; /* Background color for the navbar */
+    --nav-text-color: #fff; /* White text for navbar items */
+    --hover-color: #01fff4; /* Neon blue hover color */
+    --font-family: 'Poppins', sans-serif; /* Font for navbar and titles */
+  }
+  
+  /* Styles scoped to the navbar */
+  .main {
     width: 100%;
-    font-family: 'Open Sans', sans-serif;
-    transition: all 0.3s ease;
-}
-.main .navbar{
-    background-color: transparent;
-}
-.navbar.sticky{
-    padding: 15px 0;
-    background: white;
-}
-.navbar.sticky .logo a{
-    font-size: 27px;
-}
-.navbar .max-width{
+    font-family: var(--font-family); /* Apply Poppins font */
+    background-color: var(--nav-bg-color); /* Navbar background */
+    position: relative;
+  }
+  
+  .main .navbar {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-
-}
-.navbar .logo a{
-    color: #2D3F70;
-    font-size: 30px;
-    font-weight:normal;
-    transition: all 0.3s ease;
-}
-/** dropdown **/
-
-.dropdown:hover > ul{
-    top: 70px;
-    opacity: 1;
-    visibility: visible;
+    align-items: center;
+    padding: 1rem 2rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    text-transform: uppercase; /* Force uppercase text */
   }
-  .dropdown.sticky:hover > ul{
-    top: 58px;
-    opacity: 1;
-    visibility: visible;
+  
+  .main .logo a {
+    font-size: 1.8rem; /* Larger font size for logo */
+    font-weight: bold; /* Bold text for logo */
+    color: var(--nav-text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
   }
-  nav ul ul{
+  
+  .main .logo a:hover {
+    color: var(--hover-color); /* Hover effect for logo */
+  }
+  
+  .main .menu {
+    display: flex;
+    gap: 2.5rem; /* Add spacing between menu items */
+  }
+  
+  .main .menu li {
+    list-style: none;
+  }
+  
+  .main .menu a {
+    font-size: 1.2rem; /* Increased font size for menu items */
+    font-weight: bold;
+    color: var(--nav-text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    letter-spacing: 1.5px; /* Space between letters */
+  }
+  
+  .main .menu a:hover {
+    color: var(--hover-color); /* Neon blue hover effect */
+  }
+  
+  .main .dropdown .drop {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .main .dropdown ul {
     position: absolute;
-    top: 100px;
-    border-top: 3px solid#4399FF;
+    top: 100%; /* Position below the dropdown item */
+    left: 0;
+    background-color: var(--nav-bg-color); /* Match navbar background */
+    border-top: 3px solid var(--hover-color); /* Neon hover border */
     opacity: 0;
     visibility: hidden;
-    transition: top .3s;
-    margin-left: 35px;
-    text-align: center;
-    box-shadow: 0px 18px 40px rgba(67,153,255,.2);
-
+    transition: all 0.3s ease;
+    z-index: 100;
+    padding: 0.5rem 0;
+    text-align: left;
+    box-shadow: 0px 10px 20px rgba(0, 255, 255, 0.2); /* Subtle shadow */
   }
-  nav ul ul li{
-    position: relative;
-    padding: 10px;
-    display: list-item;
-    float: 0;
-    width: 150px;
-    background-color: white;
+  
+  .main .dropdown:hover ul {
+    opacity: 1;
+    visibility: visible;
   }
-  nav{
-      background-color: white;
+  
+  .main .dropdown ul li {
+    padding: 0.5rem 1rem;
   }
-  nav ul ul li a{
-    color:#2D3F70;
-    font-size: 16px;
-    font-weight: normal;
-    margin-left: 0px;
-    display: block;
-    transition: color 0.3 ease;
-    line-height: normal;
-
-}
-
-  .show,.icon,.check{
-    display: none;
+  
+  .main .dropdown ul li a {
+    font-size: 1rem; /* Slightly smaller for dropdown items */
+    font-weight: bold;
+    color: var(--nav-text-color);
+    text-transform: uppercase;
+    transition: color 0.3s ease;
   }
-/** menu styling**/
-
-nav ul li{
-    list-style: none;
-    display: inline-block;
-}
-nav ul li a{
-    color:#2D3F70;
-    font-size: 18px;
-    font-weight: normal;
-    line-height: 50px;
-    margin-left: 70px;
-
-    display: block;
-    transition: color 0.3 ease;
-}
-
-nav ul li a:hover{
-    color:#4399FF;
-}
-
-/** menu button **/
-.menu-btn{
-    color:#4399FF;
-    font-size: 23px;
-    cursor: pointer;
-    display: none;
-}
+  
+  .main .dropdown ul li a:hover {
+    color: var(--hover-color);
+  }
+  
+  .main .menu-btn {
+    display: none; /* Hide menu button for larger screens */
+  }
+  
+  @media screen and (max-width: 768px) {
+    .main .menu {
+      display: none; /* Hide menu on small screens */
+    }
+  
+    .main .menu-btn {
+      display: block; /* Show menu button */
+      font-size: 2rem;
+      color: var(--nav-text-color);
+      cursor: pointer;
+    }
+  }
+  
 
 /* home section styling */
 .home{
