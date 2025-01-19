@@ -28,8 +28,6 @@ $(document).ready(function () {
     var typed = new Typed('.typing', {
         strings: [
             ' SWE intern',
-            'Research assistant @ Corrie',
-            'Former product @ ServiceNow',
             'Founding UX @ Otto',
             'Former UX @ Infernoguard',
             'Former UX, SWE @ Inbound',

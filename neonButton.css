@@ -22,49 +22,99 @@ html, body {
 .button-section {
     display: flex;
     justify-content: left;
-    align-items: ;
-    height: 10 vh; /* Reduced height for the entire section */
+    align-items: left;
+    height: 14vh; /* Reduced height for the entire section */
     padding-top: 10px; /* Reduced padding above the buttons */
     background: var(--black);
 }
 
 .button-container {
     display: flex;
-    gap: 10px; /* Increased space between buttons */
+    gap: 30px; /* Increased space between buttons */
 }
 
 .neon-btn {
     position: relative;
-    color: var(--glow-color);
+    color: var(--black); /* Previously hover color */
     cursor: pointer;
     padding: 0.5em 1em; /* Increased padding for larger buttons */
     border: 0.2em solid var(--glow-color);
     border-radius: 1em;
-    background: none;
+    background: var(--glow-color); /* Previously hover background */
     perspective: 2em;
     font-size: 2em; /* Increased font size */
     font-weight: 600;
     text-align: center;
     letter-spacing: 0.15em;
-    box-shadow: inset 0 0 1em var(--glow-color), 0 0 1em var(--glow-color);
-    animation: border-flicker 2s linear infinite;
-    transition: transform 0.3s ease;
+    box-shadow: inset 0 0 1em var(--glow-color), 0 0 1em var(--glow-color); /* Previously hover box-shadow */
+    animation: none; /* No flicker by default */
+    transition: transform 0.3s ease, color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.neon-btn .neon-text {
+    text-shadow: none; /* No flicker on text by default */
+}
+
+.faulty-letter {
+    opacity: 1; /* Fully visible by default */
 }
 
 .neon-btn:hover {
     transform: scale(1.2); /* Slightly larger on hover */
+    color: var(--glow-color); /* Previously normal color */
+    background: none; /* Previously normal background */
+    box-shadow: none; /* Previously normal box-shadow */
+    animation: border-flicker 2s linear infinite; /* Flicker effect on hover */
 }
 
-.neon-text {
-    text-shadow: 0 0 0.2em var(--shadow), 0 0 0.6em var(--glow-color);
-    animation: text-flicker 3s linear infinite;
+.neon-btn:hover .neon-text {
+    text-shadow: 0 0 0.2em var(--shadow), 0 0 0.6em var(--glow-color); /* Flicker on hover */
+    animation: text-flicker 3s linear infinite; /* Flicker on hover */
+    :root {
+    --glow-color: #01fff4; /* Neon blue color */
+    --black: #000000; /* Black text color */
 }
 
-.faulty-letter {
-    opacity: 0.5;
-    animation: faulty-flicker 2s linear infinite;
+/* Glow Text Styling */
+.glow-text {
+    position: relative;
+    font-size: 2rem; /* Adjust as needed */
+    font-weight: bold;
+    color: var(--black); /* Ensure pure black text */
 }
 
+/* Intense Neon Glow Around Text */
+.glow-text::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1; /* Ensure glow stays behind the text */
+    filter: blur(15px);
+    background: var(--glow-color);
+    opacity: 0.8; /* Adjust intensity */
+    border-radius: 10px; /* Optional: Round glow edges */
+    transform: scale(1.2); /* Slightly larger than text */
+    pointer-events: none; /* Ignore mouse interactions */
+    transform: translateY(120%) rotateX(95deg) scale(1, 0.35);
+}
+
+/* Text Container (Optional for Centering or Positioning) */
+.text-container {
+    position: relative;
+    text-align: center; /* Center align text */
+    margin: 2rem auto; /* Adjust spacing */
+}
+
+}
+
+.neon-btn:hover .faulty-letter {
+    animation: faulty-flicker 2s linear infinite; /* Flicker on hover */
+}
+
+/* Pseudo-elements */
 .neon-btn::before {
     content: "";
     position: absolute;
@@ -72,11 +122,15 @@ html, body {
     bottom: 0;
     left: 0;
     right: 0;
-    opacity: 0.7;
-    filter: blur(1.5em);
-    background: var(--glow-color);
+    opacity: 1; /* Previously hover opacity */
+    filter: blur(1.5em); /* Previously hover blur */
+    background: var(--glow-color); /* Previously hover glow */
     pointer-events: none;
-    transform: translateY(120%) rotateX(95deg) scale(1, 0.35);
+}
+
+.neon-btn:hover::before {
+    filter: blur(2em); /* Previously normal blur */
+    opacity: 0.7; /* Previously normal opacity */
 }
 
 .neon-btn::after {
@@ -86,37 +140,17 @@ html, body {
     left: 0;
     right: 0;
     bottom: 0;
-    opacity: 0;
+    opacity: 1; /* Previously hover opacity */
     z-index: -1;
     border-radius: 0.8em;
     background-color: var(--glow-color);
-    box-shadow: 0 0 3em 0.4em var(--glow-color);
+    box-shadow: 0 0 3em 0.4em var(--glow-color); /* Previously hover box-shadow */
     transition: opacity 100ms linear;
 }
 
-.neon-btn:hover {
-    color: var(--black);
-    text-shadow: none;
-    animation: none;
-}
-
-.neon-btn:hover .neon-text {
-    animation: none;
-}
-
-.neon-btn:hover::before {
-    filter: blur(2em);
-    opacity: 1;
-}
-
 .neon-btn:hover::after {
-    opacity: 1;
-}
-
-.neon-btn:hover .faulty-letter {
-    animation: none;
-    text-shadow: none;
-    opacity: 1;
+    opacity: 0; /* Previously normal opacity */
+    box-shadow: none; /* Removes hover shadow */
 }
 
 /* Animations */
