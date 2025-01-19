@@ -23,7 +23,7 @@ html, body {
     display: flex;
     justify-content: left;
     align-items: left;
-    height: 14vh; /* Reduced height for the entire section */
+    height: 20vh; /* Reduced height for the entire section */
     padding-top: 10px; /* Reduced padding above the buttons */
     background: var(--black);
 
@@ -32,7 +32,7 @@ html, body {
 .button-container {
     display: flex;
     gap: 25px; /* Increased space between buttons */
-    margin-bottom: 20px; /* Minimum margin below the buttons */
+    margin-bottom: 50px; /* Minimum margin below the buttons */
 
 }
 
