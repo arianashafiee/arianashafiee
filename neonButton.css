@@ -81,6 +81,8 @@ html, body {
 }
 
 /* Pseudo-elements */
+
+
 .neon-btn::before {
     content: "";
     position: absolute;
@@ -88,16 +90,16 @@ html, body {
     bottom: 0;
     left: 0;
     right: 0;
-    opacity: 1; /* Previously hover opacity */
-    filter: blur(1.5em); /* Previously hover blur */
-    background: var(--glow-color); /* Previously hover glow */
+    opacity: 1; /* Keep the glow opacity */
+    filter: blur(1.5em); /* Blur for glow effect */
+    background: var(--glow-color); /* Neon blue glow */
     pointer-events: none;
-    transform: translateY(120%) rotateX(90deg) scale(1, 0.35);
+    transform: none; /* Remove translation and rotation to eliminate reflection */
 }
 
 .neon-btn:hover::before {
-    filter: blur(2em); /* Previously normal blur */
-    opacity: 0.7; /* Previously normal opacity */
+    filter: blur(2em); /* Intensify glow on hover */
+    opacity: 0.7; /* Dim the glow slightly */
 }
 
 .neon-btn::after {
@@ -107,18 +109,19 @@ html, body {
     left: 0;
     right: 0;
     bottom: 0;
-    opacity: 1; /* Previously hover opacity */
-    z-index: -1;
+    opacity: 1; /* Keep the glow opacity */
+    z-index: -1; /* Ensure it stays behind the button */
     border-radius: 0.8em;
-    background-color: var(--glow-color);
-    box-shadow: 0 0 3em 0.4em var(--glow-color); /* Previously hover box-shadow */
+    background-color: var(--glow-color); /* Neon blue glow */
+    box-shadow: none; /* Remove the shadow to eliminate reflection */
     transition: opacity 100ms linear;
 }
 
 .neon-btn:hover::after {
-    opacity: 0; /* Previously normal opacity */
-    box-shadow: none; /* Removes hover shadow */
+    opacity: 0; /* Remove the additional glow on hover */
+    box-shadow: none; /* No shadow on hover */
 }
+
 
 /* Animations */
 @keyframes faulty-flicker {
