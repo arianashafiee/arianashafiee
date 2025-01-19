@@ -30,7 +30,7 @@ html, body {
 
 .button-container {
     display: flex;
-    gap: 30px; /* Increased space between buttons */
+    gap: 10px; /* Increased space between buttons */
 }
 
 .neon-btn {
@@ -70,44 +70,6 @@ html, body {
 .neon-btn:hover .neon-text {
     text-shadow: 0 0 0.2em var(--shadow), 0 0 0.6em var(--glow-color); /* Flicker on hover */
     animation: text-flicker 3s linear infinite; /* Flicker on hover */
-    :root {
-    --glow-color: #01fff4; /* Neon blue color */
-    --black: #000000; /* Black text color */
-}
-
-/* Glow Text Styling */
-.glow-text {
-    position: relative;
-    font-size: 2rem; /* Adjust as needed */
-    font-weight: bold;
-    color: var(--black); /* Ensure pure black text */
-}
-
-/* Intense Neon Glow Around Text */
-.glow-text::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1; /* Ensure glow stays behind the text */
-    filter: blur(15px);
-    background: var(--glow-color);
-    opacity: 0.8; /* Adjust intensity */
-    border-radius: 10px; /* Optional: Round glow edges */
-    transform: scale(1.2); /* Slightly larger than text */
-    pointer-events: none; /* Ignore mouse interactions */
-    transform: translateY(120%) rotateX(95deg) scale(1, 0.35);
-}
-
-/* Text Container (Optional for Centering or Positioning) */
-.text-container {
-    position: relative;
-    text-align: center; /* Center align text */
-    margin: 2rem auto; /* Adjust spacing */
-}
-
 }
 
 .neon-btn:hover .faulty-letter {
@@ -126,6 +88,7 @@ html, body {
     filter: blur(1.5em); /* Previously hover blur */
     background: var(--glow-color); /* Previously hover glow */
     pointer-events: none;
+    transform: translateY(100%) rotateX(360deg) scale(1, 0.35);
 }
 
 .neon-btn:hover::before {
