@@ -23,66 +23,39 @@ html, body {
     display: flex;
     justify-content: left;
     align-items: left;
-    height: 15vh; /* Reduced height for the entire section */
-    padding-top: 0px; /* Reduced padding above the buttons */
+    height: 15vh;
+    padding-top: 0px;
     background: var(--black);
-    padding-bottom: 20px; /* Reduced padding above the buttons */
-
-
+    padding-bottom: 20px;
 }
 
 .button-container {
     display: flex;
-    gap: 25px; /* Increased space between buttons */
-
+    gap: 25px;
 }
 
-.neon-btn .neon-text {
-    text-shadow: none; /* No flicker on text by default */
-}
-
-.faulty-letter {
-    opacity: 1; /* Fully visible by default */
-}
-
-.neon-btn:hover {
-    transform: scale(1.2); /* Slightly larger on hover */
-    color: var(--glow-color); /* Previously normal color */
-    background: none; /* Previously normal background */
-    box-shadow: none; /* Previously normal box-shadow */
-    animation: border-flicker 2s linear infinite; /* Flicker effect on hover */
-}
-
-.neon-btn:hover .neon-text {
-    text-shadow: 0 0 0.2em var(--shadow), 0 0 0.6em var(--glow-color); /* Flicker on hover */
-    animation: text-flicker 3s linear infinite; /* Flicker on hover */
-}
-
-.neon-btn:hover .faulty-letter {
-    animation: faulty-flicker 2s linear infinite; /* Flicker on hover */
-}
-
+/* Neon Button Styles */
 .neon-btn {
     position: relative;
-    color: var(--black); /* Ensure text color is pure black */
+    color: var(--black);
     cursor: pointer;
-    padding: 0em 1em; /* Button padding */
+    padding: 0em 1em;
     border: 0.2em solid var(--glow-color);
     border-radius: 1em;
-    background: var(--glow-color); /* Glow background */
+    background: var(--glow-color);
     perspective: 2em;
-    font-size: 2.5em; /* Text size */
+    font-size: 2.5em;
     font-weight: 600;
     text-align: center;
     letter-spacing: 0.15em;
-    box-shadow: inset 0 0 1em var(--glow-color), 0 0 1em var(--glow-color); /* Glow effect */
+    box-shadow: inset 0 0 1em var(--glow-color), 0 0 1em var(--glow-color);
     transition: transform 0.3s ease, color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
-    z-index: 1; /* Ensure button and text stay on top */
+    z-index: 1;
 }
 
 .neon-btn span {
     position: relative;
-    z-index: 2; /* Text is above everything */
+    z-index: 2;
 }
 
 .neon-btn::before {
@@ -92,67 +65,26 @@ html, body {
     bottom: 0;
     left: 0;
     right: 0;
-    opacity: 1; /* Glow opacity */
-    filter: blur(1.5em); /* Glow blur */
-    background: var(--glow-color); /* Glow color */
-    pointer-events: none;
-    z-index: 0; /* Behind the button */
-}
-
-.neon-btn:hover::before {
-    filter: blur(2em); /* Stronger glow effect */
-    opacity: 0.7;
-}
-
-.neon-btn::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
     opacity: 1;
-    z-index: -1; /* Completely behind the button */
-    border-radius: 0.8em;
-    background-color: var(--glow-color);
-    box-shadow: none; /* No shadow */
-    transition: opacity 100ms linear;
+    filter: blur(1.5em);
+    background: var(--glow-color);
+    pointer-events: none;
+    z-index: 0;
 }
 
-.neon-btn:hover::after {
-    opacity: 0;
+.neon-btn:hover {
+    transform: scale(1.2);
+    color: var(--glow-color);
+    background: none;
     box-shadow: none;
 }
 
+.neon-btn:hover::before {
+    filter: blur(2em);
+    opacity: 0.7;
+}
 
 /* Animations */
-@keyframes faulty-flicker {
-    0% { opacity: 0.1; }
-    2% { opacity: 0.1; }
-    4% { opacity: 0.5; }
-    19% { opacity: 0.5; }
-    21% { opacity: 0.1; }
-    23% { opacity: 1; }
-    80% { opacity: 0.5; }
-    83% { opacity: 0.4; }
-    87% { opacity: 1; }
-}
-
-@keyframes text-flicker {
-    0% { opacity: 0.1; }
-    2% { opacity: 1; }
-    8% { opacity: 0.1; }
-    9% { opacity: 1; }
-    12% { opacity: 0.1; }
-    20% { opacity: 1; }
-    25% { opacity: 0.3; }
-    30% { opacity: 1; }
-    70% { opacity: 0.7; }
-    72% { opacity: 0.2; }
-    77% { opacity: 0.9; }
-    100% { opacity: 0.9; }
-}
-
 @keyframes border-flicker {
     0% { opacity: 0.1; }
     2% { opacity: 1; }
@@ -160,4 +92,62 @@ html, body {
     8% { opacity: 1; }
     70% { opacity: 0.7; }
     100% { opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 1600px) {
+    .neon-btn {
+        font-size: 2.2em;
+    }
+}
+
+@media (max-width: 1390px) {
+    .neon-btn {
+        font-size: 2em;
+    }
+    .button-container {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 1225px) {
+    .neon-btn {
+        font-size: 1.8em;
+    }
+    .button-container {
+        gap: 15px;
+    }
+}
+
+@media (max-width: 1075px) {
+    .neon-btn {
+        font-size: 1.6em;
+    }
+}
+
+@media (max-width: 845px) {
+    .neon-btn {
+        font-size: 1.4em;
+    }
+}
+
+@media (max-width: 670px) {
+    .neon-btn {
+        font-size: 1.2em;
+    }
+    .button-container {
+        gap: 10px;
+    }
+}
+
+@media (max-width: 516px) {
+    .button-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px; /* Adjust space between buttons in column view */
+    }
+    .neon-btn {
+        width: 100%; /* Ensure buttons span the full width of the container */
+        text-align: center;
+    }
 }

@@ -74,7 +74,7 @@ body {
 
 /* Large font for first two words */
 .large-text {
-  font-size: 3rem; /* Default larger font size */
+  font-size: 2.5rem; /* Default larger font size */
 }
 
 .subtitle {
@@ -82,42 +82,112 @@ body {
 }
 
 .smaller {
-  font-size: 1.5rem; /* Reduced size for smaller text */
+  font-size: 1rem; /* Reduced size for smaller text */
 }
 
 /* Responsive Design Adjustments */
-@media (max-width: 1200px) {
+
+@media (max-width: 1478px) {
   :root {
-    --image-height: 180px; /* Decrease image height */
+    --image-height: 200px; /* Decrease image height */
   }
   .large-text {
-    font-size: 2.5rem; /* Slightly smaller text size */
+    font-size: 2.3rem; /* Slightly smaller text size */
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1322px) {
   :root {
-    --image-height: 160px; /* Further reduce image height */
+    --image-height: 180px; /* Further reduce image height */
   }
   .large-text {
     font-size: 2rem; /* Smaller text size */
   }
 }
 
-@media (max-width: 768px) {
+
+@media (max-width: 1192px) {
   :root {
-    --image-height: 140px; /* Even smaller image height */
+    --image-height: 170px; /* Further reduce image height */
   }
   .large-text {
-    font-size: 1.5rem; /* Even smaller text size */
+    font-size: 1.85rem; /* Smaller text size */
+  }
+}
+@media (max-width: 1028px) {
+  :root {
+    --image-height: 150px; /* Even smaller image height */
+  }
+  .large-text {
+    font-size: 1.6rem; /* Even smaller text size */
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 970px) {
   :root {
-    --image-height: 120px; /* Minimum image height */
+    --image-height: 140px; /* Further reduce image height */
   }
   .large-text {
-    font-size: 1.2rem; /* Minimum large text size */
+    font-size: 1.5rem; /* Smaller text size */
+  }
+}
+
+@media (max-width: 849px) {
+  :root {
+    --image-height: 140px; /* Further reduce image height */
+  }
+  .large-text {
+    font-size: 1.3rem; /* Smaller text size */
+  }
+}
+@media (max-width: 826px) {
+  :root {
+    --image-height: 130px; /* Further reduce image height */
+  }
+  .large-text {
+    font-size: 1.2rem; /* Smaller text size */
+  }
+}
+@media (max-width: 769px) {
+  :root {
+    --image-height: 125px; /* Further reduce image height */
+  }
+  .large-text {
+    font-size: 1.2rem; /* Smaller text size */
+  }
+}
+@media (max-width: 751px) {
+  :root {
+    --image-height: 120px; /* Further reduce image height */
+  }
+  .large-text {
+    font-size: 1rem; /* Smaller text size */
+  }
+}
+
+@media (max-width: 700px) {
+  :root {
+    --image-height: 115px; /* Further reduce image height */
+  }
+  .large-text {
+    font-size: 1rem; /* Smaller text size */
+  }
+}
+
+@media (max-width: 604px) {
+  :root {
+    --image-height: 160px; /* Further reduce image height */
+  }
+  .large-text {
+    font-size: 1.7rem; /* Smaller text size */
+  }
+}
+
+@media (max-width: 475px) {
+  :root {
+    --image-height: 150px; /* Further reduce image height */
+  }
+  .large-text {
+    font-size: 1.5rem; /* Smaller text size */
   }
 }
