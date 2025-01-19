@@ -18,8 +18,8 @@
   }
   
   .max-width{
-    padding: 0 200px;
-    max-width: 1500px;
+    padding: 50px 200px;
+    max-width: 1900px;
     margin: auto;
 
 
@@ -196,7 +196,7 @@ html{
       max-width: 400px; /* Maximum width */
       height: auto; /* Maintain the aspect ratio */
       margin-top: 0vh; /* Add space from the top */
-      margin-left: 775px; /* Center the image horizontally */
+      right: 200px; /* Center the image horizontally */
       border-radius: 5px; /* Optional: Adds rounded corners */
       object-fit: contain; /* Ensure the image fits its container without cropping */
   
