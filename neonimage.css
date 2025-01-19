@@ -1,7 +1,7 @@
 :root {
   --glow-color: #01fff4; /* Neon glow color */
   --text-outline-color: #000; /* Black text for contrast */
-  --image-height: 200px; /* Fixed height for all images */
+  --image-height: 200px; /* Default height for all images */
 }
 
 body {
@@ -24,6 +24,7 @@ body {
   justify-content: space-evenly; /* Automatically adjust spacing */
   align-items: center;
   flex-wrap: wrap; /* Wrap items to the next line on smaller screens */
+  gap: 1rem; /* Add spacing between items */
 }
 
 .svg-item {
@@ -36,10 +37,10 @@ body {
 }
 
 .glowing-svg {
-  height: var(--image-height); /* Fixed height for all images */
+  height: var(--image-height); /* Initial height for all images */
   width: auto; /* Maintain aspect ratio */
   filter: drop-shadow(0 0 10px var(--glow-color)); /* Base glow */
-  transition: filter 0.3s ease, transform 0.3s ease;
+  transition: filter 0.3s ease, transform 0.3s ease, height 0.3s ease;
 }
 
 .svg-container:hover .glowing-svg {
@@ -71,18 +72,9 @@ body {
   opacity: 1; /* Show text */
 }
 
-/* Ampersand Styling */
-.ampersand .svg-text {
-  font-size: 8rem; /* Larger ampersand */
-  -webkit-text-stroke: 1.75px var(--text-outline-color); /* Black outline */
-  text-shadow: 
-    0 0 10px var(--glow-color), 
-    0 0 40px var(--glow-color); /* Intense glow */
-}
-
 /* Large font for first two words */
 .large-text {
-  font-size: 3rem; /* Larger font size for "ENVIRONMENTAL" and "STUDIES" */
+  font-size: 3rem; /* Default larger font size */
 }
 
 .subtitle {
@@ -90,5 +82,42 @@ body {
 }
 
 .smaller {
-  font-size: 1rem; /* Reduced size for "Dean's List Student" */
+  font-size: 1rem; /* Reduced size for smaller text */
+}
+
+/* Responsive Design Adjustments */
+@media (max-width: 1200px) {
+  :root {
+    --image-height: 180px; /* Decrease image height */
+  }
+  .large-text {
+    font-size: 2.5rem; /* Slightly smaller text size */
+  }
+}
+
+@media (max-width: 992px) {
+  :root {
+    --image-height: 160px; /* Further reduce image height */
+  }
+  .large-text {
+    font-size: 2rem; /* Smaller text size */
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --image-height: 140px; /* Even smaller image height */
+  }
+  .large-text {
+    font-size: 1.5rem; /* Even smaller text size */
+  }
+}
+
+@media (max-width: 576px) {
+  :root {
+    --image-height: 120px; /* Minimum image height */
+  }
+  .large-text {
+    font-size: 1.2rem; /* Minimum large text size */
+  }
 }

@@ -66,12 +66,12 @@ html, body {
     position: relative;
     color: var(--black); /* Ensure text color is pure black */
     cursor: pointer;
-    padding: 0.5em 1em; /* Button padding */
+    padding: 0em 1em; /* Button padding */
     border: 0.2em solid var(--glow-color);
     border-radius: 1em;
     background: var(--glow-color); /* Glow background */
     perspective: 2em;
-    font-size: 1.75em; /* Text size */
+    font-size: 2.5em; /* Text size */
     font-weight: 600;
     text-align: center;
     letter-spacing: 0.15em;

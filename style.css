@@ -127,7 +127,7 @@ html{
   }
   
   .menu .dropdown ul {
-    position: absolute;
+    position: relative;
     top: 100%; /* Align directly below "What I Do" */
     left: 0;
     background-color: var(--nav-bg-color);
@@ -1460,13 +1460,13 @@ margin-top: 20px;
 
     }
     .navbar .logo a{
-        font-size: 20px;
+        font-size: 30px;
     }
     .navbar.sticky .logo a{
         font-size: 18px;
     }
     .home .home-content .text-1{
-        font-size: 15vw;
+        font-size: 40px;
     }
     .home .home-content .text-2{
         font-size: 44px;
