@@ -5,34 +5,18 @@
     --hover-color: #01fff4; /* Neon blue hover color */
     --font-family: 'Poppins', sans-serif; /* Font for navbar */
   }
-  *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-}
+  
   body {
     margin: 0;
     padding: 0;
     font-family: var(--font-family); /* Use Poppins font */
   }
   
-  .max-width{
-    padding: 50px 200px;
-    max-width: 1900px;
-    margin: auto;
-
-
-}
-html{
-    scroll-behavior: smooth;
-}
-
   .main {
     width: 100%;
     font-family: var(--font-family);
     position: fixed;
-    top: 0.5rem;
+    top: 0.75rem;
     left: 0;
     z-index: 1000;
     background-color: transparent; /* Start transparent */
@@ -174,7 +158,6 @@ html{
     justify-content: space-between;
 }
 
-
 /* Adjust the typing text to have a smaller width */
 .typing {
     font-family: "Courier New", Courier, monospace;
@@ -186,27 +169,29 @@ html{
     text-transform: uppercase; 
 
 }
+
 :root {
     --glow-color: #01fff4; /* Neon blue color */
   }
   
   .home img {
-      position: relative; /* Fix the image's position relative to the container */
       width: 100%; /* Ensure the image scales to fit the container */
       max-width: 400px; /* Maximum width */
       height: auto; /* Maintain the aspect ratio */
       margin-top: 0vh; /* Add space from the top */
-      right: 4vh; /* Center the image horizontally */
+      margin-left: auto; /* Center the image horizontally */
+      margin-right: auto; /* Center the image horizontally */
+      display: block; /* Prevent extra space below the image */
       border-radius: 5px; /* Optional: Adds rounded corners */
       object-fit: contain; /* Ensure the image fits its container without cropping */
   
       /* Intense neon glow around the image */
-      filter: drop-shadow(0 0 20px var(--glow-color)) 
-              drop-shadow(0 0 40px var(--glow-color)) 
-              drop-shadow(0 0 60px var(--glow-color));
-      -webkit-filter: drop-shadow(0 0 20px var(--glow-color)) 
-                      drop-shadow(0 0 40px var(--glow-color)) 
-                      drop-shadow(0 0 60px var(--glow-color));
+      filter: drop-shadow(0 0 50px var(--glow-color)) 
+              drop-shadow(0 0 100px var(--glow-color)) 
+              drop-shadow(0 0 150px var(--glow-color));
+      -webkit-filter: drop-shadow(0 0 50px var(--glow-color)) 
+                      drop-shadow(0 0 100px var(--glow-color)) 
+                      drop-shadow(0 0 150px var(--glow-color));
   }
   
 
@@ -299,9 +284,9 @@ body::after {
 }
 
 .home .home-content .text-1 h1 {
-    margin-top: 3vh;
+    margin-top: 5vh;
     font-family: 'Montserrat', sans-serif;
-    font-size: max(72px, 11vw);
+    font-size: max(72px, 10vw);
     font-weight: bold;
     display: inline-block;
     background: var(--bg-grain), conic-gradient(from 140deg at calc(var(--bg-1-x) * 1%) 90%, #1a0d00, #00011a, #15009e, #d232aa, #fa8c3d, #fff480, #fffffa, #7ed4fb, #040d8b, #010014),
@@ -357,7 +342,7 @@ body::after {
     font-family: 'Open Sans', sans-serif;
     font-size: 36px;
     color: #4399FF;
-    margin-top: 0px;
+    margin-top: 12.5px;
     font-weight: normal;
 }
 
@@ -1800,4 +1785,3 @@ margin-top: 20px;
         
         }
     
-
