@@ -5,13 +5,29 @@
     --hover-color: #01fff4; /* Neon blue hover color */
     --font-family: 'Poppins', sans-serif; /* Font for navbar */
   }
-  
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
   body {
     margin: 0;
     padding: 0;
     font-family: var(--font-family); /* Use Poppins font */
   }
   
+  .max-width{
+    padding: 0 200px;
+    max-width: 1900px;
+    margin: auto;
+
+
+}
+html{
+    scroll-behavior: smooth;
+}
+
   .main {
     width: 100%;
     font-family: var(--font-family);
