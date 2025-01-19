@@ -21,23 +21,23 @@ html, body {
 /* Section Styling */
 .button-section {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 30vh; /* Reduced height for the entire section */
+    justify-content: left;
+    align-items: ;
+    height: 10 vh; /* Reduced height for the entire section */
     padding-top: 10px; /* Reduced padding above the buttons */
     background: var(--black);
 }
 
 .button-container {
     display: flex;
-    gap: 230px; /* Increased space between buttons */
+    gap: 10px; /* Increased space between buttons */
 }
 
 .neon-btn {
     position: relative;
     color: var(--glow-color);
     cursor: pointer;
-    padding: 0.5em 2em; /* Increased padding for larger buttons */
+    padding: 0.5em 1em; /* Increased padding for larger buttons */
     border: 0.2em solid var(--glow-color);
     border-radius: 1em;
     background: none;
