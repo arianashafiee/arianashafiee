@@ -26,6 +26,8 @@ html, body {
     height: 14vh; /* Reduced height for the entire section */
     padding-top: 10px; /* Reduced padding above the buttons */
     background: var(--black);
+    margin-bottom: 20px; /* Minimum margin below the buttons */
+
 }
 
 .button-container {
