@@ -127,7 +127,7 @@ html{
   }
   
   .menu .dropdown ul {
-    position: relative;
+    position: absolute;
     top: 100%; /* Align directly below "What I Do" */
     left: 0;
     background-color: var(--nav-bg-color);
@@ -191,12 +191,12 @@ html{
   }
   
   .home img {
-      position: absolute; /* Fix the image's position relative to the container */
+      position: relative; /* Fix the image's position relative to the container */
       width: 100%; /* Ensure the image scales to fit the container */
       max-width: 400px; /* Maximum width */
       height: auto; /* Maintain the aspect ratio */
       margin-top: 0vh; /* Add space from the top */
-      right: 200px; /* Center the image horizontally */
+      right: 4vh; /* Center the image horizontally */
       border-radius: 5px; /* Optional: Adds rounded corners */
       object-fit: contain; /* Ensure the image fits its container without cropping */
   
@@ -1460,13 +1460,13 @@ margin-top: 20px;
 
     }
     .navbar .logo a{
-        font-size: 30px;
+        font-size: 20px;
     }
     .navbar.sticky .logo a{
         font-size: 18px;
     }
     .home .home-content .text-1{
-        font-size: 40px;
+        font-size: 15vw;
     }
     .home .home-content .text-2{
         font-size: 44px;
