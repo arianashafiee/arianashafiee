@@ -24,9 +24,9 @@ html, body {
     justify-content: left;
     align-items: left;
     height: 15vh; /* Reduced height for the entire section */
-    padding-top: 10px; /* Reduced padding above the buttons */
+    padding-top: 0px; /* Reduced padding above the buttons */
     background: var(--black);
-    padding-bottom: 10px; /* Reduced padding above the buttons */
+    padding-bottom: 20px; /* Reduced padding above the buttons */
 
 
 }
@@ -71,7 +71,7 @@ html, body {
     border-radius: 1em;
     background: var(--glow-color); /* Glow background */
     perspective: 2em;
-    font-size: 2em; /* Text size */
+    font-size: 1.75em; /* Text size */
     font-weight: 600;
     text-align: center;
     letter-spacing: 0.15em;
