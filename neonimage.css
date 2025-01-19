@@ -82,7 +82,7 @@ body {
 }
 
 .smaller {
-  font-size: 1rem; /* Reduced size for smaller text */
+  font-size: 1.5rem; /* Reduced size for smaller text */
 }
 
 /* Responsive Design Adjustments */
