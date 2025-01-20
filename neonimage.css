@@ -2,6 +2,7 @@
   --glow-color: #01fff4; /* Neon glow color */
   --text-outline-color: #000; /* Black text for contrast */
   --image-height: 200px; /* Default height for all images */
+  --font-size: calc(var(--image-height) / 6); /* Font size based on image height */
 }
 
 body {
@@ -37,7 +38,7 @@ body {
 }
 
 .glowing-svg {
-  height: var(--image-height); /* Initial height for all images */
+  height: var(--image-height); /* Dynamic image height */
   width: auto; /* Maintain aspect ratio */
   filter: drop-shadow(0 0 10px var(--glow-color)); /* Base glow */
   transition: filter 0.3s ease, transform 0.3s ease, height 0.3s ease;
@@ -74,103 +75,57 @@ body {
 
 /* Large font for first two words */
 .large-text {
-  font-size: 2.5rem; /* Default larger font size */
+  font-size: var(--font-size); /* Dynamic font size based on image height */
 }
 
 .subtitle {
-  font-size: 1.2rem; /* Smaller font for subtitles */
+  font-size: calc(var(--font-size) / 1.5); /* Smaller font for subtitles */
 }
 
 .smaller {
-  font-size: 1rem; /* Reduced size for smaller text */
+  font-size: calc(var(--font-size) / 1.5); /* Reduced size for smaller text */
 }
 
 /* Responsive Design Adjustments */
-
 @media (max-width: 1478px) {
   :root {
-    --image-height: 200px; /* Decrease image height */
-  }
-  .large-text {
-    font-size: 2.3rem; /* Slightly smaller text size */
+    --image-height: 200px;
   }
 }
 
 @media (max-width: 1322px) {
   :root {
-    --image-height: 180px; /* Further reduce image height */
-  }
-  .large-text {
-    font-size: 2rem; /* Smaller text size */
+    --image-height: 180px;
   }
 }
-
 
 @media (max-width: 1192px) {
   :root {
-    --image-height: 170px; /* Further reduce image height */
-  }
-  .large-text {
-    font-size: 1.85rem; /* Smaller text size */
+    --image-height: 170px;
   }
 }
+
 @media (max-width: 1028px) {
   :root {
-    --image-height: 150px; /* Even smaller image height */
-  }
-  .large-text {
-    font-size: 1.6rem; /* Even smaller text size */
+    --image-height: 150px;
   }
 }
 
 @media (max-width: 970px) {
   :root {
-    --image-height: 140px; /* Further reduce image height */
-  }
-  .large-text {
-    font-size: 1.5rem; /* Smaller text size */
+    --image-height: 140px;
   }
 }
 
 @media (max-width: 849px) {
   :root {
-    --image-height: 140px; /* Further reduce image height */
-  }
-  .large-text {
-    font-size: 1.3rem; /* Smaller text size */
-  }
-}
-@media (max-width: 826px) {
-  :root {
-    --image-height: 130px; /* Further reduce image height */
-  }
-  .large-text {
-    font-size: 1.2rem; /* Smaller text size */
-  }
-}
-@media (max-width: 769px) {
-  :root {
-    --image-height: 125px; /* Further reduce image height */
-  }
-  .large-text {
-    font-size: 1.2rem; /* Smaller text size */
-  }
-}
-@media (max-width: 751px) {
-  :root {
-    --image-height: 120px; /* Further reduce image height */
-  }
-  .large-text {
-    font-size: 1rem; /* Smaller text size */
+    --image-height: 130px;
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 769px) {
   :root {
-    --image-height: 115px; /* Further reduce image height */
-  }
-  .large-text {
-    font-size: 1rem; /* Smaller text size */
+    --image-height: 125px;
   }
 }
 
@@ -183,44 +138,34 @@ body {
   }
 
   .svg-item:nth-child(1) {
-    grid-column: 1; /* Place the 1st image in the 1st column */
+    grid-column: 1;
   }
 
   .svg-item:nth-child(3) {
-    grid-column: 1; /* Place the 3rd image in the 1st column */
+    grid-column: 1;
   }
 
   .svg-item:nth-child(2) {
-    grid-column: 2; /* Place the 2nd image in the 2nd column */
+    grid-column: 2;
   }
 
   .svg-item:nth-child(4) {
-    grid-column: 2; /* Place the 4th image in the 2nd column */
+    grid-column: 2;
   }
 
   :root {
-    --image-height: 160px; /* Adjust image height for smaller screens */
-  }
-
-  .large-text {
-    font-size: 1.7rem; /* Adjust text size for smaller screens */
+    --image-height: 160px;
   }
 }
-
 
 @media (max-width: 475px) {
   :root {
-    --image-height: 150px; /* Further reduce image height */
-  }
-  .large-text {
-    font-size: 1.5rem; /* Smaller text size */
+    --image-height: 150px;
   }
 }
+
 @media (max-width: 400px) {
   :root {
-    --image-height: 130px; /* Further reduce image height */
-  }
-  .large-text {
-    font-size: 1.5rem; /* Smaller text size */
+    --image-height: 130px;
   }
 }
