@@ -175,17 +175,50 @@ body {
 }
 
 @media (max-width: 604px) {
-  :root {
-    --image-height: 160px; /* Further reduce image height */
+  .svg-wrapper {
+    display: grid; /* Use a grid layout */
+    grid-template-columns: 1fr 1fr; /* Two columns of equal width */
+    gap: 1rem; /* Space between grid items */
+    justify-items: center; /* Center items horizontally */
   }
+
+  .svg-item:nth-child(1) {
+    grid-column: 1; /* Place the 1st image in the 1st column */
+  }
+
+  .svg-item:nth-child(3) {
+    grid-column: 1; /* Place the 3rd image in the 1st column */
+  }
+
+  .svg-item:nth-child(2) {
+    grid-column: 2; /* Place the 2nd image in the 2nd column */
+  }
+
+  .svg-item:nth-child(4) {
+    grid-column: 2; /* Place the 4th image in the 2nd column */
+  }
+
+  :root {
+    --image-height: 160px; /* Adjust image height for smaller screens */
+  }
+
   .large-text {
-    font-size: 1.7rem; /* Smaller text size */
+    font-size: 1.7rem; /* Adjust text size for smaller screens */
   }
 }
+
 
 @media (max-width: 475px) {
   :root {
     --image-height: 150px; /* Further reduce image height */
+  }
+  .large-text {
+    font-size: 1.5rem; /* Smaller text size */
+  }
+}
+@media (max-width: 400px) {
+  :root {
+    --image-height: 130px; /* Further reduce image height */
   }
   .large-text {
     font-size: 1.5rem; /* Smaller text size */
