@@ -1,8 +1,6 @@
 :root {
-  --glow-color-1: #4169e1; /* Royal Blue for the 1st image */
-  --glow-color-2: #fdfd96; /* Pale Yellow for the 2nd image */
-  --glow-color-3: #ff6fff; /* Neon Pink for the 3rd image */
-  --glow-color-4: #39ff14; /* Neon Green for the 4th image */
+  --glow-color: #4399FF80; /* Neon blue glow */
+  --text-outline-color: #ffffff /* Black text for contrast */
   --image-height: 250px; /* Default height for all images */
   --font-size: calc(var(--image-height) / 6); /* Font size based on image height */
 }
@@ -42,101 +40,133 @@ body {
 .glowing-svg {
   height: var(--image-height); /* Dynamic image height */
   width: auto; /* Maintain aspect ratio */
-  filter: drop-shadow(0 0 6px var(--glow-color-1)) 
-          drop-shadow(0 0 10px var(--glow-color-1)); /* Sharp, small-radius glow */
+
   transition: filter 0.3s ease, transform 0.3s ease, height 0.3s ease;
 }
 
-/* Specific Glow Colors for Each Image */
-.svg-item:nth-child(1) .glowing-svg {
-  filter: drop-shadow(0 0 6px var(--glow-color-1)) 
-          drop-shadow(0 0 10px var(--glow-color-1));
-}
-
-.svg-item:nth-child(2) .glowing-svg {
-  filter: drop-shadow(0 0 6px var(--glow-color-2)) 
-          drop-shadow(0 0 10px var(--glow-color-2));
-}
-
-.svg-item:nth-child(3) .glowing-svg {
-  filter: drop-shadow(0 0 6px var(--glow-color-3)) 
-          drop-shadow(0 0 10px var(--glow-color-3));
-}
-
-.svg-item:nth-child(4) .glowing-svg {
-  filter: drop-shadow(0 0 6px var(--glow-color-4)) 
-          drop-shadow(0 0 10px var(--glow-color-4));
-}
-
-/* Hover Effects with Intense Glow */
 .svg-container:hover .glowing-svg {
+  filter: 
+    drop-shadow(0 0 12px var(--glow-color)) /* Enhance inner glow */
+    drop-shadow(0 0 20px var(--glow-color)) 
+    drop-shadow(0 0 30px var(--glow-color)); /* Glow intensifies on hover */
   transform: scale(1.1); /* Slight zoom */
 }
 
-.svg-item:nth-child(1):hover .glowing-svg {
-  filter: drop-shadow(0 0 15px var(--glow-color-1)) 
-          drop-shadow(0 0 30px var(--glow-color-1));
-}
-
-.svg-item:nth-child(2):hover .glowing-svg {
-  filter: drop-shadow(0 0 15px var(--glow-color-2)) 
-          drop-shadow(0 0 30px var(--glow-color-2));
-}
-
-.svg-item:nth-child(3):hover .glowing-svg {
-  filter: drop-shadow(0 0 15px var(--glow-color-3)) 
-          drop-shadow(0 0 30px var(--glow-color-3));
-}
-
-.svg-item:nth-child(4):hover .glowing-svg {
-  filter: drop-shadow(0 0 15px var(--glow-color-4)) 
-          drop-shadow(0 0 30px var(--glow-color-4));
-}
-
-/* Text over images */
 .svg-text {
   position: absolute;
-  top: 50%; /* Center vertically */
-  left: 50%; /* Center horizontally */
-  transform: translate(-50%, -50%); /* Perfect centering */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   opacity: 0; /* Hidden by default */
   text-align: center;
   font-weight: bold;
   line-height: 1.2;
-  z-index: 10; /* Ensure text is above the image */
-  transition: opacity 0.3s ease-in-out;
+  z-index: 10;
+  color: var(--text-outline-color);
+  -webkit-text-stroke: 1px var(--text-outline-color);
+  text-shadow: 
+    0 0 10px var(--glow-color), 
+    0 0 20px var(--glow-color), 
+    0 0 40px var(--glow-color); /* Intense glow */
 }
-
-/* Glow Colors for Text Matching Images */
-.svg-item:nth-child(1) .svg-text {
-  color: var(--glow-color-1);
-  text-shadow: 0 0 6px var(--glow-color-1), 
-               0 0 12px var(--glow-color-1), 
-               0 0 20px var(--glow-color-1); /* Sharp and small-radius glow */
-}
-
-.svg-item:nth-child(2) .svg-text {
-  color: var(--glow-color-2);
-  text-shadow: 0 0 6px var(--glow-color-2), 
-               0 0 12px var(--glow-color-2), 
-               0 0 20px var(--glow-color-2);
-}
-
-.svg-item:nth-child(3) .svg-text {
-  color: var(--glow-color-3);
-  text-shadow: 0 0 6px var(--glow-color-3), 
-               0 0 12px var(--glow-color-3), 
-               0 0 20px var(--glow-color-3);
-}
-
-.svg-item:nth-child(4) .svg-text {
-  color: var(--glow-color-4);
-  text-shadow: 0 0 6px var(--glow-color-4), 
-               0 0 12px var(--glow-color-4), 
-               0 0 20px var(--glow-color-4);
-}
-
 /* Reveal text on hover */
 .svg-container:hover .svg-text {
   opacity: 1; /* Show text */
+}
+
+/* Large font for first two words */
+.large-text {
+  font-size: var(--font-size); /* Dynamic font size based on image height */
+}
+
+.subtitle {
+  font-size: calc(var(--font-size) / 1.5); /* Smaller font for subtitles */
+}
+
+.smaller {
+  font-size: calc(var(--font-size) / 1.5); /* Reduced size for smaller text */
+}
+
+/* Responsive Design Adjustments */
+@media (max-width: 1478px) {
+  :root {
+    --image-height: 200px;
+  }
+}
+
+@media (max-width: 1322px) {
+  :root {
+    --image-height: 180px;
+  }
+}
+
+@media (max-width: 1192px) {
+  :root {
+    --image-height: 170px;
+  }
+}
+
+@media (max-width: 1028px) {
+  :root {
+    --image-height: 150px;
+  }
+}
+
+@media (max-width: 970px) {
+  :root {
+    --image-height: 140px;
+  }
+}
+
+@media (max-width: 849px) {
+  :root {
+    --image-height: 130px;
+  }
+}
+
+@media (max-width: 769px) {
+  :root {
+    --image-height: 125px;
+  }
+}
+
+@media (max-width: 604px) {
+  .svg-wrapper {
+    display: grid; /* Use a grid layout */
+    grid-template-columns: 1fr 1fr; /* Two columns of equal width */
+    gap: 1rem; /* Space between grid items */
+    justify-items: center; /* Center items horizontally */
+  }
+
+  .svg-item:nth-child(1) {
+    grid-column: 1;
+  }
+
+  .svg-item:nth-child(3) {
+    grid-column: 1;
+  }
+
+  .svg-item:nth-child(2) {
+    grid-column: 2;
+  }
+
+  .svg-item:nth-child(4) {
+    grid-column: 2;
+  }
+
+  :root {
+    --image-height: 160px;
+  }
+}
+
+@media (max-width: 475px) {
+  :root {
+    --image-height: 150px;
+  }
+}
+
+@media (max-width: 400px) {
+  :root {
+    --image-height: 130px;
+  }
 }

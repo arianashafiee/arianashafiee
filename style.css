@@ -172,9 +172,6 @@
 /* Adjust the typing text to have a smaller width */
 
 
-:root {
-    --glow-color: #01fff4; /* Neon blue color */
-  }
   
   .home img {
       width: 100%; /* Ensure the image scales to fit the container */
@@ -186,14 +183,8 @@
       display: block; /* Prevent extra space below the image */
       border-radius: 5px; /* Optional: Adds rounded corners */
       object-fit: contain; /* Ensure the image fits its container without cropping */
-  
-      /* Intense neon glow around the image */
-      filter: drop-shadow(0 0 50px var(--glow-color)) 
-              drop-shadow(0 0 100px var(--glow-color)) 
-              drop-shadow(0 0 150px var(--glow-color));
-      -webkit-filter: drop-shadow(0 0 50px var(--glow-color)) 
-                      drop-shadow(0 0 100px var(--glow-color)) 
-                      drop-shadow(0 0 150px var(--glow-color));
+  -webkit-filter: drop-shadow(0px 18px 40px rgba(67, 153, 255, 0.5)); /* Adds a shadow */
+    filter: drop-shadow(0px 18px 40px rgba(67, 153, 255, 0.5));
   }
   
 
@@ -343,7 +334,7 @@ body::after {
 .home .home-content .text-2{
     font-family: "Courier New", Courier, monospace;
     font-size: 3em; /* Adjust size if necessary */
-    color: #01fff4; /* Set the font color to neon blue */
+    color: #ffffff; /* Set the font color to neon blue */
     max-width: 80%; /* Restrict the width of the typing text */
     text-align: left; /* Center align the text */
     text-transform: uppercase; 
