@@ -288,7 +288,7 @@ body::after {
 .home .home-content .text-1 h1 {
     margin-top: 3vh;
     font-family: 'Montserrat', sans-serif;
-    font-size: 10em;
+    font-size: 11.5em;
     font-weight: bold;
     display: inline-block;
     background: var(--bg-grain), conic-gradient(from 140deg at calc(var(--bg-1-x) * 1%) 90%, #1a0d00, #00011a, #15009e, #d232aa, #fa8c3d, #fff480, #fffffa, #7ed4fb, #040d8b, #010014),
