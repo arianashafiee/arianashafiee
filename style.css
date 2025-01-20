@@ -178,11 +178,11 @@
   
   .home img {
       width: 100%; /* Ensure the image scales to fit the container */
-      max-width: 400px; /* Maximum width */
+      max-width: 500px; /* Maximum width */
       height: auto; /* Maintain the aspect ratio */
       margin-top: 0vh; /* Add space from the top */
-      margin-left: auto; /* Center the image horizontally */
-      margin-right: auto; /* Center the image horizontally */
+      margin-left: 0; /* Center the image horizontally */
+      margin-right: 0; /* Center the image horizontally */
       display: block; /* Prevent extra space below the image */
       border-radius: 5px; /* Optional: Adds rounded corners */
       object-fit: contain; /* Ensure the image fits its container without cropping */
@@ -288,7 +288,7 @@ body::after {
 .home .home-content .text-1 h1 {
     margin-top: 5vh;
     font-family: 'Montserrat', sans-serif;
-    font-size: 10em;
+    font-size: 12em;
     font-weight: bold;
     display: inline-block;
     background: var(--bg-grain), conic-gradient(from 140deg at calc(var(--bg-1-x) * 1%) 90%, #1a0d00, #00011a, #15009e, #d232aa, #fa8c3d, #fff480, #fffffa, #7ed4fb, #040d8b, #010014),
