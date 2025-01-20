@@ -141,9 +141,10 @@ html, body {
     }
 
 }
-@media (max-width: 680px) {
+@media (max-width: 6px) {
     .neon-btn {
-        font-size: 1.3em;
+        font-size: 1.8em;
+        padding: 1em 1.5em;
     }
 
 }
