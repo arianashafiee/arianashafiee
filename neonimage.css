@@ -1,7 +1,7 @@
 :root {
-  --glow-color: #4399FF80; /* Neon blue glow */
+  --glow-color: #01fff4; /* Neon glow color */
   --text-outline-color: #000; /* Black text for contrast */
-  --image-height: 250px; /* Default height for all images */
+  --image-height: 200px; /* Default height for all images */
   --font-size: calc(var(--image-height) / 6); /* Font size based on image height */
 }
 
@@ -40,56 +40,53 @@ body {
 .glowing-svg {
   height: var(--image-height); /* Dynamic image height */
   width: auto; /* Maintain aspect ratio */
-  filter: 
-    drop-shadow(0 0 8px var(--glow-color)) /* Lower radius for sharper glow */
-    drop-shadow(0 0 12px var(--glow-color)) 
-    drop-shadow(0 0 16px var(--glow-color)); /* Layered glow for intensity */
+  filter: drop-shadow(0 0 10px var(--glow-color)); /* Base glow */
   transition: filter 0.3s ease, transform 0.3s ease, height 0.3s ease;
 }
 
 .svg-container:hover .glowing-svg {
-  filter: 
-    drop-shadow(0 0 12px var(--glow-color)) /* Enhance inner glow */
-    drop-shadow(0 0 20px var(--glow-color)) 
-    drop-shadow(0 0 30px var(--glow-color)); /* Glow intensifies on hover */
+  filter: drop-shadow(0 0 40px var(--glow-color)); /* Intensify glow */
   transform: scale(1.1); /* Slight zoom */
 }
 
+/* Text over images */
 .svg-text {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Perfect centering */
   opacity: 0; /* Hidden by default */
   text-align: center;
   font-weight: bold;
   line-height: 1.2;
-  z-index: 10;
+  z-index: 10; /* Ensure text is above the image */
   color: var(--text-outline-color);
-  -webkit-text-stroke: 1px var(--text-outline-color);
+  -webkit-text-stroke: 1px var(--text-outline-color); /* Black outline */
   text-shadow: 
     0 0 10px var(--glow-color), 
     0 0 20px var(--glow-color), 
     0 0 40px var(--glow-color); /* Intense glow */
 }
 
+/* Reveal text on hover */
 .svg-container:hover .svg-text {
   opacity: 1; /* Show text */
 }
 
+/* Large font for first two words */
 .large-text {
-  font-size: var(--font-size);
+  font-size: var(--font-size); /* Dynamic font size based on image height */
 }
 
 .subtitle {
-  font-size: calc(var(--font-size) / 1.5);
+  font-size: calc(var(--font-size) / 1.5); /* Smaller font for subtitles */
 }
 
 .smaller {
-  font-size: calc(var(--font-size) / 1.5);
+  font-size: calc(var(--font-size) / 1.5); /* Reduced size for smaller text */
 }
 
-/* Responsive Design */
+/* Responsive Design Adjustments */
 @media (max-width: 1478px) {
   :root {
     --image-height: 200px;
@@ -102,8 +99,73 @@ body {
   }
 }
 
+@media (max-width: 1192px) {
+  :root {
+    --image-height: 170px;
+  }
+}
+
 @media (max-width: 1028px) {
   :root {
     --image-height: 150px;
+  }
+}
+
+@media (max-width: 970px) {
+  :root {
+    --image-height: 140px;
+  }
+}
+
+@media (max-width: 849px) {
+  :root {
+    --image-height: 130px;
+  }
+}
+
+@media (max-width: 769px) {
+  :root {
+    --image-height: 125px;
+  }
+}
+
+@media (max-width: 604px) {
+  .svg-wrapper {
+    display: grid; /* Use a grid layout */
+    grid-template-columns: 1fr 1fr; /* Two columns of equal width */
+    gap: 1rem; /* Space between grid items */
+    justify-items: center; /* Center items horizontally */
+  }
+
+  .svg-item:nth-child(1) {
+    grid-column: 1;
+  }
+
+  .svg-item:nth-child(3) {
+    grid-column: 1;
+  }
+
+  .svg-item:nth-child(2) {
+    grid-column: 2;
+  }
+
+  .svg-item:nth-child(4) {
+    grid-column: 2;
+  }
+
+  :root {
+    --image-height: 160px;
+  }
+}
+
+@media (max-width: 475px) {
+  :root {
+    --image-height: 150px;
+  }
+}
+
+@media (max-width: 400px) {
+  :root {
+    --image-height: 130px;
   }
 }

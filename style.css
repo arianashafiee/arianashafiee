@@ -185,6 +185,7 @@
       object-fit: contain; /* Ensure the image fits its container without cropping */
   -webkit-filter: drop-shadow(0px 18px 40px rgba(67, 153, 255, 0.5)); /* Adds a shadow */
     filter: drop-shadow(0px 18px 40px rgba(67, 153, 255, 0.5));
+    
   }
   
 
