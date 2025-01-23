@@ -1,7 +1,18 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+
+}
+
+body {background-color:black;}
+
 .max-width{
     padding: 0 200px;
     max-width: 1900px;
     margin: auto;
+
 }
 
 :root {
@@ -10,7 +21,9 @@
     --hover-color: #01fff4; /* Neon blue hover color */
     --font-family: 'Poppins', sans-serif; /* Font for navbar */
   }
-  
+  html{
+    scroll-behavior: smooth;
+}
   body {
     margin: 0;
     padding: 0;
@@ -19,18 +32,24 @@
   
   .main {
     width: 100%;
-    font-family: var(--font-family);
     position: fixed;
+    z-index: 100;
+    font-family: var(--font-family);
     top: 0.75rem;
     left: 0;
-    z-index: 1000;
-    background-color: transparent; /* Start transparent */
-    transition: background-color 0.3s ease; /* Smooth transition for background */
+    transition: all 0.3s ease; /* Smooth transition for background */
   }
-  
-  .main.scrolled {
-    background-color: var(--nav-bg-color); /* Turn black when scrolled */
-  }
+  .main .navbar{
+    background-color: transparent;
+}
+  .navbar.sticky{
+    padding: 15px 0;
+    background: black;
+}
+.navbar.sticky .logo a{
+    font-size: 27px;
+}
+
   
   .navbar {
     display: flex;
@@ -41,10 +60,11 @@
   }
   
   .logo a {
-    font-size: 2rem; /* Larger font size for the logo */
+    font-size: 2.5rem; /* Larger font size for the logo */
     font-weight: bold; /* Bold logo text */
     color: var(--nav-text-color);
     text-decoration: none;
+    transition: all 0.3s ease;
   }
   
   .menu {
