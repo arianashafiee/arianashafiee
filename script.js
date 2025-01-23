@@ -29,8 +29,6 @@ $(document).ready(function () {
         strings: [
             ' SWE intern',
             'Founding UX @ Otto',
-            'Former UX @ Infernoguard',
-            'Former UX, SWE @ Inbound',
         ],
         typeSpeed: 140,
         backSpeed: 100,

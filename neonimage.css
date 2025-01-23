@@ -1,7 +1,14 @@
+.svg-max-width {
+  padding: 0px 0px; /* Less padding than .max-width for closer edges */
+  max-width: 90%; /* Allow the section to stretch wider */
+  margin: auto;
+}
+
+
 :root {
   --glow-color: #01fff4; /* Neon glow color */
   --text-outline-color: #000; /* Black text for contrast */
-  --image-height: 200px; /* Default height for all images */
+  --image-height: 250px; /* Default height for all images */
   --font-size: calc(var(--image-height) / 6); /* Font size based on image height */
 }
 
@@ -15,8 +22,9 @@ body {
 }
 
 .svg-container {
-  padding: 1rem 0;
+  padding: 0rem 0;
   text-align: center;
+  padding-top: 3vh;
   max-width: 100%;
 }
 
@@ -25,7 +33,7 @@ body {
   justify-content: space-evenly; /* Automatically adjust spacing */
   align-items: center;
   flex-wrap: wrap; /* Wrap items to the next line on smaller screens */
-  gap: 1rem; /* Add spacing between items */
+  gap: 0rem; /* Add spacing between items */
 }
 
 .svg-item {
@@ -90,6 +98,10 @@ body {
 @media (max-width: 1478px) {
   :root {
     --image-height: 200px;
+  }
+  .svg-max-width {
+    max-width: 100%;
+  
   }
 }
 
