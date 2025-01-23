@@ -193,27 +193,27 @@ body {background-color:black;}
 
 
 :root {
-    --glow-color6: #cc95de; /* Neon blue color */
+    --glow-color6: #01fff4; /* Neon blue color */
   }
   
-.home img {
+  .home img {
     width: 100%; /* Ensure the image scales to fit the container */
-    max-width: 400px; /* Maximum width */
+    max-width: 500px; /* Maximum width */
     height: auto; /* Maintain the aspect ratio */
-    margin-top: 3vh; /* Add space from the top */
-    margin-left: auto; /* Center the image horizontally */
-    margin-right: auto; /* Center the image horizontally */
+    margin-top: 0vh; /* Add space from the top */
+    margin-left: 0; /* Center the image horizontally */
+    margin-right: 0; /* Center the image horizontally */
     display: block; /* Prevent extra space below the image */
-    border-radius: 10px; /* Optional: Adds rounded corners */
+    border-radius: 5px; /* Optional: Adds rounded corners */
     object-fit: contain; /* Ensure the image fits its container without cropping */
- 
-    filter: drop-shadow(0 0 20px var(--glow-color6)) 
-            drop-shadow(0 0 40px var(--glow-color6)) 
-            drop-shadow(0 0 60px var(--glow-color6));
-    -webkit-filter: drop-shadow(0 0 20px var(--glow-color6)) 
-                    drop-shadow(0 0 40px var(--glow-color6)) 
-                    drop-shadow(0 0 60px var(--glow-color6));
-                    
+
+    /* Intense neon glow around the image */
+    filter: drop-shadow(0 0 50px var(--glow-color6)) 
+            drop-shadow(0 0 100px var(--glow-color6)) 
+            drop-shadow(0 0 150px var(--glow-color6));
+    -webkit-filter: drop-shadow(0 0 50px var(--glow-color6)) 
+                    drop-shadow(0 0 100px var(--glow-color6)) 
+                    drop-shadow(0 0 150px var(--glow-color6));
 }
 
 
@@ -439,7 +439,7 @@ section{
     margin-bottom: 50px;
 }
 .what-i-do .content .name{
-    color: #ffffff;
+    color: white;
     margin-top: 25px;
     font-size: 18px;
     font-weight: 600;
@@ -450,7 +450,7 @@ section{
 }
 .what-i-do .content .link a{
     border-radius: 100px;
-    color:#ffffff;
+    color:#01fff4;
     background: black;
     font-size: 18px;
     padding: 12px 50px;
@@ -559,17 +559,17 @@ section{
 
 .projects .content .card{
     width: 100%;
-    background: black;
+    background: rgb(0, 0, 0);
     text-align: left;
     padding-top: 20px;
     padding-bottom: 20px;
-    box-shadow: 0px 18px 50px #01fff4
+    box-shadow: 0px 18px 50px rgba(1,255,244,.75);
     border-radius: 25px;
     margin-bottom: 35px;
     
 }
 .projects .content .box .header{
-    color: #ffffff
+    color: white;
     margin-top: 25px;
     font-size: 23px;
     font-weight: 600;
@@ -577,6 +577,7 @@ section{
     margin-right: 25px;
     text-align: left;
     line-height: 1.8;
+
 }
 
 .projects .content .link a:hover{
@@ -604,7 +605,7 @@ section{
 
 
 .projects .content .box .description{
-    color: #ffffff;
+    color: white;
     margin-top: 15px;
     font-size: 18px;
     margin-left: 25px;
@@ -622,7 +623,7 @@ section{
 }
 .projects .content .link a{
     border-radius: 100px;
-    color:#ffffff;
+    color:#01fff4;
     background: black;
     font-size: 16px;
     padding: 12px 50px;
@@ -656,7 +657,7 @@ section{
 }
 
 .projects .content .box2 .tags{
-    color:#ffffff;
+    color:#4399FF;
     font-size: 20px;
     text-align: left;
     display: inline-block;
@@ -673,7 +674,7 @@ section{
     display: inline-block;
 }
 .projects .content .box2 .header{
-    color: #ffffff;
+    color: #2D3F70;
     margin-top: 25px;
     font-size: 23px;
     font-weight: 600;
@@ -741,7 +742,7 @@ section{
 }
   .input-fields input:focus{
     outline: none !important;
-    border:2px solid #01fff4;
+    border:2px solid #01fff480;
 }
 .contact .header{
     font-size: 32px;
@@ -752,14 +753,16 @@ section{
     flex-direction: column;
   }
   .contact .comment{
-      font-size: 20px;
+      font-family: 'Rubik';
+      font-size: 25px;
       color: #ffffff;
       margin-top: 25px;
       line-height: 1.8;
 
   }
   .contact .comment2{
-    font-size: 20px;
+    font-family: 'Rubik';
+    font-size: 25px;
     color: #ffffff;
     margin-top: 15px;
     line-height: 1.8;
@@ -820,13 +823,14 @@ section{
   
   button {
     margin-top: 20px;
-      background: #4399FF;
+      background: #01fff4;
       text-align: center;
       width: 100%;
       padding: 15px;
       border-radius: 5px;
-      color: #fff;
-      font-size: 18px;
+      color: black;
+      font-size: 30px;
+      font-weight: 1000;
       cursor: pointer;
       border-width: 0px;
       box-shadow: 0px 18px 50px rgba(67,153,255,.25);
