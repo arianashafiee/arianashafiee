@@ -173,7 +173,7 @@
 
 
 :root {
-    --glow-color6: #3801ff; /* Neon blue color */
+    --glow-color6: #cc95de; /* Neon blue color */
   }
   
 .home img {
@@ -187,12 +187,12 @@
     border-radius: 10px; /* Optional: Adds rounded corners */
     object-fit: contain; /* Ensure the image fits its container without cropping */
  
-    filter: drop-shadow(0 0 50px var(--glow-color6)) 
-            drop-shadow(0 0 100px var(--glow-color6)) 
-            drop-shadow(0 0 150px var(--glow-color6));
-    -webkit-filter: drop-shadow(0 0 50px var(--glow-color6)) 
-                    drop-shadow(0 0 100px var(--glow-color6)) 
-                    drop-shadow(0 0 150px var(--glow-color6));
+    filter: drop-shadow(0 0 20px var(--glow-color6)) 
+            drop-shadow(0 0 40px var(--glow-color6)) 
+            drop-shadow(0 0 60px var(--glow-color6));
+    -webkit-filter: drop-shadow(0 0 20px var(--glow-color6)) 
+                    drop-shadow(0 0 40px var(--glow-color6)) 
+                    drop-shadow(0 0 60px var(--glow-color6));
                     
 }
 
