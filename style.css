@@ -35,7 +35,7 @@ body {background-color:black;}
     position: fixed;
     z-index: 100;
     font-family: var(--font-family);
-    top: 0.75rem;
+    top: 0rem;
     left: 0;
     transition: all 0.3s ease; /* Smooth transition for background */
   }
@@ -459,7 +459,8 @@ section{
 }
 .what-i-do .content .link a:hover{
     color:black;
-    background:#ffffff ;
+    font-weight: bold;
+    background:#01fff4 ;
 }
 .what-i-do .content img{
     height: 150px;
@@ -842,7 +843,7 @@ section{
 
   }
   .overview{
-      background:#F3F9FF;
+      background:black;
       height: 330px;
       margin-bottom: -20px;
 
