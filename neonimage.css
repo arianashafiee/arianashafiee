@@ -8,7 +8,7 @@
 :root {
   --glow-color: #01fff4; /* Neon glow color */
   --text-outline-color: #000; /* Black text for contrast */
-  --image-height: 270px; /* Default height for all images */
+  --image-height: 250px; /* Default height for all images */
   --font-size: calc(var(--image-height) / 6); /* Font size based on image height */
 }
 
