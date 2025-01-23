@@ -187,13 +187,14 @@
     border-radius: 10px; /* Optional: Adds rounded corners */
     object-fit: contain; /* Ensure the image fits its container without cropping */
 
-    /* Intense neon glow around the image */
+    /* Intense neon glow around the image 
     filter: drop-shadow(0 0 50px var(--glow-color)) 
             drop-shadow(0 0 100px var(--glow-color)) 
             drop-shadow(0 0 150px var(--glow-color));
     -webkit-filter: drop-shadow(0 0 50px var(--glow-color)) 
                     drop-shadow(0 0 100px var(--glow-color)) 
                     drop-shadow(0 0 150px var(--glow-color));
+                    */
 }
 
 
