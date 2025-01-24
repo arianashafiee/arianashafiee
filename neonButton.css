@@ -44,11 +44,11 @@ html, body {
     cursor: pointer;
     padding: 0em 1em;
     border: 0.2em solid var(--glow-color-5);
-    border-radius: 1em;
+    border-radius: 0.5em;
     background: var(--glow-color-5);
     perspective: 2em;
     font-size: 2.5em;
-    font-weight: bold;
+    font-weight: 800;
     text-align: center;
     letter-spacing: 0.15em;
     box-shadow: inset 0 0 1em var(--glow-color-5), 0 0 1em var(--glow-color-5);
