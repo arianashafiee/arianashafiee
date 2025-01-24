@@ -72,7 +72,7 @@ html{
 /** dropdown **/
 
 .dropdown:hover > ul{
-    top: 70px;
+    top: 50px;
     opacity: 1;
     visibility: visible;
   }
@@ -174,7 +174,7 @@ nav ul li a:hover{
     height: auto; /* Maintain the aspect ratio */
     margin-top: 0vh; /* Add space from the top */
     margin-left: 0; /* Center the image horizontally */
-    margin-right: 50px; /* Center the image horizontally */
+    margin-right: 0; /* Center the image horizontally */
     display: block; /* Prevent extra space below the image */
     border-radius: 5px; /* Optional: Adds rounded corners */
     object-fit: contain; /* Ensure the image fits its container without cropping */
@@ -523,7 +523,9 @@ section{
     background: #01fff4!important;
   }
   /*Projects Section*/
-
+  .projects {
+    padding-bottom: 20px;
+  }
 .projects .content{
     display: flex;
     flex-wrap: wrap;
@@ -1021,7 +1023,7 @@ margin-top: 20px;
       
     /*Footer*/
     .footer{
-        padding-top: 0;
+        padding-top: 20px;
         margin-top: 0px;
         padding-bottom: 60px;
         color:#01fff4;
