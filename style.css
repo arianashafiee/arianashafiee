@@ -14,6 +14,20 @@ body {background-color:white;}
 
 
 }
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Main content flex container */
+  body > *:not(.footer) {
+    flex: 1; /* Push the footer to the bottom of the viewport if content is short */
+  }
+  
 :root {
     --nav-bg-color: #000; /* Black background for navbar */
     --nav-text-color: #fff; /* White text for navbar items */
@@ -147,14 +161,6 @@ nav ul li a:hover{
     display: flex;
     justify-content: space-between;
 }
-
-.home .home-content {
-    flex: 1; /* Allow the content to take up available space */
-    max-width: 600px; /* Set a max width to prevent it from expanding */
-    margin: 0; /* Prevent auto margins */
-    text-align: left; /* Align text to the left */
-}
-/* Adjust the typing text to have a smaller width */
 
 
 :root {
@@ -334,6 +340,7 @@ body::after {
     margin-bottom: 3vh
 
 }
+
 /* Resume */
 .home .links  li{
     margin-top: 75px;
