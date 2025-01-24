@@ -334,7 +334,7 @@ body::after {
     display: inline-block;
     line-height: 1em; 
     font-family: "Courier New", Courier, monospace;
-    font-size: 3em; /* Adjust size if necessary */
+    font-size: 5em; /* Adjust size if necessary */
     color: #ffffff; /* Set the font color to neon blue */
     max-width: 100%; /* Restrict the width of the typing text */
     text-align: left; /* Center align the text */
