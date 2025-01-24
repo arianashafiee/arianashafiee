@@ -72,7 +72,7 @@ html{
 /** dropdown **/
 
 .dropdown:hover > ul{
-    top: 50px;
+    top: 60px;
     opacity: 1;
     visibility: visible;
   }
