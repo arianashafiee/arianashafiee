@@ -391,7 +391,7 @@ section{
     font-weight: bold;
     font-family: var(--font-family);
     font-size: 100px;
-    margin-bottom: 0px;
+    margin-bottom: 40px;
 }
 .what-i-do .content{
     display: flex;
