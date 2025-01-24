@@ -1015,7 +1015,7 @@ margin-top: 20px;
     .footer{
         padding-top: 0;
         margin-top: 70px;
-        padding-bottom: 50px;
+        padding-bottom: 0px;
         color:#01fff4;
         background-color: black;
     }
@@ -1769,14 +1769,7 @@ margin-top: 20px;
             .home .links .contact a{
                 padding: 15px 22vw;
             }
-            .footer a{
-                font-size: 14px;
-        
-            }
-
-            .footer img{
-                height: 24px;
-            }
+            
             .footer p{
                 font-size: 14px;
             }
