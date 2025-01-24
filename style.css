@@ -404,6 +404,7 @@ section{
     margin-bottom: 50px;
 }
 .what-i-do .content .name{
+    text-transform: uppercase;
     color: white;
     margin-top: 25px;
     font-size: 18px;
@@ -473,6 +474,7 @@ section{
     transition: all 0.3s ease;
 }
 .testimonial .carousel .card .quote{
+    font-family: 'Rubik';
     color: #ffffff;
     font-size: 16px;
     line-height: 2;
@@ -535,9 +537,10 @@ section{
 }
 .projects .content .box .header{
     color: white;
+    font-family: Rubik;
     margin-top: 25px;
     font-size: 23px;
-    font-weight: 600;
+    font-weight: 1000;
     margin-left: 25px;
     margin-right: 25px;
     text-align: left;
@@ -568,7 +571,6 @@ section{
 }
 
 
-
 .projects .content .box .description{
     color: white;
     margin-top: 15px;
@@ -587,9 +589,10 @@ section{
     margin-right: auto; 
 }
 .projects .content .link a{
+    font-family: Rubik;
     border-radius: 100px;
     color:#01fff4;
-    background: black;
+    background: #000000;
     font-size: 16px;
     padding: 12px 50px;
     border: 2px solid #01fff4;
@@ -602,6 +605,8 @@ section{
     margin-left: 25px;
 }
 .projects .content .box .tags{
+    font-family: Rubik;
+    font-weight: 600;
     color:#01fff4;
     font-size: 20px;
     text-align: right;
@@ -718,7 +723,7 @@ section{
     flex-direction: column;
   }
   .contact .comment{
-      font-family: 'Rubik';
+      font-weight:100;
       font-size: 25px;
       color: #ffffff;
       margin-top: 25px;
@@ -726,7 +731,7 @@ section{
 
   }
   .contact .comment2{
-    font-family: 'Rubik';
+    font-weight:100;
     font-size: 25px;
     color: #ffffff;
     margin-top: 15px;
@@ -748,7 +753,7 @@ section{
   
   .input-fields .input,
   .msg textarea{
-    
+    font-family: var(--font-family);
     margin: 10px 0;
     background: transparent;
     border: 2px solid #01fff4;
@@ -756,9 +761,8 @@ section{
     color: #ffffff;
     width: 100%;
     font-size: 20px;
-    font-family: 'Open Sans', sans-serif;
+    font-weight:200;
     margin-top: 15px;
-
     
   }
   
@@ -767,8 +771,9 @@ section{
   }
   .msg textarea:focus{
     outline: none !important;
-    border:2px solid #01fff4;
+    border:2px solid #01fff480;
 }
+
   
   ::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
