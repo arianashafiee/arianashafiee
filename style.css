@@ -548,7 +548,7 @@ section{
 }
 .projects .content .box .header{
     color: white;
-    font-family: Rubik;
+    font-family: 'Rubik';
     margin-top: 25px;
     font-size: 23px;
     font-weight: 1000;
@@ -600,7 +600,7 @@ section{
     margin-right: auto; 
 }
 .projects .content .link a{
-    font-family: Rubik;
+    font-family: 'Rubik';
     border-radius: 100px;
     color:#01fff4;
     background: #000000;
@@ -616,7 +616,7 @@ section{
     margin-left: 25px;
 }
 .projects .content .box .tags{
-    font-family: Rubik;
+    font-family: 'Rubik';
     font-weight: 600;
     color:#01fff4;
     font-size: 20px;
