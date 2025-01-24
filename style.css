@@ -278,6 +278,7 @@ body::after {
     margin-top: 3vh;
     font-family: 'Montserrat', sans-serif;
     font-size: 13em;
+    line-height: 1; /* Set line height to normal or minimal spacing */
     font-weight: bold;
     display: inline-block;
     background: var(--bg-grain), conic-gradient(from 140deg at calc(var(--bg-1-x) * 1%) 90%, #1a0d00, #00011a, #15009e, #d232aa, #fa8c3d, #fff480, #fffffa, #7ed4fb, #040d8b, #010014),
