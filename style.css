@@ -340,6 +340,7 @@ body::after {
     color: #ffffff; /* Set the font color to neon blue */
     max-width: 100%; /* Restrict the width of the typing text */
     text-align: left; /* Center align the text */
+    vertical-align: top;
     text-transform: uppercase; 
     margin-bottom: 3vh
 
