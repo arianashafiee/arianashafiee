@@ -8,23 +8,15 @@
 :root {
   --glow-color: #01fff4; /* Neon glow color */
   --text-outline-color: #000; /* Black text for contrast */
-  --image-height: 235px; /* Default height for all images */
+  --image-height: 325px; /* Default height for all images */
   --font-size: calc(var(--image-height) / 6); /* Font size based on image height */
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: "Roboto", sans-serif;
-  background-color: #000; /* Dark background */
-  color: #01fff4;
-  overflow-x: hidden; /* Prevent horizontal overflow */
-}
 
 .svg-container {
-  padding: 0rem 0;
   text-align: center;
-  padding-top: 12vh;
+  padding-top: 40vh;
+  padding-bottom: 40vh;
   max-width: 100%;
 }
 
@@ -56,6 +48,7 @@ body {
   filter: drop-shadow(0 0 40px var(--glow-color)); /* Intensify glow */
   transform: scale(1.1); /* Slight zoom */
 }
+
 
 /* Text over images */
 .svg-text {

@@ -19,17 +19,15 @@ html, body {
 }
 
 /* Section Styling */
-.button-section {
+
+
+.button-container {
     display: flex;
     justify-content: left;
     align-items: left;
     height: 15vh;
     padding-top: 0px;
     background: var(--black);
-    padding-bottom: 20px;
-}
-
-.button-container {
     display: flex;
     gap: 25px;
 }

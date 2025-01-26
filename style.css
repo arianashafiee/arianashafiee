@@ -37,6 +37,7 @@ html, body {
 html{
     scroll-behavior: smooth;
 }
+
 /* navbar styling */
 .navbar{
     background-color: black;
@@ -133,7 +134,12 @@ nav ul li a{
     margin-left: 50px;
     display: block;
     transition: color 0.3 ease;
+   
 }
+.hidden {
+    display: none;
+}
+
 
 nav ul li a:hover{
     color:#01fff4;
@@ -155,6 +161,9 @@ nav ul li a:hover{
     background: black;
     color: #01fff4;
     overflow: visible;
+    filter: none;
+    opacity: 1;
+    transition: filter 0.3s ease, opacity 0.3s ease;
 }
 
 .home-all {
@@ -379,11 +388,34 @@ body::after {
     margin-right: -9vw;
 
 }
-section{
-    font-family: 'Open Sans', sans-serif;
-    padding-top: 60px;
+/* Default state for all sections */
+section {
+    transition: filter 0.3s ease, opacity 0.3s ease;
+    filter: none;
+    opacity: 1;
 }
 
+/* On hover: Blur all sections except the hovered one */
+section:hover ~ section,
+section:hover,
+section:not(:hover) {
+    filter: blur(8px);
+    opacity: 0.5;
+}
+
+/* Keep the hovered section clear */
+section:hover {
+    filter: none;
+    opacity: 1;
+}
+
+/* Ensure Navbar and Footer remain unaffected */
+.navbar, .footer {
+    filter: none !important;
+    opacity: 1 !important;
+}
+
+  
 /*What I Do Section*/
 .title{
     width: 100%;
@@ -391,68 +423,97 @@ section{
     font-weight: bold;
     font-family: var(--font-family);
     font-size: 100px;
+    margin-top: 100px;
     margin-bottom: 40px;
 }
-.what-i-do .content{
+.what-i-do .content {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    column-gap: 50px;
+    flex-wrap: wrap; /* Allow items to wrap to the next row */
+    align-items: flex-start; /* Align items to the top */
+    justify-content: flex-start; /* Items start at the left with no extra spacing */
+    gap: 0; /* Remove all gaps between items */
 }
 
-.what-i-do .content .card{
-    width: calc(33% - 115px);
+.what-i-do .content .card {
+    position: relative; /* Create a positioning context for the overlay */
+    width: calc(33.333% - 10px); /* Same width as before */
     background: black;
     text-align: center;
-    padding-top: 30px;
-    padding-bottom: 25px;
+    padding: 20px;
     cursor: pointer;
     box-shadow: 0px 18px 50px #01fff4;
-    border-radius: 25px;
-    margin-bottom: 50px;
+    border-radius: 180px;
+    margin: 0; /* Ensure no additional margin between items */
+    overflow: hidden; /* Ensure content stays inside the card */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box; /* Include padding and border in card's size */
+    word-wrap: break-word; /* Break words if they exceed the card width */
 }
-.what-i-do .content .name{
+
+.what-i-do .content .card:hover {
+    transform: scale(1.05); /* Slightly enlarge the card on hover */
+    box-shadow: 0px 20px 60px #01fff4; /* Add more intense shadow */
+}
+
+.what-i-do .content img {
+    height: 150px; /* Keep the same height as before */
+    width: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensure the image fills the area properly */
+    transition: filter 0.3s ease; /* Smooth blur effect */
+}
+
+.what-i-do .content .card:hover img {
+    filter: blur(8px); /* Blur the image on hover */
+}
+
+.what-i-do .content .name {
+    position: relative; /* Keep the title above the image */
+    z-index: 1; /* Ensure title is above the blurred image */
     text-transform: uppercase;
     color: white;
-    margin-top: 25px;
-    font-size: 18px;
-    font-weight: 600;
+    margin-top: 25px; /* Maintain same spacing as before */
+    font-size: 40px; /* Adjusted for better word wrapping */
+    font-weight: 600; /* Bold text */
+    transition: opacity 0.3s ease; /* Smooth fade effect */
+    overflow-wrap: break-word; /* Ensure long words break to the next line */
+    text-align: center; /* Align text to the center */
 }
-.what-i-do .content .link{
-    margin-top: 35px;
-    margin-bottom: 25px;
+
+.what-i-do .content .card:hover .name {
+    opacity: 0.5; /* Dim the title on hover for better focus on the button */
 }
-.what-i-do .content .link a{
+
+.what-i-do .content .link {
+    position: absolute; /* Position the button in the center */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Perfect centering */
+    z-index: 2; /* Ensure the button is above the blurred background */
+    opacity: 0; /* Hide button by default */
+    transition: opacity 0.3s ease; /* Smooth fade-in effect */
+}
+
+.what-i-do .content .card:hover .link {
+    opacity: 1; /* Show button on hover */
+}
+
+.what-i-do .content .link a {
     border-radius: 100px;
-    color:#01fff4;
-    background: black;
+    color: #01fff4;
+    background: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
     font-size: 18px;
     padding: 12px 50px;
     border: 2px solid #01fff4;
+    text-transform: uppercase;
     transition: all 0.3s ease;
 }
-.what-i-do .content .link a:hover{
-    color:black;
-    font-weight: bold;
-    background:#01fff4 ;
-}
-.what-i-do .content img{
-    height: 150px;
-    width: auto;
-    object-fit: cover;
 
+.what-i-do .content .link a:hover {
+    color: black;
+    font-weight: bold;
+    background: #01fff4;
 }
-.what-i-do .content .card .box{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-}
-.what-i-do .content .card:hover .box{
-    transform: scale(1.05);
-}
+
 
 /*Testimonial Section*/
 .testimonial .carousel{
