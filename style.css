@@ -466,8 +466,8 @@ section:hover {
     text-transform: uppercase;
     color: white;
     margin-top: 25px;
-    margin-left: 25px;
-    margin-right: 25px;
+    padding-left: 50px;
+    padding-right: 50px;
     font-size: 40px;
     font-weight: 600;
 }
@@ -1097,7 +1097,7 @@ margin-top: 20px;
     }
       
   /* Responsive media query */
-@media (max-width: 1600px){
+@media (max-width: 1697px){
     .max-width{
         padding: 0 100px;
     }
@@ -1106,6 +1106,9 @@ margin-top: 20px;
     }
     .navbar.sticky .logo a{
         font-size: 25px;
+    }
+    .home .home-content .text-1{
+        font-size: 0.9em;
     }
 }
 
@@ -1124,10 +1127,11 @@ margin-top: 20px;
         padding: 0 70px;
     }
     .home .home-content .text-1{
-        font-size: 15px;
+        font-size: 0.8em;
+        margin-top: 4vh;
     }
     .home .home-content .text-2{
-        font-size: 40px;
+        font-size: 3.5em;
     }
   
     .navbar .logo a{
@@ -1144,16 +1148,19 @@ margin-top: 20px;
     .navbar .menu li a{
         font-size: 15px;
     }
-
+    .home img{
+        margin-top: 11vh;
+    }
     
 }
-@media (max-width: 1225px){
+@media (max-width: 1260px){
 
     .home .home-content .text-1{
-        font-size: 13px;
+        margin-top: 5vh;
+        font-size: 11px;
     }
     .home .home-content .text-2{
-        font-size: 36px;
+        font-size: 3em;
     }
   
     .home .home-content a{
@@ -1165,11 +1172,18 @@ margin-top: 20px;
         padding: 0 60px;
     }
     .home img{
+        margin-top: 10vh;
         width: 360px;
     }
 }
 
 @media (max-width: 1075px){
+    .home .home-content .text-1{
+        font-size: 10px;
+    }
+    .home .home-content .text-2{
+        font-size: 29px;
+    }
 
     .group .details{
         font-size: 16px;
@@ -1271,7 +1285,7 @@ margin-top: 20px;
         font-size: 11px;
     }
     .home .home-content .text-2{
-        font-size: 30px;
+        font-size: 45px;
     }
     .home img{
         width: 300px;
@@ -1301,12 +1315,14 @@ margin-top: 20px;
 }
 @media (max-width: 910px){
     .home .home-content .text-1{
-        font-size: 12px;
+        margin-top: 11vh;
+        font-size: 9px;
     }
     .home .home-content .text-2{
-        font-size: 30px;
+        font-size: 39px;
     }
     .home img{
+        margin-top: 17vh;
         width: 275px;
     }
     .projects .content .box2 .header{
@@ -1359,7 +1375,10 @@ margin-top: 20px;
         font-size: 14px;
     }
     .home .home-content .text-1{
-        font-size: 10px;
+        font-size: 8px;
+    }
+    .home .home-content .text-2{
+        font-size: 30px;
     }
     
 }
@@ -1370,11 +1389,12 @@ margin-top: 20px;
     }
 
     .home .home-content .text-1{
-        font-size: 15px;
+        margin-top: 2vh;
+        font-size: 13px;
     }
 
     .home .home-content .text-2{
-        font-size: 44px;
+        font-size: 49px;
     }
 
     .home{
@@ -1396,6 +1416,14 @@ margin-top: 20px;
 
 
 @media (max-width: 750px){
+    .home .home-content .text-1{
+        margin-top: 8vh;
+        font-size: 10px;
+    }
+
+    .home .home-content .text-2{
+        font-size: 40px;
+    }
     .group .details{
         font-size: 16x;
     }
@@ -1484,12 +1512,6 @@ margin-top: 20px;
     }
     .navbar.sticky .logo a{
         font-size: 18px;
-    }
-    .home .home-content .text-1{
-        font-size: 15px;
-    }
-    .home .home-content .text-2{
-        font-size: 44px;
     }
   
     .home{
@@ -1593,12 +1615,19 @@ margin-top: 20px;
     }
 
 }
-@media (max-width: 570px){
+@media (max-width: 577px){
+  
+
     .home .home-content .text-1{
-        font-size: 12px;
+        margin-top: 1vh;
+        font-size: 10px;
+    }
+
+    .home .home-content .text-2{
+        font-size: 39px;
     }
     .group{
-        width: calc(100%);
+        width: calc(90%);
     }
     .group .details{
         font-size: 14x;
@@ -1677,14 +1706,14 @@ margin-top: 20px;
             padding: 0 20px;
         }
         .home .home-content .text-1{
-            font-size: 11px;
+            font-size: 9px;
         }
         .home .home-content .text-2{
-            font-size: 33px;
+            font-size: 37px;
         }
       
     }
-        @media (max-width: 460px){
+        @media (max-width: 488px){
             .overview{
                 height: 200px;
             }
@@ -1700,10 +1729,11 @@ margin-top: 20px;
                 padding: 0 20px;
             }
             .home .home-content .text-1{
-                font-size: 12px;
+                margin-top: 3vh;
+                font-size: 8px;
             }
             .home .home-content .text-2{
-                font-size: 27px;
+                font-size: 35px;
             }
          
             .home .links .contact a{
@@ -1712,7 +1742,13 @@ margin-top: 20px;
             }
             
         }
-        @media (max-width: 420px){
+        @media (max-width: 439px){
+            .home .home-content .text-1{
+                font-size: 7px;
+            }
+            .home .home-content .text-2{
+                font-size: 30px;
+            }
 
             .home .links .contact a{
                 font-size: 20px;
