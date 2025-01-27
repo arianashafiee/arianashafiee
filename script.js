@@ -8,6 +8,7 @@ $(document).ready(function () {
     let scrollTimeout = null; // For debouncing scroll events
 
     // Function to determine and update scroll direction
+    
     function updateScrollDirection() {
         const { scrollY } = window;
         isIncreasingY = scrollY > lastScrollY;
