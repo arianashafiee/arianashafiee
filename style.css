@@ -431,7 +431,7 @@ section:hover {
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    column-gap: 50px;
+    column-gap: 30px;
 }
 
 .what-i-do .content .card{
@@ -449,6 +449,8 @@ section:hover {
     text-transform: uppercase;
     color: white;
     margin-top: 25px;
+    margin-right: 25px;
+    margin-left: 25px;
     font-size: 40px;
     font-weight: 600;
 }

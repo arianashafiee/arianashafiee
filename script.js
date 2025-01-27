@@ -7,12 +7,18 @@ $(document).ready(function () {
     let lastScrollY = 0; // Store the last scroll position
     let isIncreasingY = true; // Track scroll direction
 
-    $(window).scroll(function () {
+    // Function to determine and update scroll direction
+    function updateScrollDirection() {
         const { scrollY } = window;
-
-        // Determine scroll direction
         isIncreasingY = scrollY > lastScrollY;
         lastScrollY = scrollY;
+    }
+
+    // Attach scroll event to update scroll direction
+    $(window).on('scroll', updateScrollDirection);
+
+    $(window).scroll(function () {
+        const { scrollY } = window;
 
         // Navbar stickiness logic
         if (scrollY > 20) {
@@ -57,7 +63,7 @@ $(document).ready(function () {
     $('.navbar .menu li a').click(function () {
         $('html').css('scrollBehavior', 'smooth');
         isProgrammaticScroll = true; // Prevent interference
-        setTimeout(() => (isProgrammaticScroll = false), 1000); // Reset after menu click
+        setTimeout(() => (isProgrammaticScroll = false), 100); // Reset after menu click
     });
 
     // Menu button toggle
