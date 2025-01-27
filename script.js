@@ -5,7 +5,6 @@ $(document).ready(function () {
     let isScrollEffectDisabled = false; // Disable scroll logic during certain actions
     let lastScrollY = 0; // Track the last scroll position
     let isIncreasingY = true; // Track scroll direction
-    let scrollTimeout = null; // For debouncing scroll events
 
     // Function to determine and update scroll direction
     function updateScrollDirection() {
@@ -17,44 +16,32 @@ $(document).ready(function () {
     // Ensure scroll direction updates on load
     updateScrollDirection();
 
-    // Debounce scroll events
-    function debounceScroll(callback, delay) {
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(callback, delay);
-    }
-
     // Scroll event listener
     $(window).scroll(function () {
-        debounceScroll(() => {
-            if (isScrollEffectDisabled) return; // Ignore logic during disabled state
+        if (isScrollEffectDisabled) return; // Ignore logic during disabled state
 
-            updateScrollDirection();
+        updateScrollDirection();
 
-            const { scrollY } = window;
+        const { scrollY } = window;
 
-            // Auto-scroll logic with bounds
-            if (homeActive && isIncreasingY && scrollY >= 100 && scrollY < 650) {
-                autoScrollTo("#image-section-link", "image");
-            } else if (imageActive && !isIncreasingY && scrollY <= 650 && scrollY > 100) {
-                autoScrollTo("#home-section-link", "home");
-            } else if (imageActive && isIncreasingY && scrollY >= 1200 && scrollY < 1900) {
-                autoScrollTo("#what-section-link", "whatIDo");
-            } else if (whatIDoActive && !isIncreasingY && scrollY <= 1900 && scrollY > 1200) {
-                autoScrollTo("#image-section-link", "image");
-            }
-        }, 50); // Debounce delay
+        // Auto-scroll logic with bounds
+        if (homeActive && isIncreasingY && scrollY >= 100 && scrollY < 650) {
+            autoScrollTo("#image-section-link", "image");
+        } else if (imageActive && !isIncreasingY && scrollY <= 650 && scrollY > 100) {
+            autoScrollTo("#home-section-link", "home");
+        } else if (imageActive && isIncreasingY && scrollY >= 1200 && scrollY < 1900) {
+            autoScrollTo("#what-section-link", "whatIDo");
+        } else if (whatIDoActive && !isIncreasingY && scrollY <= 1900 && scrollY > 1200) {
+            autoScrollTo("#image-section-link", "image");
+        }
     });
 
     // Function to handle auto-scroll and state updates
     function autoScrollTo(target, newState) {
         isScrollEffectDisabled = true; // Disable user-driven scroll effects during navigation
+
         $(target)[0].click(); // Simulate a menu click
         updateState(newState);
-
-        // Sync scroll position and direction immediately
-        const targetOffset = $(target).offset().top;
-        lastScrollY = targetOffset;
-        isIncreasingY = targetOffset > lastScrollY;
 
         setTimeout(() => {
             isScrollEffectDisabled = false; // Re-enable scroll effects
@@ -81,6 +68,7 @@ $(document).ready(function () {
             },
             1000, // Duration
             function () {
+                updateStateFromHref(href); // Update state based on href
                 isScrollEffectDisabled = false; // Re-enable scroll effects
                 updateScrollDirection(); // Sync scroll direction
             }
@@ -112,6 +100,17 @@ $(document).ready(function () {
             );
         }, 1000);
     });
+
+    // Update state based on href target
+    function updateStateFromHref(href) {
+        if (href.includes("#home")) {
+            updateState("home");
+        } else if (href.includes("#image-section")) {
+            updateState("image");
+        } else if (href.includes("#what-i-do")) {
+            updateState("whatIDo");
+        }
+    }
 
     // Menu button toggle
     $('.menu-btn').click(function () {
