@@ -1,138 +1,146 @@
 $(document).ready(function () {
-    let homeActive = true; // Home section is active on load
-    let imageActive = false; // Image section starts inactive
-    let whatIDoActive = false; // What I Do section starts inactive
-    let isScrollEffectDisabled = false; // Disable scroll logic during certain actions
-    let lastScrollY = 0; // Track the last scroll position
-    let isIncreasingY = true; // Track scroll direction
+    // State Variables
+    let currentSection = "home"; // Tracks the active section
+    let isAutoScrollEnabled = true; // Controls whether auto-scroll is active
+    let lastScrollY = 0; // Last recorded scroll position
+    let isIncreasingY = true; // Scroll direction tracker
+    const callbacks = []; // Queue for navigation callbacks
 
-    // Function to determine and update scroll direction
+    // Helper: Update scroll direction
     function updateScrollDirection() {
         const { scrollY } = window;
         isIncreasingY = scrollY > lastScrollY;
         lastScrollY = scrollY;
     }
 
-    // Ensure scroll direction updates on load
-    updateScrollDirection();
+    // Helper: Execute the next callback in the queue
+    function executeNextCallback() {
+        if (callbacks.length > 0) {
+            const nextCallback = callbacks.shift(); // Remove the first callback
+            nextCallback(); // Execute it
+        }
+    }
 
-    // Scroll event listener
-    $(window).scroll(function () {
-        if (isScrollEffectDisabled) return; // Ignore logic during disabled state
+    // Central Auto-Scroll Function
+    function autoScroll(target, targetSection) {
+        isAutoScrollEnabled = false; // Disable auto-scroll during animation
+        callbacks.push(() => {
+            $('html, body').animate(
+                {
+                    scrollTop: $(target).offset().top, // Navigate to the target
+                },
+                800, // Duration
+                function () {
+                    currentSection = targetSection; // Update the active section
+                    isAutoScrollEnabled = true; // Reactivate auto-scroll
+                    updateScrollDirection(); // Sync scroll direction
+                    executeNextCallback(); // Execute the next callback
+                }
+            );
+        });
+        executeNextCallback(); // Start execution if queue was empty
+    }
+
+    // Scroll Event Listener
+    $(window).on('scroll', function () {
+        if (!isAutoScrollEnabled) return; // Skip if auto-scroll is disabled
 
         updateScrollDirection();
 
         const { scrollY } = window;
 
-        // Auto-scroll logic with bounds
-        if (homeActive && isIncreasingY && scrollY >= 100 && scrollY < 650) {
-            autoScrollTo("#image-section-link", "image");
-        } else if (imageActive && !isIncreasingY && scrollY <= 650 && scrollY > 100) {
-            autoScrollTo("#home-section-link", "home");
-        } else if (imageActive && isIncreasingY && scrollY >= 1200 && scrollY < 1900) {
-            autoScrollTo("#what-section-link", "whatIDo");
-        } else if (whatIDoActive && !isIncreasingY && scrollY <= 1900 && scrollY > 1200) {
-            autoScrollTo("#image-section-link", "image");
+        // Auto-scroll logic based on direction and bounds
+        if (currentSection === "home" && isIncreasingY && scrollY >= 100 && scrollY < 650) {
+            autoScroll("#image-section-link", "image");
+        } else if (currentSection === "image" && !isIncreasingY && scrollY <= 650 && scrollY > 100) {
+            autoScroll("#home-section-link", "home");
+        } else if (currentSection === "image" && isIncreasingY && scrollY >= 1200 && scrollY < 1900) {
+            autoScroll("#what-section-link", "whatIDo");
+        } else if (currentSection === "whatIDo" && !isIncreasingY && scrollY <= 1900 && scrollY > 1200) {
+            autoScroll("#image-section-link", "image");
         }
     });
 
-    // Function to handle auto-scroll and state updates
-    function autoScrollTo(target, newState) {
-        isScrollEffectDisabled = true; // Disable user-driven scroll effects during navigation
-
-        $(target)[0].click(); // Simulate a menu click
-        updateState(newState);
-
-        setTimeout(() => {
-            isScrollEffectDisabled = false; // Re-enable scroll effects
-            updateScrollDirection(); // Ensure correct direction
-        }, 100); // Short delay for state reactivation
-    }
-
-    // Update active states
-    function updateState(activeSection) {
-        homeActive = activeSection === "home";
-        imageActive = activeSection === "image";
-        whatIDoActive = activeSection === "whatIDo";
-    }
-
-    // Smooth scroll on menu items click
-    $('.navbar .menu li a').click(function () {
-        $('html').css('scrollBehavior', 'smooth');
-        isScrollEffectDisabled = true; // Disable effects during menu click
-
-        const href = $(this).attr('href'); // Target section
-        $('html, body').animate(
-            {
-                scrollTop: $(href).offset().top, // Scroll to the section
-            },
-            1000, // Duration
-            function () {
-                updateStateFromHref(href); // Update state based on href
-                isScrollEffectDisabled = false; // Re-enable scroll effects
-                updateScrollDirection(); // Sync scroll direction
-            }
-        );
-    });
-
-    // Handle dropdown section clicks
-    $('.navbar .menu ul li ul li a').click(function (e) {
+    // Navbar Link Click Handler
+    $('.navbar .menu li a').click(function (e) {
         e.preventDefault(); // Prevent default anchor behavior
-        const href = $(this).attr('href'); // Get the href target
+        const target = $(this).attr('href'); // Get target href
 
-        isScrollEffectDisabled = true; // Disable auto-scroll effects during navigation
-
-        // Simulate scroll to Home first
-        autoScrollTo("#home-section-link", "home");
-
-        // After reaching Home, navigate to the dropdown section
-        setTimeout(() => {
+        // Add a navigation callback
+        callbacks.push(() => {
             $('html, body').animate(
                 {
-                    scrollTop: $(href).offset().top, // Scroll to the target section
+                    scrollTop: $(target).offset().top, // Navigate to target
                 },
-                1000, // Duration
+                800, // Duration
                 function () {
-                    updateState("whatIDo"); // Update state to What I Do
-                    isScrollEffectDisabled = false; // Re-enable scroll effects
-                    updateScrollDirection(); // Ensure scroll direction is correct
+                    currentSection = target.includes("home")
+                        ? "home"
+                        : target.includes("image")
+                        ? "image"
+                        : target.includes("what")
+                        ? "whatIDo"
+                        : currentSection; // Update section state
+                    isAutoScrollEnabled = true; // Reactivate auto-scroll
+                    updateScrollDirection(); // Sync scroll direction
+                    executeNextCallback(); // Execute the next callback
                 }
             );
-        }, 1000);
+        });
+        executeNextCallback(); // Start execution if queue was empty
     });
 
-    // Update state based on href target
-    function updateStateFromHref(href) {
-        if (href.includes("#home")) {
-            updateState("home");
-        } else if (href.includes("#image-section")) {
-            updateState("image");
-        } else if (href.includes("#what-i-do")) {
-            updateState("whatIDo");
-        }
-    }
+    // Dropdown Link Click Handler (What I Do topics)
+    $('.navbar .menu ul li ul li a').click(function (e) {
+        e.preventDefault(); // Prevent default anchor behavior
+        const target = $(this).attr('href'); // Get target href
 
-    // Menu button toggle
+        // Queue navigation to Home, then the dropdown section
+        callbacks.push(() => autoScroll("#home-section-link", "home")); // Navigate to Home
+        callbacks.push(() =>
+            $('html, body').animate(
+                {
+                    scrollTop: $(target).offset().top, // Navigate to the dropdown target
+                },
+                800, // Duration
+                function () {
+                    currentSection = "whatIDo"; // Update to What I Do section
+                    isAutoScrollEnabled = true; // Reactivate auto-scroll
+                    updateScrollDirection(); // Sync scroll direction
+                    executeNextCallback(); // Execute the next callback
+                }
+            )
+        );
+        executeNextCallback(); // Start execution if queue was empty
+    });
+
+    // Navbar Sticky Behavior
+    $(window).scroll(function () {
+        if (window.scrollY > 20) {
+            $('.navbar').addClass('sticky');
+            $('.dropdown').addClass('sticky');
+        } else {
+            $('.navbar').removeClass('sticky');
+            $('.dropdown').removeClass('sticky');
+        }
+    });
+
+    // Menu Button Toggle
     $('.menu-btn').click(function () {
         $('.navbar .menu').toggleClass('active');
         $('.menu-btn i').toggleClass('active');
-
-        // Reset active sections if menu is toggled
-        updateState("home");
+        currentSection = "home"; // Reset state when toggling menu
     });
 
-    // Close menu on link click
+    // Close Menu on Link Click
     $('.navbar .menu li a').click(function () {
         $('.navbar .menu').removeClass('active');
         $('.menu-btn i').removeClass('active');
     });
 
-    // Typing animation logic
+    // Typing Animation
     new Typed('.typing', {
-        strings: [
-            ' SWE intern',
-            'Founding UX @ Otto',
-        ],
+        strings: [' SWE intern', 'Founding UX @ Otto'],
         typeSpeed: 140,
         backSpeed: 100,
         loop: true,
