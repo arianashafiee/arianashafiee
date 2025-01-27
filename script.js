@@ -8,12 +8,14 @@ $(document).ready(function () {
     let scrollTimeout = null; // For debouncing scroll events
 
     // Function to determine and update scroll direction
-    
     function updateScrollDirection() {
         const { scrollY } = window;
         isIncreasingY = scrollY > lastScrollY;
         lastScrollY = scrollY;
     }
+
+    // Ensure the scroll direction is updated on load
+    updateScrollDirection();
 
     // Debounce scroll events
     function debounceScroll(callback, delay) {
@@ -48,6 +50,12 @@ $(document).ready(function () {
         isScrollEffectDisabled = true; // Disable scroll effects during navigation
         $(target)[0].click(); // Simulate a menu click
         updateState(newState);
+
+        // Manually set scroll direction and state
+        const targetOffset = $(target).offset().top;
+        isIncreasingY = targetOffset > lastScrollY;
+        lastScrollY = targetOffset;
+
         setTimeout(() => {
             isScrollEffectDisabled = false; // Re-enable scroll effects
         }, 1000); // Allow smooth scrolling to complete
@@ -89,7 +97,12 @@ $(document).ready(function () {
     $('.navbar .menu li a').click(function () {
         $('html').css('scrollBehavior', 'smooth');
         isScrollEffectDisabled = true; // Disable effects during menu click
-        setTimeout(() => (isScrollEffectDisabled = false), 100); // Re-enable after menu click
+
+        // Immediately update scroll direction and state
+        setTimeout(() => {
+            isScrollEffectDisabled = false; // Re-enable after menu click
+            updateScrollDirection(); // Ensure direction is correct after the scroll
+        }, 100); // Minimal delay to capture the correct state
     });
 
     // Menu button toggle
