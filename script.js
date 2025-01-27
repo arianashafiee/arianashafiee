@@ -2,7 +2,7 @@ $(document).ready(function () {
     let homeActive = true; // Home section is active on load
     let imageActive = false; // Image section starts inactive
     let whatIDoActive = false; // What I Do section starts inactive
-    let isScrollEffectDisabled = false; // Disable scroll logic during certain actions
+    let isScrollEffectDisabled = false; // Disable scroll logic during programmatic scrolls
     let lastScrollY = 0; // Track the last scroll position
     let isIncreasingY = true; // Track scroll direction
     let scrollTimeout = null; // For debouncing scroll events
@@ -14,22 +14,13 @@ $(document).ready(function () {
         lastScrollY = scrollY;
     }
 
-    // Ensure the scroll direction is updated on load
-    updateScrollDirection();
+    // Attach scroll event to update scroll direction
+    $(window).on('scroll', updateScrollDirection);
 
-    // Debounce scroll events
-    function debounceScroll(callback, delay) {
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(callback, delay);
-    }
-
-    // Scroll event listener
     $(window).scroll(function () {
+        if (isScrollEffectDisabled) return; // Ignore logic during programmatic scrolls
+
         debounceScroll(() => {
-            updateScrollDirection();
-
-            if (isScrollEffectDisabled) return; // Ignore logic during disabled state
-
             const { scrollY } = window;
 
             // Auto-scroll logic with bounds
@@ -45,20 +36,32 @@ $(document).ready(function () {
         }, 50); // Debounce delay
     });
 
+    // Debounce function to limit scroll logic execution
+    function debounceScroll(callback, delay) {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(callback, delay);
+    }
+
     // Function to handle auto-scroll and state updates
     function autoScrollTo(target, newState) {
-        isScrollEffectDisabled = true; // Disable scroll effects during navigation
-        $(target)[0].click(); // Simulate a menu click
-        updateState(newState);
+        isScrollEffectDisabled = true; // Disable user scroll effects during navigation
+        $('html, body').animate(
+            { scrollTop: $(target).offset().top }, // Scroll to the target section
+            1000, // Duration
+            "swing", // Easing
+            function () {
+                updateState(newState); // Update state after reaching target
+                syncScrollStates(); // Ensure scroll states are in sync
+                isScrollEffectDisabled = false; // Re-enable scroll effects
+            }
+        );
+    }
 
-        // Manually set scroll direction and state
-        const targetOffset = $(target).offset().top;
-        isIncreasingY = targetOffset > lastScrollY;
-        lastScrollY = targetOffset;
-
-        setTimeout(() => {
-            isScrollEffectDisabled = false; // Re-enable scroll effects
-        }, 1000); // Allow smooth scrolling to complete
+    // Synchronize scroll-related states immediately
+    function syncScrollStates() {
+        const { scrollY } = window;
+        lastScrollY = scrollY;
+        updateScrollDirection();
     }
 
     // Update active states
@@ -75,43 +78,47 @@ $(document).ready(function () {
 
         isScrollEffectDisabled = true; // Disable auto-scroll effects during navigation
 
-        // Simulate scroll to Home first
-        autoScrollTo("#home-section-link", "home");
-
-        // After reaching Home, navigate to the dropdown section
-        setTimeout(() => {
-            $('html, body').animate(
-                {
-                    scrollTop: $(href).offset().top, // Scroll to the target section
-                },
-                1000, // Duration
-                function () {
-                    updateState("whatIDo"); // Update state to What I Do
-                    isScrollEffectDisabled = false; // Re-enable scroll effects
-                }
-            );
-        }, 1000);
+        // Scroll to Home first
+        $('html, body').animate(
+            { scrollTop: $("#home-section-link").offset().top },
+            1000, // Duration
+            "swing",
+            function () {
+                updateState("home"); // Set state to Home
+                $('html, body').animate(
+                    { scrollTop: $(href).offset().top }, // Scroll to dropdown target
+                    1000, // Duration
+                    "swing",
+                    function () {
+                        updateState("whatIDo"); // Update state to What I Do
+                        syncScrollStates(); // Synchronize scroll states
+                        isScrollEffectDisabled = false; // Re-enable scroll effects
+                    }
+                );
+            }
+        );
     });
 
     // Smooth scroll on menu items click
     $('.navbar .menu li a').click(function () {
-        $('html').css('scrollBehavior', 'smooth');
+        const href = $(this).attr('href'); // Target section
+        $('html, body').animate(
+            { scrollTop: $(href).offset().top },
+            1000, // Duration
+            "swing",
+            function () {
+                syncScrollStates(); // Ensure scroll direction is accurate
+                isScrollEffectDisabled = false; // Re-enable scroll effects
+            }
+        );
         isScrollEffectDisabled = true; // Disable effects during menu click
-
-        // Immediately update scroll direction and state
-        setTimeout(() => {
-            isScrollEffectDisabled = false; // Re-enable after menu click
-            updateScrollDirection(); // Ensure direction is correct after the scroll
-        }, 100); // Minimal delay to capture the correct state
     });
 
     // Menu button toggle
     $('.menu-btn').click(function () {
         $('.navbar .menu').toggleClass('active');
         $('.menu-btn i').toggleClass('active');
-
-        // Reset active sections if menu is toggled
-        updateState("home");
+        updateState("home"); // Reset active state to Home
     });
 
     // Close menu on link click
@@ -121,7 +128,6 @@ $(document).ready(function () {
     });
 
     // Typing animation logic
-    
     new Typed('.typing', {
         strings: [
             ' SWE intern',
