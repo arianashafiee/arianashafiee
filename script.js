@@ -53,31 +53,6 @@ $(document).ready(function () {
         whatIDoActive = activeSection === "whatIDo";
     }
 
-    // Handle dropdown section clicks
-    $('.navbar .menu ul li ul li a').click(function (e) {
-        e.preventDefault(); // Prevent default anchor behavior
-        const href = $(this).attr('href'); // Get the href target
-
-        dropdownClicked = true; // Mark dropdown as clicked
-
-        // Simulate scroll to Home first
-        autoScrollTo("#home-section-link", "home");
-
-        // After reaching Home, navigate to the dropdown section
-        setTimeout(() => {
-            $('html, body').animate(
-                {
-                    scrollTop: $(href).offset().top, // Scroll to the target section
-                },
-                1000, // Duration
-                function () {
-                    dropdownClicked = false; // Reset dropdown state after animation
-                    updateState("whatIDo"); // Update state to What I Do
-                }
-            );
-        }, 1000); // Ensure Home is reached first
-    });
-
     // Smooth scroll on menu items click
     $('.navbar .menu li a').click(function () {
         $('html').css('scrollBehavior', 'smooth');
