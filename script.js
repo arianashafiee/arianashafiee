@@ -2,33 +2,41 @@ $(document).ready(function () {
     let homeActive = true; // Home section is active on load
     let imageActive = false; // Image section starts inactive
     let whatIDoActive = false; // What I Do section starts inactive
-
+    let dropdownClicked = false; // Track if a dropdown section is clicked
+    let isProgrammaticScroll = false; // Prevent interference with programmatic scrolls
     let lastScrollY = 0; // Store the last scroll position
     let isIncreasingY = true; // Track scroll direction
-    let isProgrammaticScroll = false; // Prevent interference during programmatic scrolls
 
-    // Polling mechanism: Check scroll position at regular intervals
-    setInterval(() => {
-        const scrollY = window.scrollY;
+    $(window).scroll(function () {
+        const { scrollY } = window;
 
         // Determine scroll direction
         isIncreasingY = scrollY > lastScrollY;
         lastScrollY = scrollY;
 
-        // Ignore logic during programmatic scrolls
-        if (isProgrammaticScroll) return;
+        // Navbar stickiness logic
+        if (scrollY > 20) {
+            $('.navbar').addClass('sticky');
+            $('.dropdown').addClass('sticky');
+        } else {
+            $('.navbar').removeClass('sticky');
+            $('.dropdown').removeClass('sticky');
+        }
 
-        // Handle auto-scroll logic based on states, direction, and bounds
-        if (homeActive && isIncreasingY && scrollY >= 91 && scrollY < 813) {
+        // Ignore logic during programmatic scrolls or dropdown actions
+        if (isProgrammaticScroll || dropdownClicked) return;
+
+        // Auto-scroll logic with upper and lower bounds
+        if (homeActive && isIncreasingY && scrollY >= 100 && scrollY < 650) {
             autoScrollTo("#image-section-link", "image");
-        } else if (imageActive && !isIncreasingY && scrollY > 91 && scrollY <= 813) {
+        } else if (imageActive && !isIncreasingY && scrollY <= 650 && scrollY > 100) {
             autoScrollTo("#home-section-link", "home");
-        } else if (imageActive && isIncreasingY && scrollY >= 1190 && scrollY < 1929.76) {
+        } else if (imageActive && isIncreasingY && scrollY >= 1200 && scrollY < 1900) {
             autoScrollTo("#what-section-link", "whatIDo");
-        } else if (whatIDoActive && !isIncreasingY && scrollY > 1190 && scrollY <= 1929.76) {
+        } else if (whatIDoActive && !isIncreasingY && scrollY <= 1900 && scrollY > 1200) {
             autoScrollTo("#image-section-link", "image");
         }
-    }, 100); // Poll every 100ms
+    });
 
     // Function to handle auto-scroll and state updates
     function autoScrollTo(target, newState) {
@@ -45,10 +53,35 @@ $(document).ready(function () {
         whatIDoActive = activeSection === "whatIDo";
     }
 
+    // Handle dropdown section clicks
+    $('.navbar .menu ul li ul li a').click(function (e) {
+        e.preventDefault(); // Prevent default anchor behavior
+        const href = $(this).attr('href'); // Get the href target
+
+        dropdownClicked = true; // Mark dropdown as clicked
+
+        // Simulate scroll to Home first
+        autoScrollTo("#home-section-link", "home");
+
+        // After reaching Home, navigate to the dropdown section
+        setTimeout(() => {
+            $('html, body').animate(
+                {
+                    scrollTop: $(href).offset().top, // Scroll to the target section
+                },
+                1000, // Duration
+                function () {
+                    dropdownClicked = false; // Reset dropdown state after animation
+                    updateState("whatIDo"); // Update state to What I Do
+                }
+            );
+        }, 1000); // Ensure Home is reached first
+    });
+
     // Smooth scroll on menu items click
     $('.navbar .menu li a').click(function () {
         $('html').css('scrollBehavior', 'smooth');
-        isProgrammaticScroll = true; // Prevent interference during click scrolls
+        isProgrammaticScroll = true; // Prevent interference
         setTimeout(() => (isProgrammaticScroll = false), 1000); // Reset after menu click
     });
 
