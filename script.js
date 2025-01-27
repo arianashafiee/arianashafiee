@@ -26,9 +26,9 @@ $(document).ready(function () {
     // Scroll event listener
     $(window).scroll(function () {
         debounceScroll(() => {
-            updateScrollDirection();
-
             if (isScrollEffectDisabled) return; // Ignore logic during disabled state
+
+            updateScrollDirection();
 
             const { scrollY } = window;
 
@@ -47,18 +47,19 @@ $(document).ready(function () {
 
     // Function to handle auto-scroll and state updates
     function autoScrollTo(target, newState) {
-        isScrollEffectDisabled = true; // Disable scroll effects during navigation
+        isScrollEffectDisabled = true; // Prevent user scroll interference
         $(target)[0].click(); // Simulate a menu click
         updateState(newState);
 
-        // Manually set scroll direction and state
+        // Update the scroll position and direction immediately
         const targetOffset = $(target).offset().top;
-        isIncreasingY = targetOffset > lastScrollY;
         lastScrollY = targetOffset;
+        isIncreasingY = targetOffset > lastScrollY;
 
         setTimeout(() => {
             isScrollEffectDisabled = false; // Re-enable scroll effects
-        }, 1000); // Allow smooth scrolling to complete
+            updateScrollDirection(); // Ensure correct direction
+        }, 100); // Short delay for state reactivation
     }
 
     // Update active states
@@ -88,6 +89,7 @@ $(document).ready(function () {
                 function () {
                     updateState("whatIDo"); // Update state to What I Do
                     isScrollEffectDisabled = false; // Re-enable scroll effects
+                    updateScrollDirection(); // Ensure scroll direction is correct
                 }
             );
         }, 1000);
@@ -98,11 +100,17 @@ $(document).ready(function () {
         $('html').css('scrollBehavior', 'smooth');
         isScrollEffectDisabled = true; // Disable effects during menu click
 
-        // Immediately update scroll direction and state
-        setTimeout(() => {
-            isScrollEffectDisabled = false; // Re-enable after menu click
-            updateScrollDirection(); // Ensure direction is correct after the scroll
-        }, 100); // Minimal delay to capture the correct state
+        const href = $(this).attr('href'); // Target section
+        $('html, body').animate(
+            {
+                scrollTop: $(href).offset().top, // Scroll to the section
+            },
+            1000, // Duration
+            function () {
+                isScrollEffectDisabled = false; // Re-enable scroll effects
+                updateScrollDirection(); // Sync scroll direction
+            }
+        );
     });
 
     // Menu button toggle
@@ -121,7 +129,6 @@ $(document).ready(function () {
     });
 
     // Typing animation logic
-    
     new Typed('.typing', {
         strings: [
             ' SWE intern',
