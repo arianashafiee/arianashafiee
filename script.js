@@ -2,9 +2,10 @@ $(document).ready(function () {
     let homeActive = true; // Home section is active on load
     let imageActive = false; // Image section starts inactive
     let whatIDoActive = false; // What I Do section starts inactive
-    let isScrollEffectDisabled = false; // Prevent interference during specific actions
-    let lastScrollY = 0; // Store the last scroll position
+    let isScrollEffectDisabled = false; // Disable scroll logic during certain actions
+    let lastScrollY = 0; // Track the last scroll position
     let isIncreasingY = true; // Track scroll direction
+    let scrollTimeout = null; // For debouncing scroll events
 
     // Function to determine and update scroll direction
     function updateScrollDirection() {
@@ -13,41 +14,42 @@ $(document).ready(function () {
         lastScrollY = scrollY;
     }
 
-    // Attach scroll event to continuously update scroll direction
-    $(window).on('scroll', updateScrollDirection);
+    // Debounce scroll events
+    function debounceScroll(callback, delay) {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(callback, delay);
+    }
 
+    // Scroll event listener
     $(window).scroll(function () {
-        if (isScrollEffectDisabled) return; // Skip scroll logic when effects are disabled
+        debounceScroll(() => {
+            updateScrollDirection();
 
-        const { scrollY } = window;
+            if (isScrollEffectDisabled) return; // Ignore logic during disabled state
 
-        // Navbar stickiness logic
-        if (scrollY > 20) {
-            $('.navbar').addClass('sticky');
-            $('.dropdown').addClass('sticky');
-        } else {
-            $('.navbar').removeClass('sticky');
-            $('.dropdown').removeClass('sticky');
-        }
+            const { scrollY } = window;
 
-        // Auto-scroll logic with bounds
-        if (homeActive && isIncreasingY && scrollY >= 100 && scrollY < 650) {
-            autoScrollTo("#image-section-link", "image");
-        } else if (imageActive && !isIncreasingY && scrollY <= 650 && scrollY > 100) {
-            autoScrollTo("#home-section-link", "home");
-        } else if (imageActive && isIncreasingY && scrollY >= 1200 && scrollY < 1900) {
-            autoScrollTo("#what-section-link", "whatIDo");
-        } else if (whatIDoActive && !isIncreasingY && scrollY <= 1900 && scrollY > 1200) {
-            autoScrollTo("#image-section-link", "image");
-        }
+            // Auto-scroll logic with bounds
+            if (homeActive && isIncreasingY && scrollY >= 100 && scrollY < 650) {
+                autoScrollTo("#image-section-link", "image");
+            } else if (imageActive && !isIncreasingY && scrollY <= 650 && scrollY > 100) {
+                autoScrollTo("#home-section-link", "home");
+            } else if (imageActive && isIncreasingY && scrollY >= 1200 && scrollY < 1900) {
+                autoScrollTo("#what-section-link", "whatIDo");
+            } else if (whatIDoActive && !isIncreasingY && scrollY <= 1900 && scrollY > 1200) {
+                autoScrollTo("#image-section-link", "image");
+            }
+        }, 50); // Debounce delay
     });
 
     // Function to handle auto-scroll and state updates
     function autoScrollTo(target, newState) {
-        isScrollEffectDisabled = true; // Disable scroll effects
+        isScrollEffectDisabled = true; // Disable scroll effects during navigation
         $(target)[0].click(); // Simulate a menu click
         updateState(newState);
-        setTimeout(() => (isScrollEffectDisabled = false), 1000); // Re-enable effects after action
+        setTimeout(() => {
+            isScrollEffectDisabled = false; // Re-enable scroll effects
+        }, 1000); // Allow smooth scrolling to complete
     }
 
     // Update active states
@@ -62,9 +64,9 @@ $(document).ready(function () {
         e.preventDefault(); // Prevent default anchor behavior
         const href = $(this).attr('href'); // Get the href target
 
-        isScrollEffectDisabled = true; // Disable scroll effects during navigation
+        isScrollEffectDisabled = true; // Disable auto-scroll effects during navigation
 
-        // Scroll to Home first
+        // Simulate scroll to Home first
         autoScrollTo("#home-section-link", "home");
 
         // After reaching Home, navigate to the dropdown section
@@ -75,7 +77,7 @@ $(document).ready(function () {
                 },
                 1000, // Duration
                 function () {
-                    updateState("whatIDo"); // Update state to "What I Do"
+                    updateState("whatIDo"); // Update state to What I Do
                     isScrollEffectDisabled = false; // Re-enable scroll effects
                 }
             );
@@ -94,7 +96,7 @@ $(document).ready(function () {
         $('.navbar .menu').toggleClass('active');
         $('.menu-btn i').toggleClass('active');
 
-        // Reset active states if menu is toggled
+        // Reset active sections if menu is toggled
         updateState("home");
     });
 
