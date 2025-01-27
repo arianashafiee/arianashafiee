@@ -2,8 +2,7 @@ $(document).ready(function () {
     let homeActive = true; // Home section is active on load
     let imageActive = false; // Image section starts inactive
     let whatIDoActive = false; // What I Do section starts inactive
-    let dropdownClicked = false; // Track if a dropdown section is clicked
-    let isProgrammaticScroll = false; // Prevent interference with programmatic scrolls
+    let isScrollEffectDisabled = false; // Prevent interference during specific actions
     let lastScrollY = 0; // Store the last scroll position
     let isIncreasingY = true; // Track scroll direction
 
@@ -14,10 +13,12 @@ $(document).ready(function () {
         lastScrollY = scrollY;
     }
 
-    // Attach scroll event to update scroll direction
+    // Attach scroll event to continuously update scroll direction
     $(window).on('scroll', updateScrollDirection);
 
     $(window).scroll(function () {
+        if (isScrollEffectDisabled) return; // Skip scroll logic when effects are disabled
+
         const { scrollY } = window;
 
         // Navbar stickiness logic
@@ -29,10 +30,7 @@ $(document).ready(function () {
             $('.dropdown').removeClass('sticky');
         }
 
-        // Ignore logic during programmatic scrolls or dropdown actions
-        if (isProgrammaticScroll || dropdownClicked) return;
-
-        // Auto-scroll logic with upper and lower bounds
+        // Auto-scroll logic with bounds
         if (homeActive && isIncreasingY && scrollY >= 100 && scrollY < 650) {
             autoScrollTo("#image-section-link", "image");
         } else if (imageActive && !isIncreasingY && scrollY <= 650 && scrollY > 100) {
@@ -46,10 +44,10 @@ $(document).ready(function () {
 
     // Function to handle auto-scroll and state updates
     function autoScrollTo(target, newState) {
-        isProgrammaticScroll = true; // Prevent user scroll interference
+        isScrollEffectDisabled = true; // Disable scroll effects
         $(target)[0].click(); // Simulate a menu click
         updateState(newState);
-        setTimeout(() => (isProgrammaticScroll = false), 1000); // Reset after scrolling
+        setTimeout(() => (isScrollEffectDisabled = false), 1000); // Re-enable effects after action
     }
 
     // Update active states
@@ -59,11 +57,36 @@ $(document).ready(function () {
         whatIDoActive = activeSection === "whatIDo";
     }
 
+    // Handle dropdown section clicks
+    $('.navbar .menu ul li ul li a').click(function (e) {
+        e.preventDefault(); // Prevent default anchor behavior
+        const href = $(this).attr('href'); // Get the href target
+
+        isScrollEffectDisabled = true; // Disable scroll effects during navigation
+
+        // Scroll to Home first
+        autoScrollTo("#home-section-link", "home");
+
+        // After reaching Home, navigate to the dropdown section
+        setTimeout(() => {
+            $('html, body').animate(
+                {
+                    scrollTop: $(href).offset().top, // Scroll to the target section
+                },
+                1000, // Duration
+                function () {
+                    updateState("whatIDo"); // Update state to "What I Do"
+                    isScrollEffectDisabled = false; // Re-enable scroll effects
+                }
+            );
+        }, 1000);
+    });
+
     // Smooth scroll on menu items click
     $('.navbar .menu li a').click(function () {
         $('html').css('scrollBehavior', 'smooth');
-        isProgrammaticScroll = true; // Prevent interference
-        setTimeout(() => (isProgrammaticScroll = false), 100); // Reset after menu click
+        isScrollEffectDisabled = true; // Disable effects during menu click
+        setTimeout(() => (isScrollEffectDisabled = false), 100); // Re-enable after menu click
     });
 
     // Menu button toggle
@@ -71,7 +94,7 @@ $(document).ready(function () {
         $('.navbar .menu').toggleClass('active');
         $('.menu-btn i').toggleClass('active');
 
-        // Reset active sections if menu is toggled
+        // Reset active states if menu is toggled
         updateState("home");
     });
 
