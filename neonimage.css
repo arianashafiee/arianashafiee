@@ -86,7 +86,24 @@
 .smaller {
   font-size: calc(var(--font-size) / 1.5); /* Reduced size for smaller text */
 }
-
+@media (max-width: 1800px) {
+  :root {
+    --image-height: 270px;
+  }
+  .svg-max-width {
+    max-width: 95%;
+  
+  }
+}
+@media (max-width: 1612px) {
+  :root {
+    --image-height: 240px;
+  }
+  .svg-max-width {
+    max-width: 95%;
+  
+  }
+}
 /* Responsive Design Adjustments */
 @media (max-width: 1478px) {
   :root {
@@ -103,44 +120,24 @@
     --image-height: 180px;
   }
 }
-
-@media (max-width: 1192px) {
-  :root {
-    --image-height: 170px;
+@media (max-width: 1213px) {
+  .svg-container {
+    padding-top: 10vh;
   }
-}
-
-@media (max-width: 1028px) {
-  :root {
-    --image-height: 150px;
-  }
-}
-
-@media (max-width: 970px) {
-  :root {
-    --image-height: 140px;
-  }
-}
-
-@media (max-width: 849px) {
-  :root {
-    --image-height: 130px;
-  }
-}
-
-@media (max-width: 769px) {
-  :root {
-    --image-height: 125px;
-  }
-}
-
-@media (max-width: 604px) {
   .svg-wrapper {
-    display: grid; /* Use a grid layout */
-    grid-template-columns: 1fr 1fr; /* Two columns of equal width */
-    gap: 1rem; /* Space between grid items */
-    justify-items: center; /* Center items horizontally */
+    display: grid;
+    grid-template-columns: 0fr 0fr; 
+    /* Increase horizontal gap between columns */
+    column-gap: 0rem;  
+    /* If you also want more vertical spacing, add row-gap or use the combined gap property */
+    row-gap: 4rem;
+    /* or simply gap: 2rem for both columns and rows */
+    
+    justify-items: center;
+    max-width: 100%;
   }
+
+
 
   .svg-item:nth-child(1) {
     grid-column: 1;
@@ -159,9 +156,50 @@
   }
 
   :root {
+    --image-height: 370px;
+  }
+}
+@media (max-width: 1192px) {
+  :root {
+    --image-height: 320px;
+  }
+}
+
+
+
+@media (max-width: 970px) {
+  :root {
+    --image-height: 290px;
+  }
+}
+@media (max-width: 921px) {
+  :root {
+    --image-height: 250px;
+  }
+  
+}
+@media (max-width: 857px) {
+
+  
+  :root {
+    --image-height: 220px;
+  }
+  
+}
+@media (max-width: 790px) {
+ 
+  :root {
+    --image-height: 200px;
+  }
+}
+
+@media (max-width: 700px) {
+
+  :root {
     --image-height: 160px;
   }
 }
+
 
 @media (max-width: 475px) {
   :root {

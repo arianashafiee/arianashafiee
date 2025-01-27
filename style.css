@@ -1095,7 +1095,7 @@ margin-top: 20px;
         font-size: 16px;
 
     }
-      
+
   /* Responsive media query */
 @media (max-width: 1697px){
     .max-width{
@@ -1113,6 +1113,9 @@ margin-top: 20px;
 }
 
 @media (max-width: 1390px){
+    .what-i-do .content .name{
+        font-size: 30px;
+    }
     .what-i-do .content .card{
         width: calc(33% - 50px);
         }
@@ -1154,6 +1157,13 @@ margin-top: 20px;
     
 }
 @media (max-width: 1260px){
+    .what-i-do .content .name{
+        font-size: 25px;
+    }
+    .title{
+        margin-top: 30px;
+        font-size: 80px;
+    }
 
     .home .home-content .text-1{
         margin-top: 5vh;
@@ -1178,6 +1188,9 @@ margin-top: 20px;
 }
 
 @media (max-width: 1075px){
+    .what-i-do .content .name{
+        font-size: 40px;
+    }
     .home .home-content .text-1{
         font-size: 10px;
     }
@@ -1281,6 +1294,9 @@ margin-top: 20px;
 
 }
 @media (max-width: 990px){
+    .title{
+        font-size: 70px;
+    }
     .home .home-content .text-1{
         font-size: 11px;
     }
@@ -1314,6 +1330,9 @@ margin-top: 20px;
 }
 }
 @media (max-width: 910px){
+    .what-i-do .content .name{
+        font-size: 28px;
+    }
     .home .home-content .text-1{
         margin-top: 11vh;
         font-size: 9px;
@@ -1340,7 +1359,10 @@ margin-top: 20px;
     }
 }
 
-@media (max-width: 845px){
+@media (max-width: 855px){
+    .title{
+        font-size: 65px;
+    }
     .lucid-content img{
         width: calc(50% - 10px);
 
@@ -1383,6 +1405,9 @@ margin-top: 20px;
     
 }
 @media (max-width: 815px){
+    .title{
+        font-size: 90px;
+    }
     .soccer-legend-content img{
         width: calc(50% - 10px);
         
@@ -1416,6 +1441,9 @@ margin-top: 20px;
 
 
 @media (max-width: 750px){
+    .title{
+        font-size: 78px;
+    }
     .home .home-content .text-1{
         margin-top: 8vh;
         font-size: 10px;
@@ -1566,7 +1594,13 @@ margin-top: 20px;
 
 }
 }
-@media (max-width: 670px){
+@media (max-width: 676px){
+    .what-i-do .content .name{
+        font-size: 40px;
+    }
+    .title{
+        font-size: 70px;
+    }
 
     .soccer-legend-content img{
         width: calc(100%);
@@ -1616,7 +1650,9 @@ margin-top: 20px;
 
 }
 @media (max-width: 577px){
-  
+    .title{
+        font-size: 60px;
+    }
 
     .home .home-content .text-1{
         margin-top: 1vh;
