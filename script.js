@@ -14,7 +14,7 @@ $(document).ready(function () {
         lastScrollY = scrollY;
     }
 
-    // Ensure the scroll direction is updated on load
+    // Ensure scroll direction updates on load
     updateScrollDirection();
 
     // Debounce scroll events
@@ -47,11 +47,11 @@ $(document).ready(function () {
 
     // Function to handle auto-scroll and state updates
     function autoScrollTo(target, newState) {
-        isScrollEffectDisabled = true; // Prevent user scroll interference
+        isScrollEffectDisabled = true; // Disable user-driven scroll effects during navigation
         $(target)[0].click(); // Simulate a menu click
         updateState(newState);
 
-        // Update the scroll position and direction immediately
+        // Sync scroll position and direction immediately
         const targetOffset = $(target).offset().top;
         lastScrollY = targetOffset;
         isIncreasingY = targetOffset > lastScrollY;
@@ -68,6 +68,24 @@ $(document).ready(function () {
         imageActive = activeSection === "image";
         whatIDoActive = activeSection === "whatIDo";
     }
+
+    // Smooth scroll on menu items click
+    $('.navbar .menu li a').click(function () {
+        $('html').css('scrollBehavior', 'smooth');
+        isScrollEffectDisabled = true; // Disable effects during menu click
+
+        const href = $(this).attr('href'); // Target section
+        $('html, body').animate(
+            {
+                scrollTop: $(href).offset().top, // Scroll to the section
+            },
+            1000, // Duration
+            function () {
+                isScrollEffectDisabled = false; // Re-enable scroll effects
+                updateScrollDirection(); // Sync scroll direction
+            }
+        );
+    });
 
     // Handle dropdown section clicks
     $('.navbar .menu ul li ul li a').click(function (e) {
@@ -93,24 +111,6 @@ $(document).ready(function () {
                 }
             );
         }, 1000);
-    });
-
-    // Smooth scroll on menu items click
-    $('.navbar .menu li a').click(function () {
-        $('html').css('scrollBehavior', 'smooth');
-        isScrollEffectDisabled = true; // Disable effects during menu click
-
-        const href = $(this).attr('href'); // Target section
-        $('html, body').animate(
-            {
-                scrollTop: $(href).offset().top, // Scroll to the section
-            },
-            1000, // Duration
-            function () {
-                isScrollEffectDisabled = false; // Re-enable scroll effects
-                updateScrollDirection(); // Sync scroll direction
-            }
-        );
     });
 
     // Menu button toggle
