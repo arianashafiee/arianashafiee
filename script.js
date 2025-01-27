@@ -121,6 +121,7 @@ $(document).ready(function () {
     });
 
     // Typing animation logic
+    
     new Typed('.typing', {
         strings: [
             ' SWE intern',
