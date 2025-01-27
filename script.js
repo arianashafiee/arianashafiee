@@ -127,7 +127,6 @@ $(document).ready(function () {
         $('.menu-btn i').removeClass('active');
     });
 
-    
     // Typing animation logic
     new Typed('.typing', {
         strings: [
