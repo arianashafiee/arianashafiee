@@ -6,12 +6,6 @@ $(document).ready(function () {
     let lastScrollY = 0; // Store the last scroll position
     let isIncreasingY = true; // Track scroll direction
 
-    // Ensure accurate initial state
-    function initializeScrollState() {
-        lastScrollY = window.scrollY;
-        isIncreasingY = true; // Default direction is "down"
-    }
-
     // Function to determine and update scroll direction
     function updateScrollDirection() {
         const { scrollY } = window;
@@ -19,9 +13,10 @@ $(document).ready(function () {
         lastScrollY = scrollY;
     }
 
-    // Attach scroll event to update scroll direction
+    // Scroll event listener
     $(window).on('scroll', function () {
-        if (isScrollEffectDisabled) return; // Ignore during programmatic scrolls
+        if (isScrollEffectDisabled) return; // Ignore logic during disabled state
+
         updateScrollDirection(); // Update direction
         handleAutoScroll(); // Check for auto-scroll logic
     });
@@ -56,7 +51,7 @@ $(document).ready(function () {
         );
     }
 
-    // Synchronize scroll-related states immediately
+    // Synchronize scroll-related states
     function synchronizeScrollState() {
         lastScrollY = window.scrollY;
         updateScrollDirection();
@@ -153,5 +148,5 @@ $(document).ready(function () {
     });
 
     // Initialize scroll state on page load
-    initializeScrollState();
+    synchronizeScrollState();
 });
