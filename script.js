@@ -3,9 +3,14 @@ $(document).ready(function () {
     let imageActive = false; // Image section starts inactive
     let whatIDoActive = false; // What I Do section starts inactive
     let isScrollEffectDisabled = false; // Disable scroll logic during programmatic scrolls
-    let lastScrollY = 0; // Track the last scroll position
+    let lastScrollY = 0; // Store the last scroll position
     let isIncreasingY = true; // Track scroll direction
-    let scrollTimeout = null; // For debouncing scroll events
+
+    // Ensure accurate initial state
+    function initializeScrollState() {
+        lastScrollY = window.scrollY;
+        isIncreasingY = true; // Default direction is "down"
+    }
 
     // Function to determine and update scroll direction
     function updateScrollDirection() {
@@ -15,52 +20,45 @@ $(document).ready(function () {
     }
 
     // Attach scroll event to update scroll direction
-    $(window).on('scroll', updateScrollDirection);
-
-    $(window).scroll(function () {
-        if (isScrollEffectDisabled) return; // Ignore logic during programmatic scrolls
-
-        debounceScroll(() => {
-            const { scrollY } = window;
-
-            // Auto-scroll logic with bounds
-            if (homeActive && isIncreasingY && scrollY >= 100 && scrollY < 650) {
-                autoScrollTo("#image-section-link", "image");
-            } else if (imageActive && !isIncreasingY && scrollY <= 650 && scrollY > 100) {
-                autoScrollTo("#home-section-link", "home");
-            } else if (imageActive && isIncreasingY && scrollY >= 1200 && scrollY < 1900) {
-                autoScrollTo("#what-section-link", "whatIDo");
-            } else if (whatIDoActive && !isIncreasingY && scrollY <= 1900 && scrollY > 1200) {
-                autoScrollTo("#image-section-link", "image");
-            }
-        }, 50); // Debounce delay
+    $(window).on('scroll', function () {
+        if (isScrollEffectDisabled) return; // Ignore during programmatic scrolls
+        updateScrollDirection(); // Update direction
+        handleAutoScroll(); // Check for auto-scroll logic
     });
 
-    // Debounce function to limit scroll logic execution
-    function debounceScroll(callback, delay) {
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(callback, delay);
+    // Handle auto-scroll logic
+    function handleAutoScroll() {
+        const { scrollY } = window;
+
+        if (homeActive && isIncreasingY && scrollY >= 100 && scrollY < 650) {
+            autoScrollTo("#image-section-link", "image");
+        } else if (imageActive && !isIncreasingY && scrollY <= 650 && scrollY > 100) {
+            autoScrollTo("#home-section-link", "home");
+        } else if (imageActive && isIncreasingY && scrollY >= 1200 && scrollY < 1900) {
+            autoScrollTo("#what-section-link", "whatIDo");
+        } else if (whatIDoActive && !isIncreasingY && scrollY <= 1900 && scrollY > 1200) {
+            autoScrollTo("#image-section-link", "image");
+        }
     }
 
     // Function to handle auto-scroll and state updates
     function autoScrollTo(target, newState) {
-        isScrollEffectDisabled = true; // Disable user scroll effects during navigation
+        isScrollEffectDisabled = true; // Disable user scroll effects
         $('html, body').animate(
-            { scrollTop: $(target).offset().top }, // Scroll to the target section
-            1000, // Duration
-            "swing", // Easing
+            { scrollTop: $(target).offset().top },
+            1000,
+            "swing",
             function () {
-                updateState(newState); // Update state after reaching target
-                syncScrollStates(); // Ensure scroll states are in sync
+                updateState(newState); // Update state after scrolling
+                synchronizeScrollState(); // Sync scroll direction and state
                 isScrollEffectDisabled = false; // Re-enable scroll effects
             }
         );
     }
 
     // Synchronize scroll-related states immediately
-    function syncScrollStates() {
-        const { scrollY } = window;
-        lastScrollY = scrollY;
+    function synchronizeScrollState() {
+        lastScrollY = window.scrollY;
         updateScrollDirection();
     }
 
@@ -81,17 +79,17 @@ $(document).ready(function () {
         // Scroll to Home first
         $('html, body').animate(
             { scrollTop: $("#home-section-link").offset().top },
-            1000, // Duration
+            1000,
             "swing",
             function () {
                 updateState("home"); // Set state to Home
                 $('html, body').animate(
-                    { scrollTop: $(href).offset().top }, // Scroll to dropdown target
-                    1000, // Duration
+                    { scrollTop: $(href).offset().top },
+                    1000,
                     "swing",
                     function () {
                         updateState("whatIDo"); // Update state to What I Do
-                        syncScrollStates(); // Synchronize scroll states
+                        synchronizeScrollState(); // Sync scroll states
                         isScrollEffectDisabled = false; // Re-enable scroll effects
                     }
                 );
@@ -100,31 +98,47 @@ $(document).ready(function () {
     });
 
     // Smooth scroll on menu items click
-    $('.navbar .menu li a').click(function () {
-        const href = $(this).attr('href'); // Target section
+    $('.navbar .menu li a').click(function (e) {
+        e.preventDefault(); // Prevent default anchor behavior
+        const href = $(this).attr('href'); // Get the href target
+
+        isScrollEffectDisabled = true; // Disable effects during menu click
         $('html, body').animate(
             { scrollTop: $(href).offset().top },
-            1000, // Duration
+            1000,
             "swing",
             function () {
-                syncScrollStates(); // Ensure scroll direction is accurate
+                synchronizeScrollState(); // Ensure scroll direction is accurate
                 isScrollEffectDisabled = false; // Re-enable scroll effects
             }
         );
-        isScrollEffectDisabled = true; // Disable effects during menu click
     });
 
     // Menu button toggle
     $('.menu-btn').click(function () {
         $('.navbar .menu').toggleClass('active');
         $('.menu-btn i').toggleClass('active');
-        updateState("home"); // Reset active state to Home
+
+        // Reset active sections if menu is toggled
+        updateState("home");
     });
 
     // Close menu on link click
     $('.navbar .menu li a').click(function () {
         $('.navbar .menu').removeClass('active');
         $('.menu-btn i').removeClass('active');
+    });
+
+    // Navbar stickiness logic
+    $(window).on('scroll', function () {
+        const { scrollY } = window;
+        if (scrollY > 20) {
+            $('.navbar').addClass('sticky');
+            $('.dropdown').addClass('sticky');
+        } else {
+            $('.navbar').removeClass('sticky');
+            $('.dropdown').removeClass('sticky');
+        }
     });
 
     // Typing animation logic
@@ -137,4 +151,7 @@ $(document).ready(function () {
         backSpeed: 100,
         loop: true,
     });
+
+    // Initialize scroll state on page load
+    initializeScrollState();
 });
