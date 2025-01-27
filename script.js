@@ -101,7 +101,7 @@ $(document).ready(function () {
     });
 
     // Typing animation logic
-    var typed = new Typed('.typing', {
+    new Typed('.typing', {
         strings: [
             ' SWE intern',
             'Founding UX @ Otto',
