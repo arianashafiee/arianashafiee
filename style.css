@@ -137,10 +137,6 @@ nav ul li a{
    
 }
 
-.hidden {
-    display: none;
-}
-
 .menu-btn i.active::before {
     content: "\f00d"; /* X icon instead of bars */
   }
@@ -1187,7 +1183,7 @@ margin-top: 20px;
     }
 }
 
-@media (max-width: 1075px){
+@media (max-width: 1089px){
     .what-i-do .content .name{
         font-size: 40px;
     }
@@ -1253,7 +1249,7 @@ margin-top: 20px;
         left: -100%;
         top: 0;
         text-align: center;
-        padding-top: 80px;
+        padding-top: 120px;
         transition: all 0.3s ease;
     }
     .navbar .menu .drop{
@@ -1269,8 +1265,8 @@ margin-top: 20px;
     }
     .navbar .menu li a{
         display: inline-block;
-        margin: 20px 0;
-        font-size: 25px;
+        margin: 70px 0;
+        font-size: 60px;
     }
     .navbar span{
         visibility:hidden;
@@ -1322,6 +1318,9 @@ margin-top: 20px;
     .study-link a{
         font-size: 30px;
 
+}
+.navbar .menu li a{
+    font-size: 50px;
 }
 .app-link a{
     font-size: 40px;
@@ -1405,6 +1404,12 @@ margin-top: 20px;
     
 }
 @media (max-width: 815px){
+    section:hover ~ section,
+    section:hover,
+    section:not(:hover) {
+    filter: none;
+    opacity: 1;
+}
     .title{
         font-size: 90px;
     }
@@ -1441,6 +1446,9 @@ margin-top: 20px;
 
 
 @media (max-width: 750px){
+    .navbar .menu li a{
+        font-size: 50px;
+    }
     .title{
         font-size: 78px;
     }
@@ -1595,6 +1603,9 @@ margin-top: 20px;
 }
 }
 @media (max-width: 676px){
+    .navbar .menu li a{
+        font-size: 46px;
+    }
     .what-i-do .content .name{
         font-size: 40px;
     }
