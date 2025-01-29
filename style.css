@@ -5,7 +5,7 @@
     text-decoration: none;
 
 }
-body {background-color:white;}
+body {background-color:black;}
 
 .max-width{
     padding: 0 200px;
@@ -170,7 +170,6 @@ nav ul li a:hover{
 
 /* Home Section Styling */
 .home {
-    background: black;
     color: #01fff4;
     overflow: visible;
     filter: none;
@@ -262,7 +261,6 @@ nav ul li a:hover{
 body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
-    background-color: black;
     position: relative;
 }
 
@@ -429,7 +427,6 @@ section:hover {
 
   
 /*What I Do Section*/
-/*What I Do Section*/
 .title{
     width: 100%;
     color: #ffffff;
@@ -446,6 +443,7 @@ section:hover {
     justify-content: space-between;
     column-gap: 30px;
 }
+
 
 .what-i-do .content .card{
     width: calc(33% - 115px);
@@ -600,7 +598,7 @@ section:hover {
     color: white;
     font-family: 'Rubik';
     margin-top: 25px;
-    font-size: 23px;
+    font-size: 30px;
     font-weight: 1000;
     margin-left: 25px;
     margin-right: 25px;
