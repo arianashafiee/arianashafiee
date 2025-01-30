@@ -186,17 +186,17 @@ nav ul li a:hover{
     --glow-color6: #01fff4; /* Neon blue color */
   }
   
-/* ========== IMAGE GLOW ========== */
+/* ----------- IMAGE GLOW ----------- */
 .home img {
     z-index: 99;
     overflow: visible;
     width: 100%;
-    max-width: 450px; 
+    max-width: 450px;
     height: auto;
-    margin-top: 0vh; 
+    margin-top: 0vh;
     border-radius: 5px; 
-    object-fit: contain; 
-
+    object-fit: contain;
+  
     /* Intense neon glow around the image */
     filter: drop-shadow(0 0 50px var(--glow-color6))
             drop-shadow(0 0 100px var(--glow-color6))
@@ -204,36 +204,36 @@ nav ul li a:hover{
     -webkit-filter: drop-shadow(0 0 50px var(--glow-color6))
                     drop-shadow(0 0 100px var(--glow-color6))
                     drop-shadow(0 0 150px var(--glow-color6));
-}
-
-/* ========== CUSTOM PROPERTIES ========== */
-@property --bg-1-x {
+  }
+  
+  /* ----------- CUSTOM PROPERTIES ----------- */
+  @property --bg-1-x {
     syntax: "<number>";
     inherits: true;
     initial-value: 0;
-}
-@property --bg-2-x {
+  }
+  @property --bg-2-x {
     syntax: "<number>";
     inherits: true;
     initial-value: 0;
-}
-@property --bg-2-y {
+  }
+  @property --bg-2-y {
     syntax: "<number>";
     inherits: true;
     initial-value: 0;
-}
-@property --bg-3-x {
+  }
+  @property --bg-3-x {
     syntax: "<number>";
     inherits: true;
     initial-value: 0;
-}
-@property --bg-3-y {
+  }
+  @property --bg-3-y {
     syntax: "<number>";
     inherits: true;
     initial-value: 0;
-}
-
-:root {
+  }
+  
+  :root {
     --bg-grain: url(images/noise.svg);
     --shadow-size: max(140px, 40vw);
     --shadow-size-fallback: 40vw;
@@ -247,41 +247,42 @@ nav ul li a:hover{
     --bg-2-y: 0;
     --bg-3-x: 0;
     --bg-3-y: 0;
-}
-
-@supports (color: color(display-p3 1 1 1)) {
+  }
+  
+  @supports (color: color(display-p3 1 1 1)) {
     :root {
-        --color-1: color(display-p3 0.36 0.17 0.82);
-        --color-2: color(display-p3 0.95 0.04 0.95);
-        --color-3: color(display-p3 0.01 0.53 0.99);
+      --color-1: color(display-p3 0.36 0.17 0.82);
+      --color-2: color(display-p3 0.95 0.04 0.95);
+      --color-3: color(display-p3 0.01 0.53 0.99);
     }
-}
-
-/* ========== BODY BACKGROUND RADIAL BLENDS ========== */
-body {
+  }
+  
+  /* ----------- BODY BACKGROUND BLENDS ----------- */
+  body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
     position: relative;
-}
-
-body::before {
+  }
+  
+  body::before {
     content: '';
     position: absolute;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle var(--shadow-size, var(--shadow-size-fallback)) at 20vw 0,
-                var(--color-1) 100%, transparent 0),
-               radial-gradient(circle var(--shadow-size, var(--shadow-size-fallback)) at 100vw 0,
-                var(--color-2) 100%, transparent 0),
-               radial-gradient(circle calc(var(--shadow-size, var(--shadow-size-fallback)) * 1.2) at 50vw 115vh,
-                var(--color-3) 100%, transparent 0);
+    background:
+      radial-gradient(circle var(--shadow-size, var(--shadow-size-fallback)) at 20vw 0,
+                      var(--color-1) 100%, transparent 0),
+      radial-gradient(circle var(--shadow-size, var(--shadow-size-fallback)) at 100vw 0,
+                      var(--color-2) 100%, transparent 0),
+      radial-gradient(circle calc(var(--shadow-size, var(--shadow-size-fallback)) *1.2) at 50vw 115vh,
+                      var(--color-3) 100%, transparent 0);
     filter: blur(calc(var(--shadow-blur) * 1px));
     mix-blend-mode: hue;
     opacity: 0.5;
-    z-index: -1; /* Ensure this is behind everything */
-}
-
-body::after {
+    z-index: -1;
+  }
+  
+  body::after {
     content: '';
     position: absolute;
     width: 100%;
@@ -289,104 +290,130 @@ body::after {
     background-size: 500px;
     filter: contrast(145%) brightness(650%) invert(100%);
     mix-blend-mode: screen;
-    z-index: -2; /* Also behind all content */
-}
-
-/* ========== TEXT-1 (H1) WITH BLEND MODE ========== */
-.home .home-content .text-1 h1 {
+    z-index: -2;
+  }
+  
+  /* 
+    ----------- TEXT-1 (H1) with Pseudo-Element -----------
+  
+    1) The <h1> is fully transparent 
+    2) The fancy gradient is in ::before with background-blend-mode: color-burn
+    3) Use data-text to keep the same text in both the real h1 and the pseudo
+  */
+  .home .home-content .text-1 h1 {
     margin-top: 11vh;
     font-family: 'Montserrat', sans-serif;
     font-size: 16em;
     line-height: 1.15;
     font-weight: bold;
     display: inline-block;
-
-    /* Use advanced blend mode and background clipping */
-    background: var(--bg-grain),
-                conic-gradient(from 140deg at calc(var(--bg-1-x) * 1%) 90%, 
-                               #1a0d00, #00011a, #15009e, #d232aa, 
-                               #fa8c3d, #fff480, #fffffa, #7ed4fb, 
-                               #040d8b, #010014),
-                radial-gradient(ellipse at calc(var(--bg-2-x) * 1%) calc(var(--bg-2-y) * 1%), 
-                                white 12%, transparent 35%), 
-                radial-gradient(ellipse at calc(var(--bg-3-x) * 1%) calc(var(--bg-3-y) * 1%), 
-                                #61a8fa, transparent 35%);
+    
+    /* Safari fix: real text is transparent */
+    color: transparent !important;
+    background: none !important;
+    background-color: transparent !important;
+    
+    position: relative;
+    z-index: 1; /* Above backgrounds but below pseudo-element's content if needed */
+  
+    /* Animate the background positions (the variables) if desired */
+    animation: bg 20s linear infinite alternate;
+  }
+  
+  /* The pseudo-element: actual gradient + burn effect, clipped to text shape */
+  .home .home-content .text-1 h1::before {
+    content: attr(data-text); /* must match the H1’s text */
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+  
+    /* The same gradient you had before, including color-burn blend mode */
+    background:
+      var(--bg-grain),
+      conic-gradient(from 140deg at calc(var(--bg-1-x) * 1%) 90%, 
+                     #1a0d00, #00011a, #15009e, #d232aa, #fa8c3d, #fff480, 
+                     #fffffa, #7ed4fb, #040d8b, #010014),
+      radial-gradient(ellipse at calc(var(--bg-2-x) * 1%) calc(var(--bg-2-y) * 1%), 
+                      white 12%, transparent 35%),
+      radial-gradient(ellipse at calc(var(--bg-3-x) * 1%) calc(var(--bg-3-y) * 1%), 
+                      #61a8fa, transparent 35%);
+  
     background-repeat: repeat;
     background-size: 500px, cover;
     background-blend-mode: color-burn;
-    background-clip: text;
+  
+    /* The text clipping */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    
-    /* IMPORTANT: Force Safari to not paint fallback color */
-    color: transparent !important;
-    background-color: transparent !important;
-
-    position: relative;
-    z-index: 2; /* Above any backgrounds, but text is transparent so glow shows behind */
-
-    animation: bg 20s linear infinite alternate;
-}
-
-/* ========== KEYFRAMES FOR BG SHIFT ========== */
-@keyframes bg {
+    background-clip: text;
+    color: transparent;
+  
+    pointer-events: none; /* So user can still select text normally, if needed */
+    z-index: 2;
+  }
+  
+  /* Keyframes to move the radial/conic background around */
+  @keyframes bg {
     0% {
-        --bg-1-x: calc(50 / 2);
-        --bg-2-y: calc(80 / 2);
-        --bg-2-x: calc(70 / 2);
-        --bg-3-y: calc(40 / 2);
-        --bg-3-x: calc(90 / 2);
+      --bg-1-x: calc(50 / 2);
+      --bg-2-y: calc(80 / 2);
+      --bg-2-x: calc(70 / 2);
+      --bg-3-y: calc(40 / 2);
+      --bg-3-x: calc(90 / 2);
     }
     25% {
-        --bg-1-x: 30;
-        --bg-2-y: 50;
-        --bg-2-x: 80;
-        --bg-3-y: 20;
-        --bg-3-x: 70;
+      --bg-1-x: 30;
+      --bg-2-y: 50;
+      --bg-2-x: 80;
+      --bg-3-y: 20;
+      --bg-3-x: 70;
     }
     50% {
-        --bg-1-x: 10;
-        --bg-2-y: 40;
-        --bg-2-x: 30;
-        --bg-3-y: 80;
-        --bg-3-x: 50;
+      --bg-1-x: 10;
+      --bg-2-y: 40;
+      --bg-2-x: 30;
+      --bg-3-y: 80;
+      --bg-3-x: 50;
     }
     75% {
-        --bg-1-x: 70;
-        --bg-2-y: 20;
-        --bg-2-x: 50;
-        --bg-3-y: 30;
-        --bg-3-x: 40;
+      --bg-1-x: 70;
+      --bg-2-y: 20;
+      --bg-2-x: 50;
+      --bg-3-y: 30;
+      --bg-3-x: 40;
     }
     100% {
-        --bg-1-x: calc(50 / 2);
-        --bg-2-y: calc(80 / 2);
-        --bg-2-x: calc(70 / 2);
-        --bg-3-y: calc(40 / 2);
-        --bg-3-x: calc(90 / 2);
+      --bg-1-x: calc(50 / 2);
+      --bg-2-y: calc(80 / 2);
+      --bg-2-x: calc(70 / 2);
+      --bg-3-y: calc(40 / 2);
+      --bg-3-x: calc(90 / 2);
     }
-}
-
-/* ========== TEXT-2 (INLINE BLOCK) ========== */
-.home .home-content .text-2 {
+  }
+  
+  /* ----------- TEXT-2 (SIMPLER TEXT) ----------- */
+  .home .home-content .text-2 {
     display: inline-block;
     line-height: 1em;
     font-family: "Courier New", Courier, monospace;
     font-size: 4em;
-    color: #ffffff; /* White text */
+    color: #ffffff; 
+    max-width: 100%;
     text-align: left;
     vertical-align: top;
-    text-transform: uppercase; 
+    text-transform: uppercase;
     margin-bottom: 3vh;
-    max-width: 100%;
-
-    /* Prevent Safari from applying a box behind text */
+  
+    /* Remove any possible inline-block “box” in Safari */
     background: transparent !important;
     background-color: transparent !important;
     
     position: relative;
-    z-index: 2;
-}
+    z-index: 1;
+  }
+  
 
 /* Resume */
 .home .links  li{
