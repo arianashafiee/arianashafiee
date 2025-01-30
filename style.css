@@ -183,30 +183,42 @@ nav ul li a:hover{
 
 
 :root {
-    --glow-color6: #01fff4; /* Neon blue color */
+    --glow-color6: #01fff4; /* Neon color, as before */
   }
   
-  .home img {
-    z-index: 99;
-    overflow:visible;
-    width: 100%; /* Ensure the image scales to fit the container */
-    max-width: 450px; /* Maximum width */
-    height: auto; /* Maintain the aspect ratio */
-    margin-top: 0vh; /* Add space from the top */
-    border-radius: 5px; /* Optional: Adds rounded corners */
+  /* The container that can anchor the image if you want it relative 
+     to a certain section. Make sure it's position: relative. */
+/* Image container with black background and centered image */
+.overlap-container {
+    position: absolute; /* Remove from normal flow */
+    right: 0.2%;
+    background-color: black; /* Black background box */
+    padding: 7%; /* Adjust based on the glow size */
+    border-radius: 10px; /* Optional: rounded corners */
+    overflow: visible; /* Ensure glow isn't clipped */
+    z-index: 999; /* Above other elements */
+    pointer-events: none; /* So clicks pass through */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .overlap-container .glow-img {
+    width: 100%; /* Adjust as needed */
+    max-width: 500px;
+    height: auto;
+    border-radius: 5px; /* Optional: rounded image corners */
     object-fit: contain; /* Ensure the image fits its container without cropping */
-
+    z-index: 1000;
     /* Intense neon glow around the image */
     filter: drop-shadow(0 0 20px var(--glow-color6)) 
             drop-shadow(0 0 40px var(--glow-color6)) 
             drop-shadow(0 0 80px var(--glow-color6));
-            z-index: 99;
     -webkit-filter: drop-shadow(0 0 20px var(--glow-color6)) 
                     drop-shadow(0 0 40px var(--glow-color6)) 
                     drop-shadow(0 0 80px var(--glow-color6));
-                    z-index: 99;
-}
-
+  }
+  
 
 /* CSS Custom Properties */
 @property --bg-1-x {
@@ -270,7 +282,7 @@ body::before {
     position: absolute;
     width: 100%;
     height: 100%;
-    z-index: -10;
+    z-index: -150;
     background: radial-gradient(circle var(--shadow-size, var(--shadow-size-fallback)) at 20vw 0,
                 var(--color-1) 100%, transparent 0),
                 radial-gradient(circle var(--shadow-size, var(--shadow-size-fallback)) at 100vw 0,
@@ -283,7 +295,7 @@ body::before {
 }
 
 body::after {
-    z-index: -10;
+    z-index: -150;
     content: '';
     position: absolute;
     width: 100%;
@@ -292,9 +304,11 @@ body::after {
     filter: contrast(145%) brightness(650%) invert(100%);
     mix-blend-mode: screen;
 }
-
+.home .home-content{
+    z-index: -100;
+    position: relative;
+}
 .home .home-content .text-1 h1 {
-    z-index: 1;
     margin-top: 11vh;
     font-family: 'Montserrat', sans-serif;
     font-size: 16em;
@@ -1146,7 +1160,7 @@ margin-top: 20px;
     .navbar .menu li a{
         font-size: 15px;
     }
-    .home img{
+    .overlap-container .glow-img{
         margin-top: 11vh;
     }
     
@@ -1176,7 +1190,7 @@ margin-top: 20px;
     .max-width{
         padding: 0 60px;
     }
-    .home img{
+    .overlap-container .glow-img{
         margin-top: 10vh;
         width: 360px;
     }
@@ -1229,7 +1243,7 @@ margin-top: 20px;
     .max-width{
         padding: 0 40px;
     }
-    .home img{
+    .overlap-container .glow-img{
         width: 330px;
     }
 
@@ -1298,7 +1312,7 @@ margin-top: 20px;
     .home .home-content .text-2{
         font-size: 45px;
     }
-    .home img{
+    .overlap-container .glow-img{
         width: 300px;
     }
     .projects .content .box2 .header{
@@ -1338,7 +1352,7 @@ margin-top: 20px;
     .home .home-content .text-2{
         font-size: 39px;
     }
-    .home img{
+    .overlap-container .glow-img{
         margin-top: 17vh;
         width: 275px;
     }
@@ -1429,7 +1443,7 @@ margin-top: 20px;
     .home{
         background:black;
     }
-    .home img{
+    .overlap-container .glow-img{
         display: none;
       
     }
@@ -1552,7 +1566,7 @@ margin-top: 20px;
     .home{
         background:black;
     }
-    .home img{
+    .overlap-container .glow-img{
         visibility:hidden;
     }
     
