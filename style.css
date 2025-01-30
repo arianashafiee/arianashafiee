@@ -195,7 +195,7 @@ nav ul li a:hover{
     height: auto; /* Maintain the aspect ratio */
     margin-top: 18vh; /* Add space from the top */
     
-    margin-left: 54%;
+    margin-left: 52%;
     border-radius: 5px; /* Optional: Adds rounded corners */
     object-fit: contain; /* Ensure the image fits its container without cropping */
     z-index:1000;
