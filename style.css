@@ -257,20 +257,18 @@ nav ul li a:hover{
     }
 }
 
-/* ====================== BODY + BACKGROUND (unchanged) ====================== */
 body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
     position: relative;
-    z-index:-1;  /* This alone won't fix Safari fallback, but keep if you like */
 }
 
 body::before {
-    z-index:-1;
     content: '';
     position: absolute;
     width: 100%;
     height: 100%;
+    z-index: -10;
     background: radial-gradient(circle var(--shadow-size, var(--shadow-size-fallback)) at 20vw 0,
                 var(--color-1) 100%, transparent 0),
                 radial-gradient(circle var(--shadow-size, var(--shadow-size-fallback)) at 100vw 0,
@@ -283,7 +281,6 @@ body::before {
 }
 
 body::after {
-    z-index:-1;
     content: '';
     position: absolute;
     width: 100%;
@@ -293,67 +290,23 @@ body::after {
     mix-blend-mode: screen;
 }
 
-/* ====================== BIG HEADING (TEXT-1 H1) ====================== */
-/*
-  1) The actual <h1> is fully transparent: 
-     - Safari won't paint the fallback if the text itself is not assigned the color-burn background.
-  2) We use a ::before pseudo-element to carry the conic/radial gradients + color-burn
-  3) data-text attribute ensures the pseudo-element matches the real text.
-*/
 .home .home-content .text-1 h1 {
     margin-top: 11vh;
     font-family: 'Montserrat', sans-serif;
     font-size: 16em;
-    line-height: 1.15;
+    line-height: 1.15; /* Set line height to normal or minimal spacing */
     font-weight: bold;
     display: inline-block;
-    
-    /* Make the real text transparent so Safari doesn't fallback-paint */
-    color: transparent !important;
-    background: none !important;
-    
-    position: relative;
-    z-index: 0;
-
-    /* Animate the background positions if you want the shifting effect */
-    animation: bg 20s linear infinite alternate;
-}
-
-/* 
-  The pseudo-element does the color-burn and text clipping. 
-  We rely on h1[data-text="..."] so the actual heading text is mirrored here.
-*/
-.home .home-content .text-1 h1::before {
-    content: attr(data-text); /* must match the actual text in <h1> */
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-
-    /* The same gradients + color-burn you had before */
-    background: 
-      var(--bg-grain),
-      conic-gradient(from 140deg at calc(var(--bg-1-x) * 1%) 90%, 
-                     #1a0d00, #00011a, #15009e, #d232aa, #fa8c3d, #fff480, 
-                     #fffffa, #7ed4fb, #040d8b, #010014),
-      radial-gradient(ellipse at calc(var(--bg-2-x) * 1%) calc(var(--bg-2-y) * 1%), 
-                      white 12%, transparent 35%), 
-      radial-gradient(ellipse at calc(var(--bg-3-x) * 1%) calc(var(--bg-3-y) * 1%), 
-                      #61a8fa, transparent 35%);
+    background: var(--bg-grain), conic-gradient(from 140deg at calc(var(--bg-1-x) * 1%) 90%, #1a0d00, #00011a, #15009e, #d232aa, #fa8c3d, #fff480, #fffffa, #7ed4fb, #040d8b, #010014),
+    radial-gradient(ellipse at calc(var(--bg-2-x) * 1%) calc(var(--bg-2-y) * 1%), white 12%, transparent 35%), radial-gradient(ellipse at calc(var(--bg-3-x) * 1%) calc(var(--bg-3-y) * 1%), #61a8fa, transparent 35%);
     background-repeat: repeat;
     background-size: 500px, cover;
-    background-blend-mode: color-burn;
-
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    color: transparent;
-    pointer-events: none; /* so the real text can still be selected, if needed */
-
-    z-index: 2;
+    animation: bg 20s linear infinite alternate;
 }
 
-/* Keep your keyframes for the shifting background positions */
 @keyframes bg {
     0% {
         --bg-1-x: calc(50 / 2);
@@ -392,21 +345,19 @@ body::after {
     }
 }
 
-/* ====================== TYPED TEXT (TEXT-2) ====================== */
-.home .home-content .text-2 {
+.home .home-content .text-2{
+    display: inline-block;
     line-height: 1em; 
     font-family: "Courier New", Courier, monospace;
-    font-size: 4em;
-    color: #ffffff; /* normal white text */
-    max-width: 100%;
-    text-align: left; 
+    font-size: 4em; /* Adjust size if necessary */
+    color: #ffffff; /* Set the font color to neon blue */
+    max-width: 100%; /* Restrict the width of the typing text */
+    text-align: left; /* Center align the text */
     vertical-align: top;
     text-transform: uppercase; 
-    margin-bottom: 3vh;
-    background: none;
-    z-index: 0;
-}
+    margin-bottom: 3vh
 
+}
 
 /* Resume */
 .home .links  li{
