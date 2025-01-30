@@ -1,60 +1,6 @@
 <!DOCTYPE html>
 <html lang ="en">
     <head>
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-              var isSafari = navigator.userAgent.indexOf("Safari") !== -1 
-                             && navigator.userAgent.indexOf("Chrome") === -1;
-              if (isSafari) {
-                document.documentElement.classList.add("safari");
-              }
-            });
-            </script>
-            
-
-          
-            <style>
-              :root {
-                --shadow-size: max(140px, 40vw);
-                --shadow-size-fallback: 40vw;
-                --shadow-blur: 60;
-                --color-1: #6328da;
-                --color-2: #ff1bff;
-                --color-3: #008cea;
-              }
-              body {
-                margin: 0;
-                position: relative;
-              }
-              body::before {
-                content: '';
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                z-index: -10;
-                background: radial-gradient(circle var(--shadow-size, var(--shadow-size-fallback)) at 20vw 0,
-                            var(--color-1) 100%, transparent 0),
-                           radial-gradient(circle var(--shadow-size, var(--shadow-size-fallback)) at 100vw 0,
-                            var(--color-2) 100%, transparent 0),
-                           radial-gradient(circle calc(var(--shadow-size, var(--shadow-size-fallback)) *1.2) at 50vw 115vh,
-                            var(--color-3) 100%, transparent 0);
-                filter: blur(calc(var(--shadow-blur) * 1px));
-                mix-blend-mode: hue;
-                opacity: 0.5;
-              }
-              /* Safari override */
-              .safari body::before {
-                background: radial-gradient(circle var(--shadow-size, var(--shadow-size-fallback)) at 20vw 0,
-                            rgba(255,255,255,0) 100%, transparent 0),
-                           radial-gradient(circle var(--shadow-size, var(--shadow-size-fallback)) at 100vw 0,
-                            rgba(255,255,255,0) 100%, transparent 0),
-                           radial-gradient(circle calc(var(--shadow-size, var(--shadow-size-fallback)) *1.2) at 50vw 115vh,
-                            rgba(255,255,255,0) 100%, transparent 0);
-                filter: blur(calc(var(--shadow-blur) * 1px));
-                mix-blend-mode: hue;
-                opacity: 0.5;
-              }
-            </style>
                 <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-LKRJ9ZJ1J0"></script>
         <script>
@@ -122,20 +68,6 @@
                         <h1>Hi, I'm<br>Ariana</h1>
                     </div>
                     <!-- Other Text -->
-                    <div class="text-2">
-                        <span class="typing"></span>
-                    </div>
-                        <div class="button-container">
-                            <head>
-                                <link rel="stylesheet" href="neonButton.css">
-                            </head>
-                            <button class="neon-btn" id="resume-button">
-                                <span class="neon-text">RESUME
-                            </button>
-                            <button class="neon-btn" id="contact-button">
-                                <span class="neon-text">CONTACT
-                            </button>
-                        </div>
                    
                 </div>
                 <!-- Image -->
@@ -143,7 +75,20 @@
             </div>
         </div>
     </section>
-    
+    <div class="text-2">
+        <span class="typing"></span>
+    </div>
+        <div class="button-container">
+            <head>
+                <link rel="stylesheet" href="neonButton.css">
+            </head>
+            <button class="neon-btn" id="resume-button">
+                <span class="neon-text">RESUME
+            </button>
+            <button class="neon-btn" id="contact-button">
+                <span class="neon-text">CONTACT
+            </button>
+        </div>
     <section class="svg-container snap-section" id="svg-section">
         <head>
           <link rel="stylesheet" href="neonimage.css">
