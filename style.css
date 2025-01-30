@@ -197,12 +197,14 @@ nav ul li a:hover{
     object-fit: contain; /* Ensure the image fits its container without cropping */
 
     /* Intense neon glow around the image */
-    filter: drop-shadow(0 0 50px var(--glow-color6)) 
-            drop-shadow(0 0 100px var(--glow-color6)) 
-            drop-shadow(0 0 150px var(--glow-color6));
-    -webkit-filter: drop-shadow(0 0 50px var(--glow-color6)) 
-                    drop-shadow(0 0 100px var(--glow-color6)) 
-                    drop-shadow(0 0 150px var(--glow-color6));
+    filter: drop-shadow(0 0 20px var(--glow-color6)) 
+            drop-shadow(0 0 40px var(--glow-color6)) 
+            drop-shadow(0 0 80px var(--glow-color6));
+            z-index: 99;
+    -webkit-filter: drop-shadow(0 0 20px var(--glow-color6)) 
+                    drop-shadow(0 0 40px var(--glow-color6)) 
+                    drop-shadow(0 0 80px var(--glow-color6));
+                    z-index: 99;
 }
 
 
@@ -281,6 +283,7 @@ body::before {
 }
 
 body::after {
+    z-index: -10;
     content: '';
     position: absolute;
     width: 100%;
@@ -291,6 +294,7 @@ body::after {
 }
 
 .home .home-content .text-1 h1 {
+    z-index: 1;
     margin-top: 11vh;
     font-family: 'Montserrat', sans-serif;
     font-size: 16em;
