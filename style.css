@@ -5,13 +5,11 @@
     text-decoration: none;
 
 }
-body {background-color:black;}
 
 .max-width{
     padding: 0 200px;
     max-width: 1900px;
     margin: auto;
-
 
 }
 
@@ -172,8 +170,10 @@ nav ul li a:hover{
 .home {
     color: #01fff4;
     overflow: visible;
+    background: black;
     filter: none;
     opacity: 1;
+    z-index: 1;
     transition: filter 0.3s ease, opacity 0.3s ease;
 }
 
@@ -188,6 +188,7 @@ nav ul li a:hover{
   }
   
   .home img {
+    z-index: 99;
     overflow:visible;
     width: 100%; /* Ensure the image scales to fit the container */
     max-width: 450px; /* Maximum width */
