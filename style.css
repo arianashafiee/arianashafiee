@@ -186,27 +186,27 @@ nav ul li a:hover{
     --glow-color6: #01fff4; /* Neon blue color */
   }
   
-  .home img {
+/* ========== IMAGE GLOW ========== */
+.home img {
     z-index: 99;
-    overflow:visible;
-    width: 100%; /* Ensure the image scales to fit the container */
-    max-width: 450px; /* Maximum width */
-    height: auto; /* Maintain the aspect ratio */
-    margin-top: 0vh; /* Add space from the top */
-    border-radius: 5px; /* Optional: Adds rounded corners */
-    object-fit: contain; /* Ensure the image fits its container without cropping */
+    overflow: visible;
+    width: 100%;
+    max-width: 450px; 
+    height: auto;
+    margin-top: 0vh; 
+    border-radius: 5px; 
+    object-fit: contain; 
 
     /* Intense neon glow around the image */
-    filter: drop-shadow(0 0 50px var(--glow-color6)) 
-            drop-shadow(0 0 100px var(--glow-color6)) 
+    filter: drop-shadow(0 0 50px var(--glow-color6))
+            drop-shadow(0 0 100px var(--glow-color6))
             drop-shadow(0 0 150px var(--glow-color6));
-    -webkit-filter: drop-shadow(0 0 50px var(--glow-color6)) 
-                    drop-shadow(0 0 100px var(--glow-color6)) 
+    -webkit-filter: drop-shadow(0 0 50px var(--glow-color6))
+                    drop-shadow(0 0 100px var(--glow-color6))
                     drop-shadow(0 0 150px var(--glow-color6));
 }
 
-
-/* CSS Custom Properties */
+/* ========== CUSTOM PROPERTIES ========== */
 @property --bg-1-x {
     syntax: "<number>";
     inherits: true;
@@ -257,6 +257,7 @@ nav ul li a:hover{
     }
 }
 
+/* ========== BODY BACKGROUND RADIAL BLENDS ========== */
 body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
@@ -270,13 +271,14 @@ body::before {
     height: 100%;
     background: radial-gradient(circle var(--shadow-size, var(--shadow-size-fallback)) at 20vw 0,
                 var(--color-1) 100%, transparent 0),
-                radial-gradient(circle var(--shadow-size, var(--shadow-size-fallback)) at 100vw 0,
+               radial-gradient(circle var(--shadow-size, var(--shadow-size-fallback)) at 100vw 0,
                 var(--color-2) 100%, transparent 0),
-                radial-gradient(circle calc(var(--shadow-size, var(--shadow-size-fallback)) *1.2) at 50vw 115vh,
+               radial-gradient(circle calc(var(--shadow-size, var(--shadow-size-fallback)) * 1.2) at 50vw 115vh,
                 var(--color-3) 100%, transparent 0);
     filter: blur(calc(var(--shadow-blur) * 1px));
     mix-blend-mode: hue;
     opacity: 0.5;
+    z-index: -1; /* Ensure this is behind everything */
 }
 
 body::after {
@@ -287,26 +289,46 @@ body::after {
     background-size: 500px;
     filter: contrast(145%) brightness(650%) invert(100%);
     mix-blend-mode: screen;
+    z-index: -2; /* Also behind all content */
 }
 
+/* ========== TEXT-1 (H1) WITH BLEND MODE ========== */
 .home .home-content .text-1 h1 {
     margin-top: 11vh;
     font-family: 'Montserrat', sans-serif;
     font-size: 16em;
-    line-height: 1.15; /* Set line height to normal or minimal spacing */
+    line-height: 1.15;
     font-weight: bold;
     display: inline-block;
-    background: var(--bg-grain), conic-gradient(from 140deg at calc(var(--bg-1-x) * 1%) 90%, #1a0d00, #00011a, #15009e, #d232aa, #fa8c3d, #fff480, #fffffa, #7ed4fb, #040d8b, #010014),
-    radial-gradient(ellipse at calc(var(--bg-2-x) * 1%) calc(var(--bg-2-y) * 1%), white 12%, transparent 35%), radial-gradient(ellipse at calc(var(--bg-3-x) * 1%) calc(var(--bg-3-y) * 1%), #61a8fa, transparent 35%);
+
+    /* Use advanced blend mode and background clipping */
+    background: var(--bg-grain),
+                conic-gradient(from 140deg at calc(var(--bg-1-x) * 1%) 90%, 
+                               #1a0d00, #00011a, #15009e, #d232aa, 
+                               #fa8c3d, #fff480, #fffffa, #7ed4fb, 
+                               #040d8b, #010014),
+                radial-gradient(ellipse at calc(var(--bg-2-x) * 1%) calc(var(--bg-2-y) * 1%), 
+                                white 12%, transparent 35%), 
+                radial-gradient(ellipse at calc(var(--bg-3-x) * 1%) calc(var(--bg-3-y) * 1%), 
+                                #61a8fa, transparent 35%);
     background-repeat: repeat;
     background-size: 500px, cover;
     background-blend-mode: color-burn;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    
+    /* IMPORTANT: Force Safari to not paint fallback color */
+    color: transparent !important;
+    background-color: transparent !important;
+
+    position: relative;
+    z-index: 2; /* Above any backgrounds, but text is transparent so glow shows behind */
+
     animation: bg 20s linear infinite alternate;
 }
 
+/* ========== KEYFRAMES FOR BG SHIFT ========== */
 @keyframes bg {
     0% {
         --bg-1-x: calc(50 / 2);
@@ -345,18 +367,25 @@ body::after {
     }
 }
 
-.home .home-content .text-2{
+/* ========== TEXT-2 (INLINE BLOCK) ========== */
+.home .home-content .text-2 {
     display: inline-block;
-    line-height: 1em; 
+    line-height: 1em;
     font-family: "Courier New", Courier, monospace;
-    font-size: 4em; /* Adjust size if necessary */
-    color: #ffffff; /* Set the font color to neon blue */
-    max-width: 100%; /* Restrict the width of the typing text */
-    text-align: left; /* Center align the text */
+    font-size: 4em;
+    color: #ffffff; /* White text */
+    text-align: left;
     vertical-align: top;
     text-transform: uppercase; 
-    margin-bottom: 3vh
+    margin-bottom: 3vh;
+    max-width: 100%;
 
+    /* Prevent Safari from applying a box behind text */
+    background: transparent !important;
+    background-color: transparent !important;
+    
+    position: relative;
+    z-index: 2;
 }
 
 /* Resume */
