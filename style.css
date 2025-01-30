@@ -261,9 +261,11 @@ body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
     position: relative;
+    z-index:-1
 }
 
 body::before {
+    z-index:-1;
     content: '';
     position: absolute;
     width: 100%;
@@ -280,6 +282,7 @@ body::before {
 }
 
 body::after {
+    z-index:-1;
     content: '';
     position: absolute;
     width: 100%;
@@ -290,6 +293,7 @@ body::after {
 }
 
 .home .home-content .text-1 h1 {
+    z-index:0;
     margin-top: 11vh;
     font-family: 'Montserrat', sans-serif;
     font-size: 16em;
@@ -346,6 +350,7 @@ body::after {
 }
 
 .home .home-content .text-2{
+    z-index:0;
     display: inline-block;
     line-height: 1em; 
     font-family: "Courier New", Courier, monospace;
