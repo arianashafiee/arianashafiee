@@ -23,11 +23,12 @@ html, body {
 
 .button-container {
     z-index: 1005;
+    max-width: 50%;
     display: flex;
     justify-content: left;
     align-items: left;
     height: 15vh;
-    padding-top: 0px;
+    padding-top: 40px;
     background: var(--black);
     display: flex;
     gap: 25px;
