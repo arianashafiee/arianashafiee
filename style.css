@@ -150,7 +150,7 @@ nav ul li a{
   position: sticky;
   top: 0;
   height: 100vh;
-  z-index: 1;
+  z-index: 5;
   overflow: hidden;
 }
 nav ul li a:hover{
@@ -195,14 +195,15 @@ nav ul li a:hover{
     margin-top: 0vh; /* Add space from the top */
     border-radius: 5px; /* Optional: Adds rounded corners */
     object-fit: contain; /* Ensure the image fits its container without cropping */
+    z-index:1000;
 
     /* Intense neon glow around the image */
-    filter: drop-shadow(0 0 50px var(--glow-color6)) 
-            drop-shadow(0 0 100px var(--glow-color6)) 
-            drop-shadow(0 0 150px var(--glow-color6));
-    -webkit-filter: drop-shadow(0 0 50px var(--glow-color6)) 
-                    drop-shadow(0 0 100px var(--glow-color6)) 
-                    drop-shadow(0 0 150px var(--glow-color6));
+    filter: drop-shadow(0 0 10px var(--glow-color6)) 
+            drop-shadow(0 0 20x var(--glow-color6)) 
+            drop-shadow(0 0 60px var(--glow-color6));
+    -webkit-filter: drop-shadow(0 0 10px var(--glow-color6)) 
+                    drop-shadow(0 0 20px var(--glow-color6)) 
+                    drop-shadow(0 0 60px var(--glow-color6));
 }
 
 
@@ -298,7 +299,6 @@ body::after {
     font-size: 16em;
     line-height: 1.15; /* Set line height to normal or minimal spacing */
     font-weight: bold;
-    display: inline-block;
     background: var(--bg-grain), conic-gradient(from 140deg at calc(var(--bg-1-x) * 1%) 90%, #1a0d00, #00011a, #15009e, #d232aa, #fa8c3d, #fff480, #fffffa, #7ed4fb, #040d8b, #010014),
     radial-gradient(ellipse at calc(var(--bg-2-x) * 1%) calc(var(--bg-2-y) * 1%), white 12%, transparent 35%), radial-gradient(ellipse at calc(var(--bg-3-x) * 1%) calc(var(--bg-3-y) * 1%), #61a8fa, transparent 35%);
     background-repeat: repeat;
