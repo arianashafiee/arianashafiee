@@ -188,11 +188,14 @@ nav ul li a:hover{
   }
   
   .home img {
+    position: absolute;
     overflow:visible;
     width: 100%; /* Ensure the image scales to fit the container */
     max-width: 450px; /* Maximum width */
     height: auto; /* Maintain the aspect ratio */
-    margin-top: 0vh; /* Add space from the top */
+    margin-top: 18vh; /* Add space from the top */
+    
+    margin-left: 56%;
     border-radius: 5px; /* Optional: Adds rounded corners */
     object-fit: contain; /* Ensure the image fits its container without cropping */
     z-index:1000;
@@ -293,13 +296,13 @@ body::after {
     mix-blend-mode: screen;
 }
 
-
 .home .home-content .text-1 h1 {
     margin-top: 11vh;
     font-family: 'Montserrat', sans-serif;
     font-size: 16em;
     line-height: 1.15; /* Set line height to normal or minimal spacing */
     font-weight: bold;
+    display: inline-block;
     background: var(--bg-grain), conic-gradient(from 140deg at calc(var(--bg-1-x) * 1%) 90%, #1a0d00, #00011a, #15009e, #d232aa, #fa8c3d, #fff480, #fffffa, #7ed4fb, #040d8b, #010014),
     radial-gradient(ellipse at calc(var(--bg-2-x) * 1%) calc(var(--bg-2-y) * 1%), white 12%, transparent 35%), radial-gradient(ellipse at calc(var(--bg-3-x) * 1%) calc(var(--bg-3-y) * 1%), #61a8fa, transparent 35%);
     background-repeat: repeat;
@@ -1092,7 +1095,7 @@ margin-top: 20px;
     }
 
   /* Responsive media query */
-@media (max-width: 1697px){
+@media (max-width: 1800px){
     .max-width{
         padding: 0 100px;
     }
@@ -1107,7 +1110,8 @@ margin-top: 20px;
     }
 }
 
-@media (max-width: 1390px){
+
+@media (max-width: 1590px){
     .what-i-do .content .name{
         font-size: 30px;
     }
@@ -1146,12 +1150,13 @@ margin-top: 20px;
     .navbar .menu li a{
         font-size: 15px;
     }
-    .home img{
-        margin-top: 11vh;
-    }
+   
     
 }
-@media (max-width: 1260px){
+
+
+
+@media (max-width: 1447px){
     .what-i-do .content .name{
         font-size: 25px;
     }
@@ -1162,7 +1167,7 @@ margin-top: 20px;
 
     .home .home-content .text-1{
         margin-top: 5vh;
-        font-size: 11px;
+        font-size: 12px;
     }
     .home .home-content .text-2{
         font-size: 3em;
@@ -1174,25 +1179,29 @@ margin-top: 20px;
     }
 
     .max-width{
-        padding: 0 60px;
+        padding: 0 100px;
     }
     .home img{
-        margin-top: 10vh;
-        width: 360px;
+        margin-top: 20vh;
+        width: 410px;
     }
 }
 
-@media (max-width: 1089px){
+@media (max-width: 1333px){
     .what-i-do .content .name{
         font-size: 40px;
     }
     .home .home-content .text-1{
-        font-size: 10px;
+        font-size: 11.5px;
     }
     .home .home-content .text-2{
-        font-size: 29px;
+        font-size: 39px;
     }
-
+    .home img{
+        margin-top: 24vh;
+        margin-left: 58%;
+        max-width: 380px;
+    }
     .group .details{
         font-size: 16px;
 
@@ -1227,11 +1236,9 @@ margin-top: 20px;
         font-size: 15px;
     }
     .max-width{
-        padding: 0 40px;
+        padding: 0 100px;
     }
-    .home img{
-        width: 330px;
-    }
+    
 
     .menu-btn{
         display: block;
@@ -1288,7 +1295,7 @@ margin-top: 20px;
         }
 
 }
-@media (max-width: 990px){
+@media (max-width: 1215px){
     .title{
         font-size: 70px;
     }
@@ -1299,7 +1306,9 @@ margin-top: 20px;
         font-size: 45px;
     }
     .home img{
-        width: 300px;
+        width: 340px;
+        margin-left: 57%;
+        
     }
     .projects .content .box2 .header{
         font-size: 16px;
@@ -1323,11 +1332,41 @@ margin-top: 20px;
 }
 .app-link a{
     font-size: 40px;
-
+}
 
 }
+
+@media (max-width: 1165px){
+    .home .home-content .text-1{
+        font-size: 10px;
+    }
+    .home .home-content .text-2{
+        font-size: 38px;
+    }
+    .max-width{
+        padding: 0 80px;
+    }
+
 }
-@media (max-width: 910px){
+@media (max-width: 1136px){
+    .home .home-content .text-1{
+        font-size: 9px;
+    }
+    .home .home-content .text-2{
+        font-size: 37px;
+    }
+    .max-width{
+        padding: 0 80px;
+    }
+    .home img{
+        margin-top: 19vh;
+        width: 330px;
+        margin-left: 55%;
+        
+    }
+
+}
+@media (max-width: 1054px){
     .what-i-do .content .name{
         font-size: 28px;
     }
@@ -1339,7 +1378,8 @@ margin-top: 20px;
         font-size: 39px;
     }
     .home img{
-        margin-top: 17vh;
+        margin-top: 27vh;
+        margin-left: 60%;
         width: 275px;
     }
     .projects .content .box2 .header{
@@ -1357,7 +1397,7 @@ margin-top: 20px;
     }
 }
 
-@media (max-width: 855px){
+@media (max-width: 954px){
     .title{
         font-size: 65px;
     }
@@ -1400,9 +1440,13 @@ margin-top: 20px;
     .home .home-content .text-2{
         font-size: 30px;
     }
-    
+    .home img{
+        width: 260px;
+        margin-left: 58%;
+        
+    }
 }
-@media (max-width: 815px){
+@media (max-width: 897px){
     section:hover ~ section,
     section:hover,
     section:not(:hover) {
