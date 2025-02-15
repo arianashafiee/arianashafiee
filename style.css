@@ -164,54 +164,64 @@ nav ul li a:hover{
     cursor: pointer;
     display: none;
 }
+:root {
+    --glow-color1: #2ecc71;  /* Green */
+    --glow-color2: #3498db;  /* Blue */
+    --glow-color3: #9b59b6;  /* Purple */
+    --glow-color4: #f39c12;  /* Orange */
+}
 
-  
+/* Background color animation syncing with image glow */
+@keyframes ticker-bg {
+    0% { background-color: var(--glow-color1); }
+    50% { background-color: var(--glow-color2); }
+    75% { background-color: var(--glow-color3); }
+    100% { background-color: var(--glow-color4); }
+}
+
 .ticker-wrap {
     position: fixed;
     bottom: 0;
     width: 100%;
     overflow: hidden;
     height: 4rem;
-    background-color: rgba(0, 0, 0, 0.9);
-    padding-left: 100%;
+    background-color: var(--glow-color1);
     box-sizing: content-box;
-    z-index: 9999; /* Ensures the ticker is always on top */
+    z-index: 9999;
+    animation: ticker-bg 6s ease-in-out infinite alternate;
 }
 
+/* Ticker animation - starts offscreen, scrolls in, then disappears before restarting */
 .ticker {
-    display: inline-block;
+    display: inline-flex;
     height: 4rem;
     line-height: 4rem;
     white-space: nowrap;
-    padding-right: 100%;
     box-sizing: content-box;
-    animation: ticker 30s linear infinite;
+    animation: ticker 20s linear infinite;
     position: relative;
-    z-index: 99999; /* Ensures text remains above all elements */
+    z-index: 99999;
+    transform: translateX(100%); /* Start off-screen */
 }
 
+/* Text Items */
 .ticker__item {
     display: inline-block;
     padding: 0 4rem;
-    font-size: 1.5rem;
-    font-family: 'Rubik';
+    font-size: 2rem;
+    font-family: 'Rubik', sans-serif;
     font-weight: bold;
     color: white;
     position: relative;
-    z-index: 999999; /* Ensures text remains visible above everything */
+    z-index: 999999;
 }
 
+/* Ensures ticker starts off-screen, scrolls in, and then waits before restarting */
 @keyframes ticker {
-    0% {
-        transform: translate3d(0, 0, 0);
-        visibility: visible;
-    }
-    100% {
-        transform: translate3d(-100%, 0, 0);
-    }
+    0% { transform: translateX(100%); }  /* Start blank */
+    99% { transform: translateX(-100%); } /* Scroll completely out */
+    100% { transform: translateX(-100%); } /* Pause before restart */
 }
-
-
 
 /* Home Section Styling */
 .home {
@@ -228,12 +238,7 @@ nav ul li a:hover{
 }
 
 
-:root {
-    --glow-color1: #2ecc71;  /* Green */
-    --glow-color2: #3498db;  /* Blue */
-    --glow-color3: #9b59b6;  /* Purple */
-    --glow-color4: #f39c12;  /* Orange */
-}
+
 
 @keyframes pulse-glow {
     0% {
