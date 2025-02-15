@@ -166,6 +166,51 @@ nav ul li a:hover{
 }
 
   
+.ticker-wrap {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    overflow: hidden;
+    height: 3rem;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding-left: 100%;
+    box-sizing: content-box;
+    z-index: 9999; /* Ensures the ticker is always on top */
+}
+
+.ticker {
+    display: inline-block;
+    height: 3rem;
+    line-height: 3rem;
+    white-space: nowrap;
+    padding-right: 100%;
+    box-sizing: content-box;
+    animation: ticker 30s linear infinite;
+    position: relative;
+    z-index: 99999; /* Ensures text remains above all elements */
+}
+
+.ticker__item {
+    display: inline-block;
+    padding: 0 1rem;
+    font-size: 1.5rem;
+    font-family: 'Rubik';
+    font-weight: bold;
+    color: white;
+    position: relative;
+    z-index: 999999; /* Ensures text remains visible above everything */
+}
+
+@keyframes ticker {
+    0% {
+        transform: translate3d(0, 0, 0);
+        visibility: visible;
+    }
+    100% {
+        transform: translate3d(-100%, 0, 0);
+    }
+}
+
 
 
 /* Home Section Styling */
