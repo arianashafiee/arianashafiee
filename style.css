@@ -14,7 +14,12 @@ body {background-color:black;}
 
 
 }
-
+:root {
+    --glow-color1: #2ecc71;  /* Green */
+    --glow-color2: #3498db;  /* Blue */
+    --glow-color3: #9b59b6;  /* Purple */
+    --glow-color4: #cfc15d;  /* Orange */
+}
 html, body {
     margin: 0;
     padding: 0;
@@ -53,8 +58,8 @@ html{
     75% { background: var(--glow-color3); border-color: var(--glow-color3); }
     100% { background: var(--glow-color4); border-color: var(--glow-color4); }
 }
-button {
-    animation: background-sync 6s ease-in-out infinite alternate;
+button{
+    animation: owl-glow 6s ease-in-out infinite alternate;
 }
 /* Apply dynamic glowing effect */
 @keyframes dynamic-glow {
@@ -62,25 +67,59 @@ button {
         box-shadow: 0px 18px 50px var(--glow-color1);
         border-color: var(--glow-color1);
         color: var(--glow-color1);
+        fill: var(--glow-color1);
     }
     50% {
         box-shadow: 0px 18px 50px var(--glow-color2);
         border-color: var(--glow-color2);
         color: var(--glow-color2);
+        fill: var(--glow-color2);
     }
     75% {
         box-shadow: 0px 18px 50px var(--glow-color3);
         border-color: var(--glow-color3);
         color: var(--glow-color3);
+        fill: var(--glow-color3);
     }
     100% {
         box-shadow: 0px 18px 50px var(--glow-color4);
         border-color: var(--glow-color4);
         color: var(--glow-color4);
+        fill: var(--glow-color4);
+        
     }
 }
+@keyframes owl-glow {
+    0% {
+        box-shadow: 0px 10px 50px var(--glow-color1);
+        background-color: var(--glow-color1);
+        border-color: var(--glow-color1); 
 
+    }
+    50% {
+        box-shadow: 0px 10px 50px var(--glow-color2);
+        background-color: var(--glow-color2);
+        border-color: var(--glow-color2); 
+   
+    }
+    75% {
+        box-shadow: 0px 10px 50px var(--glow-color3);
+        background-color: var(--glow-color3);
+        border-color: var(--glow-color3); 
+    }
+    100% {
+        box-shadow: 0px 10px 50px var(--glow-color4);
+        background-color: var(--glow-color4);
+        border-color: var(--glow-color4); 
+
+        
+    }
+}
+.owl-dot {
+    animation: owl-glow 6s ease-in-out infinite alternate;
+}
 /* Apply to all elements */
+
 .what-i-do .content .card,
 .testimonial .carousel .card,
 .projects .content .card,
@@ -91,11 +130,10 @@ nav ul ul,
 
 
 /* Apply to multiple UI Elements */ 
-.what-i-do .content .link a,
+.footer, .what-i-do .content .link a,
 .projects .content .link a,
 .testimonial .carousel .name,
-.testimonial .carousel .owl-dot
-.input-fields .input,
+.input-fields .input, 
 .msg textarea,
 .projects .content .box .tags {
     animation: color-sync 6s ease-in-out infinite alternate;
@@ -160,6 +198,7 @@ nav ul ul,
     margin-left: 20px;
     text-align: center;
     box-shadow: 0px 18px 40px rgba(1,255,244,0.5);
+    
 
   }
   nav ul ul li{
@@ -223,6 +262,7 @@ nav ul li a{
 nav ul li a:hover{
     color:#01fff4;
     animation: color-sync 6s ease-in-out infinite alternate;
+
 }
 
 /** menu button **/
@@ -232,12 +272,7 @@ nav ul li a:hover{
     cursor: pointer;
     display: none;
 }
-:root {
-    --glow-color1: #2ecc71;  /* Green */
-    --glow-color2: #3498db;  /* Blue */
-    --glow-color3: #9b59b6;  /* Purple */
-    --glow-color4: #f39c12;  /* Orange */
-}
+
 
 /* Background color animation syncing with image glow */
 @keyframes ticker-bg {
@@ -271,7 +306,270 @@ nav ul li a:hover{
     z-index: 99999;
     transform: translateX(100%); /* Start off-screen */
 }
+.svg-max-width {
+    padding: 0px 0px; /* Less padding than .max-width for closer edges */
+    max-width: 90%; /* Allow the section to stretch wider */
+    margin: auto;
+  }
+  
+  
+  :root {
+    --glow-color: #01fff4; /* Neon glow color */
+    --text-outline-color: #000; /* Black text for contrast */
+    --image-height: 325px; /* Default height for all images */
+    --font-size: calc(var(--image-height) / 6); /* Font size based on image height */
+  }
+  
+  
+  .svg-container {
+    text-align: center;
+    padding-top: 35vh;
+    padding-bottom: 40vh;
+    max-width: 100%;
+  }
+  
+  .svg-wrapper {
+    display: flex;
+    justify-content: space-evenly; /* Automatically adjust spacing */
+    align-items: center;
+    flex-wrap: wrap; /* Wrap items to the next line on smaller screens */
+    gap: 0rem; /* Add spacing between items */
+  }
+  
+  .svg-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+  @keyframes svg-glow-fill {
+    0% { fill: var(--glow-color1); stroke: var(--glow-color1); filter: drop-shadow(0 80 100px var(--glow-color1)); }
+    33% { fill: var(--glow-color2); stroke: var(--glow-color2); filter: drop-shadow(0 100 120px var(--glow-color2)); }
+    66% { fill: var(--glow-color3); stroke: var(--glow-color3); filter: drop-shadow(0 120 180px var(--glow-color3)); }
+    100% { fill: var(--glow-color4); stroke: var(--glow-color4); filter: drop-shadow(0 140 200px var(--glow-color4)); }
+}
 
+/* Apply the animation to all SVG paths */
+.svg-item path {
+    stroke-width: 2;
+    animation: svg-glow-fill 6s infinite alternate ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hover effect - Increases the glow intensity */
+.glowing-svg:hover path {
+    filter: drop-shadow(0 0 80px var(--glow-color4));
+    transform: scale(1.05);
+}
+
+  
+  /* Text Glow with Pulsing Effect */
+@keyframes text-glow-pulse {
+    0% {
+        text-shadow: 
+            0 0 10px var(--glow-color1), 
+            0 0 20px var(--glow-color1), 
+            0 0 40px var(--glow-color2);
+    }
+    33% {
+        text-shadow: 
+            0 0 10px var(--glow-color2), 
+            0 0 20px var(--glow-color2), 
+            0 0 40px var(--glow-color3);
+    }
+    66% {
+        text-shadow: 
+            0 0 10px var(--glow-color3), 
+            0 0 20px var(--glow-color3), 
+            0 0 40px var(--glow-color4);
+    }
+    100% {
+        text-shadow: 
+            0 0 10px var(--glow-color4), 
+            0 0 20px var(--glow-color4), 
+            0 0 40px var(--glow-color1);
+    }
+}
+
+.svg-text {
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Perfect centering */
+    opacity: 0; /* Hidden by default */
+    text-align: center;
+    font-weight: 900;
+    line-height: 1.2;
+    z-index: 10; /* Ensure text is above the image */
+    
+    color: var(--text-outline-color);
+    -webkit-text-stroke: 1px var(--text-outline-color); /* Outline stays static */
+    
+    animation: text-glow-pulse 6s infinite alternate ease-in-out;
+}
+
+  
+  /* Reveal text on hover */
+  .svg-container:hover .svg-text {
+    opacity: 1; /* Show text */
+  }
+  
+  /* Large font for first two words */
+  .large-text {
+    font-size: var(--font-size); /* Dynamic font size based on image height */
+  }
+  
+  .subtitle {
+    font-size: calc(var(--font-size) / 1.5); /* Smaller font for subtitles */
+  }
+  
+  .smaller {
+    font-size: calc(var(--font-size) / 1.5); /* Reduced size for smaller text */
+  }
+  @media (max-width: 1800px) {
+    :root {
+      --image-height: 270px;
+    }
+    .svg-max-width {
+      max-width: 95%;
+    
+    }
+  }
+  @media (max-width: 1612px) {
+    .svg-container {
+      padding-top: 39vh;
+    }
+    :root {
+      --image-height: 240px;
+    }
+    .svg-max-width {
+      max-width: 95%;
+    
+    }
+  }
+  /* Responsive Design Adjustments */
+  @media (max-width: 1478px) {
+    .svg-container {
+      padding-top: 41vh;
+    }
+    :root {
+      --image-height: 200px;
+    }
+    .svg-max-width {
+      max-width: 100%;
+    
+    }
+  }
+  
+  @media (max-width: 1322px) {
+    :root {
+      --image-height: 180px;
+    }
+  }
+  @media (max-width: 1213px) {
+    .svg-container {
+      padding-top: 12vh;
+    }
+    .svg-wrapper {
+      display: grid;
+      grid-template-columns: 0fr 0fr; 
+      /* Increase horizontal gap between columns */
+      column-gap: 0rem;  
+      /* If you also want more vertical spacing, add row-gap or use the combined gap property */
+      row-gap: 4rem;
+      /* or simply gap: 2rem for both columns and rows */
+      
+      justify-items: center;
+      max-width: 100%;
+    }
+  
+  
+  
+    .svg-item:nth-child(1) {
+      grid-column: 1;
+    }
+  
+    .svg-item:nth-child(3) {
+      grid-column: 1;
+    }
+  
+    .svg-item:nth-child(2) {
+      grid-column: 2;
+    }
+  
+    .svg-item:nth-child(4) {
+      grid-column: 2;
+    }
+  
+    :root {
+      --image-height: 370px;
+    }
+  }
+  @media (max-width: 1192px) {
+    .svg-container {
+      padding-top: 18vh;
+    }
+    :root {
+      --image-height: 320px;
+    }
+  }
+  
+  
+  
+  @media (max-width: 970px) {
+    :root {
+      --image-height: 290px;
+    }
+  }
+  @media (max-width: 921px) {
+    .svg-container {
+      padding-top: 23vh;
+    }
+    :root {
+      --image-height: 250px;
+    }
+    
+  }
+  @media (max-width: 857px) {
+    .svg-container {
+      padding-top: 27vh;
+    }
+    
+    :root {
+      --image-height: 220px;
+    }
+    
+  }
+  @media (max-width: 790px) {
+   
+    :root {
+      --image-height: 200px;
+    }
+  }
+  
+  @media (max-width: 700px) {
+  
+    :root {
+      --image-height: 160px;
+    }
+  }
+  
+  
+  @media (max-width: 475px) {
+    :root {
+      --image-height: 150px;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    :root {
+      --image-height: 130px;
+    }
+  }
+  
 /* Text Items */
 .ticker__item {
     display: inline-block;
@@ -661,7 +959,7 @@ section:hover {
 }
 .testimonial .carousel .card{
     z-index: -100;
-    max-width: 96%;
+    max-width: 90%;
     margin: auto;
     background: black;
     text-align: left;
@@ -669,7 +967,7 @@ section:hover {
     padding-bottom: 25px;
     padding-left: 25px;
     padding-right: 25px;
-    box-shadow: 0px 10px 25px rgba(1,255,244,1);
+    box-shadow: 10px 25px 20px rgba(1,255,244,1);
     border-radius: 25px;
     margin-bottom: 50px;
 }
@@ -706,24 +1004,21 @@ section:hover {
     height: auto;
 }
 
-.owl-dot {
+.owl-dot{
     height: 15px;
     width: 45px;
     margin: 0 5px;
-    outline: none;
+    outline: none ;
     border-radius: 14px;
-    border: 2px solid var(--glow-color1) !important;
-    background: var(--glow-color1) !important; 
-    box-shadow: 0px 18px 50px var(--glow-color1) !important;
-    animation: color-sync 6s linear infinite alternate;
-}
-
-/* Ensure hover and active states continue changing */
-.owl-dot.active,
-.owl-dot:hover {
-    animation: color-sync 6s linear infinite alternate !important;
-}
-
+    border: 2px solid #01fff4;
+    box-shadow: 0px 18px 50px rgb(1,255,244);;
+    transition: all 0.3s ease;
+  }
+  .owl-dot.active,
+  .owl-dot:hover{
+    border: 2px solid white !important;
+    background: black !important;
+  }
 
   /*Projects Section*/
   .projects {
@@ -1001,7 +1296,7 @@ section:hover {
     background: transparent;
     border: 2px solid #01fff4;
     padding: 12px;
-    color: #ffffff;
+    color: #ffffff !important;
     width: 100%;
     font-size: 20px;
     font-weight:200;
@@ -1258,7 +1553,7 @@ margin-top: 20px;
     .footer{
         padding-top: 20px;
         margin-top: 0px;
-        padding-bottom: 60px;
+        padding-bottom: 130px;
         color:#01fff4;
         background-color: black;
     }
