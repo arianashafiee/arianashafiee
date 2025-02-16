@@ -130,7 +130,7 @@ nav ul ul,
 
 
 /* Apply to multiple UI Elements */ 
-.footer, .what-i-do .content .link a,
+.footer,.title, .what-i-do .content .link a,.overview .text,
 .projects .content .link a,
 .testimonial .carousel .name,
 .input-fields .input, 
@@ -138,6 +138,59 @@ nav ul ul,
 .projects .content .box .tags {
     animation: color-sync 6s ease-in-out infinite alternate;
 }
+@import url(https://fonts.googleapis.com/css?family=Concert+One);
+
+h5 {
+  animation:glow 6s ease-in-out infinite alternate;
+  
+}
+
+figure {
+  animation:wobble 6s ease-in-out infinite;
+  transform-style:preserve-3d;
+}
+
+@keyframes wobble {
+  0%,100%{ transform:rotate3d(1,1,0,40deg); }
+  25%{ transform:rotate3d(-1,1,0,40deg); }
+  50%{ transform:rotate3d(-1,-1,0,40deg); }
+  75%{ transform:rotate3d(1,-1,0,40deg); }
+}
+
+h5 {
+  display:block;
+  width:100%;
+  line-height:1.5;
+  font:900 7em 'Concert One', sans-serif;
+  text-transform:uppercase;
+  position:absolute;
+  color:#0a0a0a;
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 30px var(--glow-color1);
+    }
+    50% {
+        text-shadow: 0 0 30px var(--glow-color2);
+    }
+    75% {
+        text-shadow: 0 0 30px var(--glow-color3);
+    }
+    100% {
+        text-shadow: 0 0 30px var(--glow-color4);
+    }
+}
+
+h5:nth-child(2){ transform:translateZ(5px); }
+h5:nth-child(3){ transform:translateZ(10px);}
+h5:nth-child(4){ transform:translateZ(15px); }
+h5:nth-child(5){ transform:translateZ(20px); }
+h5:nth-child(6){ transform:translateZ(25px); }
+h5:nth-child(7){ transform:translateZ(30px); }
+h5:nth-child(8){ transform:translateZ(35px); }
+h5:nth-child(9){ transform:translateZ(40px); }
+h5:nth-child(10){ transform:translateZ(45px); }
 
 .projects .content .link a:hover {
     background: var(--glow-color1);
@@ -1184,7 +1237,13 @@ section:hover {
     padding-bottom: 80px;
 
   }
+  .figure-wrapper{
+padding-bottom: 200px;
+padding-top: 200px;
+
+  }
   .contact .card{
+    position: relative;
     width: 100%;
     padding: 60px;
     border-radius: 40px;
@@ -1348,10 +1407,13 @@ section:hover {
 
   /* Overview titles */
   .overview .text{
-      font-size: 50px;
-      margin-top: 120px;
+      font-size: 100px;
+      font-weight: bold;
+      margin-top: 140px;
+      margin-bottom: 160px;
       text-align: center;
-      font-weight: 500;
+      text-transform: uppercase;
+      font-family: 'Poppins', sans-serif;
       color: #01fff4;
 
   }
