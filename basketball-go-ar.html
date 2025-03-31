@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang ="en">
+<html lang="en">
     <head>
-                <!-- Google tag (gtag.js) -->
+        <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-LKRJ9ZJ1J0"></script>
         <script>
         window.dataLayer = window.dataLayer || [];
@@ -10,73 +10,310 @@
 
         gtag('config', 'G-LKRJ9ZJ1J0');
         </script>
-        <link rel="icon" type="image/png" href="assets/skyfavicon.png"/>
+        <link rel="icon" type="image/png" href="assets/favicon.ico"/>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Basketball Go AR</title>
+        <title>Basketball Go AR | Ariana Parisa Shafiee</title>
         <link rel="stylesheet" href="style.css">
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
         <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
-
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-
-
+        
+        <!-- Plyr CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.7.8/plyr.min.css">
+        
+        <!-- Custom styles -->
+        <style>
+          
+           
+            
+            .info {
+                padding: 20px;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+            
+            h3 {
+                color: #00C2FF;
+                margin-top: 40px;
+                margin-bottom: 15px;
+                font-size: 1.5rem;
+                border-left: 3px solid #00C2FF;
+                padding-left: 12px;
+                letter-spacing: 0.5px;
+            }
+            
+            p {
+                margin-bottom: 20px;
+                font-size: 1rem;
+                line-height: 1.7;
+                color: rgba(255, 255, 255, 0.9);
+                background: rgba(0, 0, 0, 0.2);
+                padding: 15px;
+                border-radius: 8px;
+            }
+            
+            /* Video container styling - unchanged as requested */
+            .main-video {
+                order: -1; /* Make sure video appears before other content */
+                margin-left: auto;
+                margin-right: auto;
+                padding-top: 56.25%; /* Original 16:9 aspect ratio from style.css */
+                height: 0px;
+                position: relative;
+                width: 95%; /* Width of the visible portion */
+                max-width: 600px; /* Cap max width */
+                overflow: hidden; /* Hide overflow content */
+            }
+            
+            /* Create container with cropping effect */
+            .video-container {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%; /* Container is the full width of main-video */
+                height: 100%;
+                overflow: hidden;
+                border-radius: 8px;
+            }
+            
+            /* Set the actual player/iframe to be larger than container and centered */
+            #player, .plyr, .plyr__video-wrapper {
+                position: absolute;
+                top: 0;
+                /* Make the player wider than the container and centered */
+                width: 150%; /* Larger than container to crop sides */
+                height: 100%;
+            }
+            
+            /* App link styling */
+            .app-link {
+                text-align: center;
+                margin: 25px 0;
+            }
+            
+            .app-link a {
+                display: inline-block;
+                background: linear-gradient(45deg, #007AFF, #00C2FF);
+                color: white;
+                padding: 12px 30px;
+                border-radius: 30px;
+                text-decoration: none;
+                font-weight: bold;
+                transition: all 0.3s ease;
+                box-shadow: 0 0 15px rgba(0, 122, 255, 0.5);
+                font-size: 1rem;
+                letter-spacing: 0.5px;
+            }
+            
+            .app-link a:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 0 25px rgba(0, 194, 255, 0.7);
+                background: linear-gradient(45deg, #0066CC, #00AAFF);
+            }
+            
+            .app-link a i {
+                margin-right: 8px;
+                font-size: 1.1rem;
+            }
+            
+            /* Gallery improvements */
+            .app-content {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+                margin: 25px 0;
+            }
+            
+            .app-content img {
+                width: 31%;
+                max-width: 300px;
+                border-radius: 12px;
+                transition: all 0.4s ease;
+                border: 2px solid transparent;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            }
+            
+            .app-content img:hover {
+                transform: translateY(-5px);
+                border: 2px solid rgba(0, 194, 255, 0.3);
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            }
+            
+            @media (max-width: 768px) {
+                .app-content img {
+                    width: 45%;
+                }
+            }
+            
+            @media (max-width: 480px) {
+                .app-content img {
+                    width: 100%;
+                }
+            }
+            
+            /* Process image */
+            .image {
+                margin: 30px 0;
+                text-align: center;
+            }
+            
+            .image img {
+                max-width: 100%;
+                border-radius: 12px;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+                transition: transform 0.3s ease;
+            }
+            
+            .image img:hover {
+                transform: scale(1.01);
+            }
+            
+            /* Study link */
+            .study-link {
+                margin: 35px 0;
+                text-align: center;
+                padding: 15px;
+                background: rgba(255, 255, 255, 0.05);
+                border-radius: 10px;
+            }
+            
+            .study-link a {
+                color: #00C2FF;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                font-weight: 500;
+                padding: 8px 16px;
+                border-bottom: 1px solid rgba(0, 194, 255, 0.3);
+            }
+            
+            .study-link a:hover {
+                color: #FFF;
+                background: rgba(0, 194, 255, 0.2);
+                border-radius: 5px;
+            }
+            
+            /* Footer */
+            .footer {
+                text-align: center;
+                padding: 30px 0;
+                margin-top: 70px;
+                border-top: 1px solid rgba(0, 194, 255, 0.2);
+                background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));
+            }
+            
+            .footer p {
+                background: transparent;
+                padding: 0;
+                color: rgba(255, 255, 255, 0.7);
+                font-size: 0.9rem;
+            }
+            
+            /* Neon light effect for buttons */
+            .resume-contact {
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+                margin-top: 40px;
+            }
+            
+            .neon-button {
+                position: relative;
+                display: inline-block;
+                padding: 15px 30px;
+                color: #000;
+                background-color: rgba(142, 255, 180, 0.8);
+                font-weight: bold;
+                text-decoration: none;
+                text-transform: uppercase;
+                overflow: hidden;
+                border-radius: 30px;
+                transition: 0.5s;
+                box-shadow: 0 0 10px rgba(142, 255, 180, 0.8),
+                            0 0 40px rgba(142, 255, 180, 0.5),
+                            0 0 80px rgba(142, 255, 180, 0.3);
+                animation: neonPulse 2s infinite alternate;
+            }
+            
+            @keyframes neonPulse {
+                0% {
+                    box-shadow: 0 0 10px rgba(142, 255, 180, 0.8),
+                                0 0 40px rgba(142, 255, 180, 0.5),
+                                0 0 80px rgba(142, 255, 180, 0.3);
+                }
+                100% {
+                    box-shadow: 0 0 15px rgba(117, 121, 231, 0.8),
+                                0 0 45px rgba(117, 121, 231, 0.5),
+                                0 0 85px rgba(117, 121, 231, 0.3);
+                }
+            }
+        </style>
     </head>
-</html>
-<body>
-    <nav class="navbar">
-        <div class="max-width">
-            <div class="logo"><a href="index.html">ARIANA PARISA SHAFIEE</a></div>
-            <ul class="menu">
-                <li class ="dropdown">
-                    <a class="drop" href="index.html#what-i-do">What I Do
-                        <span class="fas fa-caret-down"></span>
-                    </a>
-                    <input class="check" type="checkbox" id="btn-1">
-                    <ul>
-                      <li><a href="app-game-dev.html">App & Game Dev</a></li>
-                      <li><a href="ux-design.html">UX Design</a></li>
-                        <li><a href="research-publication.html">Research Publications</a></li>
-                      <li><a href="video-&-animation.html">Video & Animation</a></li>
-                      <li><a href="graphic-design.html">Graphic Design</a></li>
-                      <li><a href="photo.html">Photo</a></li>
-                      <li><a href="soccer-freestyle.html">Soccer Freestyle</a></li>
-                  </ul>
-                  </li>
-                  <li><a href="index.html#projects">Featured Projects</a></li>
-                <li><a href="index.html#testimonial">Testimonials</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
-            </ul>
-            <div class="menu-btn">
-                <i class="fas fa-bars"></i>
+    <body>
+        <nav class="navbar">
+            <div class="max-width">
+                <div class="logo"><a href="index.html">ARIANA PARISA SHAFIEE</a></div>
+                <ul class="menu">
+                    <li class="dropdown">
+                        <a class="drop" href="index.html#what-i-do">What I Do
+                            <span class="fas fa-caret-down"></span>
+                        </a>
+                        <input class="check" type="checkbox" id="btn-1">
+                        <ul>
+                            <li><a href="app-game-dev.html">App & Game Dev</a></li>
+                            <li><a href="ux-design.html">UX Design</a></li>
+                            <li><a href="research-publication.html">Research Publications</a></li>
+                            <li><a href="video-&-animation.html">Video & Animation</a></li>
+                            <li><a href="graphic-design.html">Graphic Design</a></li>
+                            <li><a href="photo.html">Photo</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="index.html#projects">Featured Projects</a></li>
+                    <li><a href="index.html#testimonial">Testimonials</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+                <div class="menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
             </div>
-        </div>
-    </nav>
-    <!-- overview div start --> 
-    <div class = 'overview'>
-        <div class="max-width">
+        </nav>
+        
+        <!-- overview div start --> 
+        <div class="overview">
+            <div class="max-width">
                 <div class="text">Basketball Go AR</div>
-        </div>
-    </div>
-    <div class = 'info'>
-        <div class="max-width">
-           <div class ="main-video">
-                    <iframe src="https://www.youtube.com/embed/gILlUjzqspA"></iframe>
             </div>
+        </div>
+        
+        <div class="info">
+            <div class="max-width">
+                <div class="main-video">
+                    <!-- Custom player that replaces the previous iframe -->
+                    <div class="video-container">
+                        <div id="player" data-plyr-provider="youtube" data-plyr-embed-id="gILlUjzqspA"></div>
+                    </div>
+                </div>
+                
                 <div class="app-link">
-                    <a href="https://apps.apple.com/app/basketball-go-ar/id1470568167" target="_blank"> App Store Link
-                </a></div> 
-                <h3>About Basketball Go AR</h2>
+                    <a href="https://apps.apple.com/app/basketball-go-ar/id1470568167" target="_blank">
+                        <i class="fab fa-app-store-ios"></i> Download on App Store
+                    </a>
+                </div> 
+                
+                <h3>About Basketball Go AR</h3>
                 <p>Basketball Go AR is an augmented reality game played by hundreds worldwide where users can
                     shoot hoops wherever they desire. Players simply start by placing a virtual
                     basketball hoop on a computer-detected flat surface. Players can collect golden balls through scoring points and use them to purchase new types of balls. They can also climb global leaderboards by making the furthest basket, scoring the most baskets in 60 seconds, and scoring the most baskets in total.
                 </p>
+                
                 <h3>My Role</h3>
-                    <p>I was the sole developer of Basketball Go AR. I brainstormed, designed, programmed (C# scripting in Unity), and marketed the app. Read more about my end-to-end development process below.
-                    </p>
+                <p>I was the sole developer of Basketball Go AR. I brainstormed, designed, programmed (C# scripting in Unity), and marketed the app. Read more about my end-to-end development process below.
+                </p>
+                
                 <div class="app-content">
                     <img src="assets/basketball1.jpg">
                     <img src="assets/basketball2.jpg">
@@ -87,32 +324,119 @@
                 </div>
                 
                 <h3>My Development Process</h3>
-                <div class="image"><img src="assets/basketballgoarprocess.png">
+                <div class="image">
+                    <img src="assets/basketballgoarprocess.png">
                 </div>
-                <div class="study-link">
-                <a href="assets/basketballgoar.pdf" target="_blank">Read in detail about the ideation, design, development, and marketing of this project here
-                </a></div> 
-
                 
-
-               
-    </div>
-
+                <div class="study-link">
+                    <a href="assets/basketballgoar.pdf" target="_blank">Read in detail about the ideation, design, development, and marketing of this project here
+                    </a>
+                </div>
+            </div>
         </div>
         
-    </div>
-    <div class = 'footer'>
-        <div class="container">
-          <p>&copy; 2022 Ariana Parisa Shafiee</p>
+        <div class="footer">
+            <div class="container">
+                <p>&copy; 2022 Ariana Parisa Shafiee</p>
+            </div>
         </div>
-    </div>
+
+        <!-- Plyr JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.7.8/plyr.min.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                // Initialize Plyr with custom options
+                const player = new Plyr('#player', {
+                    controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen'],
+                    youtube: {
+                        noCookie: true, // Use youtube-nocookie.com
+                        rel: 0,        // Don't show related videos
+                        showinfo: 0,   // Don't show video information
+                        iv_load_policy: 3, // Don't show annotations
+                        modestbranding: 1, // Minimal YouTube branding
+                        disablekb: 1,  // Disable keyboard controls
+                        playsinline: 1,
+                        origin: window.location.origin
+                    },
+                    clickToPlay: true,
+                    hideControls: true,
+                    resetOnEnd: true,
+                    fullscreen: { enabled: true, fallback: true, iosNative: true }
+                });
+
+                // Additional event listeners to handle YouTube iframe
+                player.on('ready', () => {
+                    // Additional customization after player is ready
+                    const iframe = document.querySelector('.plyr__video-wrapper iframe');
+                    if (iframe) {
+                        // Apply additional parameters to iframe URL
+                        let iframeSrc = iframe.src;
+                        if (!iframeSrc.includes('modestbranding')) {
+                            iframeSrc += '&modestbranding=1&showinfo=0&rel=0&controls=0';
+                            iframe.src = iframeSrc;
+                        }
+                        
+                        // Adjust iframe styling to center the video content
+                        iframe.style.width = "100%";
+                        iframe.style.height = "100%";
+                        iframe.style.position = "absolute";
+                        iframe.style.top = "0";
+                        iframe.style.left = "0";
+                    }
+                    
+                    // Apply CSS to the iframe's document to hide YouTube elements
+                    setTimeout(() => {
+                        try {
+                            // Try to access the iframe's content document
+                            const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+                            
+                            // Create a style element
+                            const style = document.createElement('style');
+                            style.textContent = `
+                                .ytp-chrome-top,
+                                .ytp-title,
+                                .ytp-title-text,
+                                .ytp-title-link,
+                                .ytp-title-channel,
+                                .ytp-show-cards-title,
+                                .ytp-youtube-button,
+                                .ytp-impression-link {
+                                    display: none !important;
+                                    opacity: 0 !important;
+                                    visibility: hidden !important;
+                                }
+                            `;
+                            
+                            // Append the style to the iframe document
+                            iframeDocument.head.appendChild(style);
+                        } catch (e) {
+                            console.log("Could not access iframe content due to same-origin policy");
+                        }
+                    }, 1000);
+                });
+                
+                // Add a MutationObserver to keep hiding the elements even if YouTube refreshes them
+                const videoContainer = document.querySelector('.video-container');
+                const observer = new MutationObserver(() => {
+                    const ytElements = document.querySelectorAll('.ytp-chrome-top, .ytp-title, .ytp-youtube-button, .ytp-impression-link');
+                    ytElements.forEach(el => {
+                        el.style.display = 'none';
+                        el.style.opacity = '0';
+                        el.style.visibility = 'hidden';
+                    });
+                });
+                
+                observer.observe(videoContainer, { 
+                    childList: true,
+                    subtree: true 
+                });
+            });
+        </script>
         <script>
             $('.icon').click(function(){
-              $('span').toggleClass("cancel");
+                $('span').toggleClass("cancel");
             });
-          </script>
-        <script src ="script.js"></script>
-        
+        </script>
+        <script src="script.js"></script>
     </body>
-    </html>
-    
+</html>

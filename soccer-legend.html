@@ -10,7 +10,7 @@
 
         gtag('config', 'G-LKRJ9ZJ1J0');
         </script>
-        <link rel="icon" type="image/png" href="assets/skyfavicon.png"/>
+        <link rel="icon" type="image/png" href="assets/favicon.ico"/>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Soccer Legend</title>
@@ -23,9 +23,191 @@
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 
+        <!-- Plyr CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.7.8/plyr.min.css">
 
+        <style>
+            /* Simple overlay for top of video */
+            .text {margin-bottom: 0px;}
+            .overview{ margin-bottom: -70px;}
+            .top-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 60px;
+                background-color: #000;
+                z-index: 50;
+                pointer-events: none;
+            }
+            .info {
+                padding: 20px;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+            
+            h3 {
+                color: #00C2FF;
+                margin-top: 40px;
+                margin-bottom: 15px;
+                font-size: 1.5rem;
+                border-left: 3px solid #00C2FF;
+                padding-left: 12px;
+                letter-spacing: 0.5px;
+            }
+            
+            p {
+                margin-bottom: 20px;
+                font-size: 1rem;
+                line-height: 1.7;
+                color: rgba(255, 255, 255, 0.9);
+                background: rgba(0, 0, 0, 0.2);
+                padding: 15px;
+                border-radius: 8px;
+            }
+            
+            /* Video container styling - unchanged as requested */
+            .main-video {
+                order: -1; /* Make sure video appears before other content */
+                margin-left: auto;
+                margin-right: auto;
+                padding-top: 56.25%; /* Original 16:9 aspect ratio from style.css */
+                height: 0px;
+                position: relative;
+                width: 95%; /* Width of the visible portion */
+                max-width: 600px; /* Cap max width */
+                overflow: hidden; /* Hide overflow content */
+            }
+            
+            /* Create container with cropping effect */
+            .video-container {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%; /* Container is the full width of main-video */
+                height: 100%;
+                overflow: hidden;
+                border-radius: 8px;
+            }
+            
+            /* Set the actual player/iframe to be larger than container and centered */
+            #player, .plyr, .plyr__video-wrapper {
+                position: absolute;
+                top: 0;
+                /* Make the player wider than the container and centered */
+                width: 150%; /* Larger than container to crop sides */
+                height: 100%;
+            }
+            
+            /* App link styling */
+            .app-link {
+                text-align: center;
+                margin: 25px 0;
+            }
+            
+            .app-link a {
+                display: inline-block;
+                background: linear-gradient(45deg, #007AFF, #00C2FF);
+                color: white;
+                padding: 12px 30px;
+                border-radius: 30px;
+                text-decoration: none;
+                font-weight: bold;
+                transition: all 0.3s ease;
+                box-shadow: 0 0 15px rgba(0, 122, 255, 0.5);
+                font-size: 1rem;
+                letter-spacing: 0.5px;
+            }
+            
+            .app-link a:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 0 25px rgba(0, 194, 255, 0.7);
+                background: linear-gradient(45deg, #0066CC, #00AAFF);
+            }
+            
+            .app-link a i {
+                margin-right: 8px;
+                font-size: 1.1rem;
+            }
+            
+            /* Gallery improvements */
+            .app-content {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+                margin: 25px 0;
+            }
+            
+            .app-content img {
+                width: 31%;
+                max-width: 300px;
+                border-radius: 12px;
+                transition: all 0.4s ease;
+                border: 2px solid transparent;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            }
+            
+            .app-content img:hover {
+                transform: translateY(-5px);
+                border: 2px solid rgba(0, 194, 255, 0.3);
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            }
+            
+            @media (max-width: 768px) {
+                .app-content img {
+                    width: 45%;
+                }
+            }
+            
+            @media (max-width: 480px) {
+                .app-content img {
+                    width: 100%;
+                }
+            }
+            
+            /* Process image */
+            .image {
+                margin: 30px 0;
+                text-align: center;
+            }
+            
+            .image img {
+                max-width: 100%;
+                border-radius: 12px;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+                transition: transform 0.3s ease;
+            }
+            
+            .image img:hover {
+                transform: scale(1.01);
+            }
+            
+            /* Study link */
+            .study-link {
+                margin: 35px 0;
+                text-align: center;
+                padding: 15px;
+                background: rgba(255, 255, 255, 0.05);
+                border-radius: 10px;
+            }
+            
+            .study-link a {
+                color: #00C2FF;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                font-weight: 500;
+                padding: 8px 16px;
+                border-bottom: 1px solid rgba(0, 194, 255, 0.3);
+            }
+            
+            .study-link a:hover {
+                color: #FFF;
+                background: rgba(0, 194, 255, 0.2);
+                border-radius: 5px;
+            }
+        </style>
     </head>
-</html>
 <body>
     <nav class="navbar">
         <div class="max-width">
@@ -43,7 +225,6 @@
                       <li><a href="video-&-animation.html">Video & Animation</a></li>
                       <li><a href="graphic-design.html">Graphic Design</a></li>
                       <li><a href="photo.html">Photo</a></li>
-                      <li><a href="soccer-freestyle.html">Soccer Freestyle</a></li>
                   </ul>
                   </li>
                   <li><a href="index.html#projects">Featured Projects</a></li>
@@ -64,12 +245,17 @@
     <div class = 'info'>
         <div class="max-width">
            <div class ="main-video">
-                    <iframe src="https://www.youtube.com/embed/R2WW7CfpDQY"></iframe>
+                <!-- Custom player using Plyr -->
+                <div class="video-container">
+                    <div id="player" data-plyr-provider="youtube" data-plyr-embed-id="R2WW7CfpDQY"></div>
+                    <!-- Simple overlay to cover the top bar -->
+                    <div class="top-overlay"></div>
+                </div>
             </div>
                 <div class="app-link">
                     <a href="https://apps.apple.com/app/soccer-legend-become-the-best/id1450701589" target="_blank"> App Store Link
                 </a></div> 
-                <h3>About Soccer Legend</h2>
+                <h3>About Soccer Legend</h3>
                 <p>Soccer legend is a retro and soccer themed game played by hundreds of users worldwide. Players outmaneuver falling soccer balls of various sizes while collecting tokens and power-ups to increase their score. Players are encouraged to develop new strategies to break their high scores, win acheivements, and climb the global leaderboard.
                 </p>
                 <h3>My Role & Development Details</h3>
@@ -81,22 +267,105 @@
                     <img src="assets/soccerLegend3.jpg">
                     <img src="assets/soccerLegend4.jpg">
                 </div>
-
-                </div>
-    </div>
-        </div>
-        <div class = 'footer'>
-            <div class="container">
-              <p>&copy; 2022 Ariana Parisa Shafiee</p>
             </div>
         </div>
-            <script>
-                $('.icon').click(function(){
-                  $('span').toggleClass("cancel");
-                });
-              </script>
-            <script src ="script.js"></script>
+    </div>
+    <div class = 'footer'>
+        <div class="container">
+          <p>&copy; 2022 Ariana Parisa Shafiee</p>
+        </div>
+    </div>
+
+    <!-- Plyr JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.7.8/plyr.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize Plyr with custom options
+            const player = new Plyr('#player', {
+                controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen'],
+                youtube: {
+                    noCookie: true, // Use youtube-nocookie.com
+                    rel: 0,        // Don't show related videos
+                    showinfo: 0,   // Don't show video information
+                    iv_load_policy: 3, // Don't show annotations
+                    modestbranding: 1, // Minimal YouTube branding
+                    disablekb: 1,  // Disable keyboard controls
+                    playsinline: 1,
+                    origin: window.location.origin
+                },
+                clickToPlay: true,
+                hideControls: true,
+                resetOnEnd: true,
+                fullscreen: { enabled: true, fallback: true, iosNative: true }
+            });
+
+            // Additional event listeners to handle YouTube iframe
+            player.on('ready', () => {
+                // Additional customization after player is ready
+                const iframe = document.querySelector('.plyr__video-wrapper iframe');
+                if (iframe) {
+                    // Apply additional parameters to iframe URL
+                    let iframeSrc = iframe.src;
+                    if (!iframeSrc.includes('modestbranding')) {
+                        iframeSrc += '&modestbranding=1&showinfo=0&rel=0&controls=0';
+                        iframe.src = iframeSrc;
+                    }
+                }
+                
+                // Apply CSS to the iframe's document to hide YouTube elements
+                setTimeout(() => {
+                    try {
+                        // Try to access the iframe's content document
+                        const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+                        
+                        // Create a style element
+                        const style = document.createElement('style');
+                        style.textContent = `
+                            .ytp-chrome-top,
+                            .ytp-title,
+                            .ytp-title-text,
+                            .ytp-title-link,
+                            .ytp-title-channel,
+                            .ytp-show-cards-title,
+                            .ytp-youtube-button,
+                            .ytp-impression-link {
+                                display: none !important;
+                                opacity: 0 !important;
+                                visibility: hidden !important;
+                            }
+                        `;
+                        
+                        // Append the style to the iframe document
+                        iframeDocument.head.appendChild(style);
+                    } catch (e) {
+                        console.log("Could not access iframe content due to same-origin policy");
+                    }
+                }, 1000);
+            });
             
-        </body>
-        </html>
+            // Add a MutationObserver to keep hiding the elements even if YouTube refreshes them
+            const videoContainer = document.querySelector('.video-container');
+            const observer = new MutationObserver(() => {
+                const ytElements = document.querySelectorAll('.ytp-chrome-top, .ytp-title, .ytp-youtube-button, .ytp-impression-link');
+                ytElements.forEach(el => {
+                    el.style.display = 'none';
+                    el.style.opacity = '0';
+                    el.style.visibility = 'hidden';
+                });
+            });
+            
+            observer.observe(videoContainer, { 
+                childList: true,
+                subtree: true 
+            });
+        });
+    </script>
+        <script>
+            $('.icon').click(function(){
+              $('span').toggleClass("cancel");
+            });
+          </script>
+        <script src ="script.js"></script>
         
+    </body>
+    </html>

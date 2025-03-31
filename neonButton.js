@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
             event.preventDefault();
 
             // Open the resume in a new tab
-            const resumeUrl = "assets/Anthony Sky Ng-Thow-Hing resume.pdf";
+            const resumeUrl = "assets/shafiee-resume.pdf";
             window.open(resumeUrl, "_blank");
         });
     }
