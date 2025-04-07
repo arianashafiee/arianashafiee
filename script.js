@@ -16,7 +16,7 @@ $(document).ready(function () {
     });
 
     $('.menu-btn').click(function () {
-        $('.navbar .menu').toggleClass('active');
+        $('.navbar .menu').toggleClass('active')
         $('.menu-btn i').toggleClass('active');
     });
     $('.navbar .menu li a').click(function () {
@@ -27,8 +27,10 @@ $(document).ready(function () {
     // Typing Script
     var typed = new Typed('.typing', {
         strings: [
-            ' SWE intern',
-            'Founding UX @ Otto',
+            "Full-Stack Dev",
+            "Software Engineer",
+            "Problem Solver",
+
         ],
         typeSpeed: 140,
         backSpeed: 100,
