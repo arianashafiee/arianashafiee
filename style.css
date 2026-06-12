@@ -303,16 +303,25 @@ nav ul li a{
   }
   
 /* HOME, SVG, WHAT I DO — STICKY SECTIONS */
-.home, 
-#svg-section {
-  /* Each occupies the full viewport and "sticks" at the top
-     until user scrolls enough to reveal the next section. */
+.home {
+  /* Home keeps the original full-viewport sticky behavior. */
   position: -webkit-sticky; /* for Safari */
   position: sticky;
   top: 0;
   height: 100vh;
   z-index: 5;
   overflow: hidden;
+}
+
+#svg-section {
+  /* SVG section stays sticky, but does not clip the neon SVGs. */
+  position: -webkit-sticky; /* for Safari */
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  min-height: 100svh;
+  z-index: 5;
+  overflow: visible;
 }
 nav ul li a:hover{
     color:#01fff4;
@@ -362,49 +371,90 @@ nav ul li a:hover{
     transform: translateX(100%); /* Start off-screen */
 }
 .svg-max-width {
-    padding: 0px 0px; /* Less padding than .max-width for closer edges */
-    max-width: 90%; /* Allow the section to stretch wider */
-    margin: auto;
-  }
+    width: min(98vw, 1800px);
+    max-width: none;
+    margin: 0 auto;
+    padding: 0;
+    container-type: inline-size;
+    container-name: svg-icons;
+}
   
-  
-  :root {
+:root {
     --glow-color: #01fff4; /* Neon glow color */
     --text-outline-color: #000; /* Black text for contrast */
-    --image-height: 325px; /* Default height for all images */
-    --font-size: calc(var(--image-height) / 6); /* Font size based on image height */
-  }
+    --ticker-height: 4rem;
+    --svg-gap: clamp(0.5rem, 1.6vw, 2rem);
+}
   
-  
-  .svg-container {
-    text-align: center;
-    padding-top: 35vh;
-    padding-bottom: 40vh;
+.svg-container {
+    width: 100%;
+    height: 100%;
     max-width: 100%;
-  }
-  
-  .svg-wrapper {
-    display: flex;
-    justify-content: space-evenly; /* Automatically adjust spacing */
-    align-items: center;
-    flex-wrap: wrap; /* Wrap items to the next line on smaller screens */
-    gap: 0rem; /* Add spacing between items */
-  }
-  
-  .svg-item {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     text-align: center;
-    transition: transform 0.3s ease;
-  }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: calc(4.5rem + env(safe-area-inset-top));
+    padding-right: clamp(0.5rem, 1.5vw, 2rem);
+    padding-left: clamp(0.5rem, 1.5vw, 2rem);
+    padding-bottom: calc(var(--ticker-height) + 2rem + env(safe-area-inset-bottom));
+    box-sizing: border-box;
+}
   
-  @keyframes svg-glow-fill {
-    0% { fill: var(--glow-color1); stroke: var(--glow-color1); filter: drop-shadow(0 80 100px var(--glow-color1)); }
-    33% { fill: var(--glow-color2); stroke: var(--glow-color2); filter: drop-shadow(0 100 120px var(--glow-color2)); }
-    66% { fill: var(--glow-color3); stroke: var(--glow-color3); filter: drop-shadow(0 120 180px var(--glow-color3)); }
-    100% { fill: var(--glow-color4); stroke: var(--glow-color4); filter: drop-shadow(0 140 200px var(--glow-color4)); }
+.svg-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: center;
+    justify-items: center;
+    gap: var(--svg-gap);
+    width: 100%;
+}
+  
+.svg-item {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    overflow: visible;
+    transition: transform 0.3s ease;
+}
+
+.svg-item > svg,
+.glowing-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: calc(100svh - 11rem);
+    overflow: visible;
+}
+
+.svg-item:hover {
+    transform: scale(1.04);
+}
+  
+@keyframes svg-glow-fill {
+    0% {
+        fill: var(--glow-color1);
+        stroke: var(--glow-color1);
+        filter: drop-shadow(0 0 28px var(--glow-color1));
+    }
+    33% {
+        fill: var(--glow-color2);
+        stroke: var(--glow-color2);
+        filter: drop-shadow(0 0 36px var(--glow-color2));
+    }
+    66% {
+        fill: var(--glow-color3);
+        stroke: var(--glow-color3);
+        filter: drop-shadow(0 0 44px var(--glow-color3));
+    }
+    100% {
+        fill: var(--glow-color4);
+        stroke: var(--glow-color4);
+        filter: drop-shadow(0 0 36px var(--glow-color4));
+    }
 }
 
 /* Apply the animation to all SVG paths */
@@ -413,15 +463,8 @@ nav ul li a:hover{
     animation: svg-glow-fill 6s infinite alternate ease-in-out;
     transition: all 0.3s ease-in-out;
 }
-
-/* Hover effect - Increases the glow intensity */
-.glowing-svg:hover path {
-    filter: drop-shadow(0 0 80px var(--glow-color4));
-    transform: scale(1.05);
-}
-
   
-  /* Text Glow with Pulsing Effect */
+/* Text Glow with Pulsing Effect */
 @keyframes text-glow-pulse {
     0% {
         text-shadow: 
@@ -453,177 +496,110 @@ nav ul li a:hover{
     position: absolute;
     top: 50%; /* Center vertically */
     left: 50%; /* Center horizontally */
+    width: 95%;
+    margin: 0;
     transform: translate(-50%, -50%); /* Perfect centering */
     opacity: 0; /* Hidden by default */
     text-align: center;
     font-weight: 900;
-    line-height: 1.2;
+    line-height: 1.08;
     z-index: 10; /* Ensure text is above the image */
-    
+    pointer-events: none;
     color: var(--text-outline-color);
     -webkit-text-stroke: 1px var(--text-outline-color); /* Outline stays static */
-    
     animation: text-glow-pulse 6s infinite alternate ease-in-out;
 }
 
+/* Reveal text on hover */
+.svg-container:hover .svg-text,
+.svg-item:hover .svg-text {
+    opacity: 1;
+}
   
-  /* Reveal text on hover */
-  .svg-container:hover .svg-text {
-    opacity: 1; /* Show text */
-  }
+/* Large font for first two words */
+.large-text {
+    font-size: clamp(0.8rem, 2.3vw, 3.4rem);
+}
   
-  /* Large font for first two words */
-  .large-text {
-    font-size: var(--font-size); /* Dynamic font size based on image height */
-  }
-  
-  .subtitle {
-    font-size: calc(var(--font-size) / 1.5); /* Smaller font for subtitles */
-  }
-  
-  .smaller {
-    font-size: calc(var(--font-size) / 1.5); /* Reduced size for smaller text */
-  }
-  @media (max-width: 1800px) {
-    :root {
-      --image-height: 270px;
-    }
-    .svg-max-width {
-      max-width: 95%;
-    
-    }
-  }
-  @media (max-width: 1612px) {
-    .svg-container {
-      padding-top: 39vh;
-    }
-    :root {
-      --image-height: 240px;
-    }
-    .svg-max-width {
-      max-width: 95%;
-    
-    }
-  }
-  /* Responsive Design Adjustments */
-  @media (max-width: 1478px) {
-    .svg-container {
-      padding-top: 41vh;
-    }
-    :root {
-      --image-height: 200px;
-    }
-    .svg-max-width {
-      max-width: 100%;
-    
-    }
-  }
-  
-  @media (max-width: 1322px) {
-    :root {
-      --image-height: 180px;
-    }
-  }
-  @media (max-width: 1213px) {
-    .svg-container {
-      padding-top: 12vh;
-    }
+.subtitle,
+.smaller {
+    font-size: clamp(0.58rem, 1.55vw, 2.2rem);
+}
+
+/* When 4 columns become too small, switch to 2 rows of 2. */
+@container svg-icons (max-width: 720px) {
     .svg-wrapper {
-      display: grid;
-      grid-template-columns: 0fr 0fr; 
-      /* Increase horizontal gap between columns */
-      column-gap: 0rem;  
-      /* If you also want more vertical spacing, add row-gap or use the combined gap property */
-      row-gap: 4rem;
-      /* or simply gap: 2rem for both columns and rows */
-      
-      justify-items: center;
-      max-width: 100%;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: clamp(0.75rem, 3vw, 1.5rem);
+        row-gap: clamp(0.75rem, 2.5svh, 1.5rem);
     }
-  
-  
-  
-    .svg-item:nth-child(1) {
-      grid-column: 1;
+
+    .svg-item > svg,
+    .glowing-svg {
+        max-height: calc((100svh - 11rem) / 2);
     }
-  
-    .svg-item:nth-child(3) {
-      grid-column: 1;
+
+    .large-text {
+        font-size: clamp(0.85rem, 5vw, 2.4rem);
     }
-  
-    .svg-item:nth-child(2) {
-      grid-column: 2;
+
+    .subtitle,
+    .smaller {
+        font-size: clamp(0.6rem, 3.3vw, 1.55rem);
     }
-  
-    .svg-item:nth-child(4) {
-      grid-column: 2;
+}
+
+/* Fallback for older browsers without container query support. */
+@supports not (container-type: inline-size) {
+    @media (max-width: 720px) {
+        .svg-wrapper {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            column-gap: clamp(0.75rem, 3vw, 1.5rem);
+            row-gap: clamp(0.75rem, 2.5svh, 1.5rem);
+        }
+
+        .svg-item > svg,
+        .glowing-svg {
+            max-height: calc((100svh - 11rem) / 2);
+        }
+
+        .large-text {
+            font-size: clamp(0.85rem, 5vw, 2.4rem);
+        }
+
+        .subtitle,
+        .smaller {
+            font-size: clamp(0.6rem, 3.3vw, 1.55rem);
+        }
     }
-  
-    :root {
-      --image-height: 370px;
+}
+
+/* On touch devices there is no true hover, so keep the text visible. */
+@media (hover: none), (pointer: coarse) {
+    .svg-text {
+        opacity: 1;
     }
-  }
-  @media (max-width: 1192px) {
+}
+
+/* Very short screens need extra shrinking. */
+@media (max-height: 650px) {
     .svg-container {
-      padding-top: 18vh;
+        padding-top: 4rem;
+        padding-bottom: calc(var(--ticker-height) + 1rem);
     }
-    :root {
-      --image-height: 320px;
+
+    .svg-item > svg,
+    .glowing-svg {
+        max-height: calc(100svh - 9rem);
     }
-  }
-  
-  
-  
-  @media (max-width: 970px) {
-    :root {
-      --image-height: 290px;
+
+    @container svg-icons (max-width: 720px) {
+        .svg-item > svg,
+        .glowing-svg {
+            max-height: calc((100svh - 9rem) / 2);
+        }
     }
-  }
-  @media (max-width: 921px) {
-    .svg-container {
-      padding-top: 23vh;
-    }
-    :root {
-      --image-height: 250px;
-    }
-    
-  }
-  @media (max-width: 857px) {
-    .svg-container {
-      padding-top: 27vh;
-    }
-    
-    :root {
-      --image-height: 220px;
-    }
-    
-  }
-  @media (max-width: 790px) {
-   
-    :root {
-      --image-height: 200px;
-    }
-  }
-  
-  @media (max-width: 700px) {
-  
-    :root {
-      --image-height: 160px;
-    }
-  }
-  
-  
-  @media (max-width: 475px) {
-    :root {
-      --image-height: 150px;
-    }
-  }
-  
-  @media (max-width: 400px) {
-    :root {
-      --image-height: 130px;
-    }
-  }
+}
   
 /* Text Items */
 .ticker__item {
@@ -2640,4 +2616,3 @@ margin-top: 20px;
 
         
         }
-    

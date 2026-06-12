@@ -88,10 +88,10 @@
 }
 @media (max-width: 1800px) {
   :root {
-    --image-height: 270px;
+    --image-height: 250px;
   }
   .svg-max-width {
-    max-width: 95%;
+    max-width: 100%;
   
   }
 }
