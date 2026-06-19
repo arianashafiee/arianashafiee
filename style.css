@@ -24,11 +24,18 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
+    overflow-x: clip;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
     display: flex;
     flex-direction: column;
-  }
-  
-  /* Main content flex container */
+}
+
   body > *:not(.footer) {
     flex: 1; /* Push the footer to the bottom of the viewport if content is short */
   }
@@ -39,9 +46,6 @@ html, body {
     --hover-color: #000000; /* Neon blue hover color */
     --font-family: 'Poppins', sans-serif; /* Font for navbar */
   }
-html{
-    scroll-behavior: smooth;
-}
 @keyframes color-sync {
     0% { color: var(--glow-color1); border-color: var(--glow-color1);
     }
@@ -321,7 +325,8 @@ nav ul li a{
   height: 100svh;
   min-height: 100svh;
   z-index: 5;
-  overflow: visible;
+  overflow-x: clip;
+  overflow-y: visible;
 }
 nav ul li a:hover{
     color:#01fff4;
@@ -371,8 +376,8 @@ nav ul li a:hover{
     transform: translateX(100%); /* Start off-screen */
 }
 .svg-max-width {
-    width: min(98vw, 1800px);
-    max-width: none;
+    width: 100%;
+    max-width: min(98vw, 1800px);
     margin: 0 auto;
     padding: 0;
     container-type: inline-size;
@@ -531,17 +536,21 @@ nav ul li a:hover{
 /* When 4 columns become too small, switch to 2 rows of 2. */
 @container svg-icons (max-width: 720px) {
     .svg-max-width {
-        --svg-col-gap: clamp(0.5rem, 2vw, 1rem);
+        --svg-col-gap: clamp(0.35rem, 1.5vw, 0.75rem);
         --svg-row-gap: 0.35rem;
         --svg-cell-width: calc((100cqw - var(--svg-col-gap)) / 2);
         --svg-icon-max-height: min(
             calc((100svh - 8rem) / 2.15),
             calc(var(--svg-cell-width) * 1.05)
         );
+        width: 100%;
+        max-width: 100%;
     }
 
     .svg-container {
         padding-bottom: clamp(1rem, 3svh, 2rem);
+        padding-left: max(0px, env(safe-area-inset-left));
+        padding-right: max(0px, env(safe-area-inset-right));
         align-items: center;
         justify-content: center;
     }
@@ -577,17 +586,21 @@ nav ul li a:hover{
 @supports not (container-type: inline-size) {
     @media (max-width: 720px) {
         .svg-max-width {
-            --svg-col-gap: clamp(0.5rem, 2vw, 1rem);
+            --svg-col-gap: clamp(0.35rem, 1.5vw, 0.75rem);
             --svg-row-gap: 0.35rem;
-            --svg-cell-width: calc((min(98vw, 1800px) - var(--svg-col-gap)) / 2);
+            --svg-cell-width: calc((100% - var(--svg-col-gap)) / 2);
             --svg-icon-max-height: min(
                 calc((100svh - 8rem) / 2.15),
                 calc(var(--svg-cell-width) * 1.05)
             );
+            width: 100%;
+            max-width: 100%;
         }
 
         .svg-container {
             padding-bottom: clamp(1rem, 3svh, 2rem);
+            padding-left: max(0px, env(safe-area-inset-left));
+            padding-right: max(0px, env(safe-area-inset-right));
             align-items: center;
             justify-content: center;
         }
@@ -807,7 +820,7 @@ body::before {
     z-index: -1;
     background: radial-gradient(circle var(--shadow-size, var(--shadow-size-fallback)) at 20vw 0,
                 var(--color-1) 100%, transparent 0),
-                radial-gradient(circle var(--shadow-size, var(--shadow-size-fallback)) at 100vw 0,
+                radial-gradient(circle var(--shadow-size, var(--shadow-size-fallback)) at 100% 0,
                 var(--color-2) 100%, transparent 0),
                 radial-gradient(circle calc(var(--shadow-size, var(--shadow-size-fallback)) *1.2) at 50vw 115vh,
                 var(--color-3) 100%, transparent 0);
