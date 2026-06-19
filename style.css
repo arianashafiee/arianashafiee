@@ -152,6 +152,9 @@ h5 {
 figure {
   animation:wobble 6s ease-in-out infinite;
   transform-style:preserve-3d;
+  position: relative;
+  width: 100%;
+  min-height: clamp(3.5rem, 14vw, 10rem);
 }
 
 @keyframes wobble {
@@ -164,11 +167,21 @@ figure {
 h5 {
   display:block;
   width:100%;
-  line-height:1.5;
-  font:900 7em 'Concert One', sans-serif;
+  max-width:100%;
+  line-height:1.15;
+  font-family:'Concert One', sans-serif;
+  font-weight:900;
+  font-size:clamp(1.75rem, 11vw, 7rem);
   text-transform:uppercase;
   position:absolute;
+  top:0;
+  left:0;
   color:#0a0a0a;
+  text-align:center;
+  white-space:normal;
+  overflow-wrap:break-word;
+  padding:0 0.5rem;
+  box-sizing:border-box;
 }
 
 @keyframes glow {
@@ -1287,10 +1300,91 @@ section:hover {
 
   }
   .figure-wrapper{
-padding-bottom: 200px;
-padding-top: 200px;
-
+    container-type: inline-size;
+    container-name: section-title;
+    padding-bottom: clamp(80px, 20vw, 200px);
+    padding-top: clamp(80px, 20vw, 200px);
   }
+
+@container section-title (max-width: 540px) {
+    h5 {
+        font-size: clamp(2.1rem, 13vw, 4.25rem);
+        line-height: 1.12;
+    }
+
+    figure {
+        min-height: clamp(4.5rem, 26vw, 8.25rem);
+    }
+}
+
+@container section-title (max-width: 400px) {
+    h5 {
+        font-size: clamp(2rem, 14vw, 4rem);
+        line-height: 1.1;
+    }
+
+    figure {
+        min-height: clamp(4.25rem, 28vw, 7.75rem);
+    }
+}
+
+@container section-title (max-width: 320px) {
+    h5 {
+        font-size: clamp(1.9rem, 15.5vw, 3.75rem);
+        line-height: 1.08;
+        padding: 0 0.35rem;
+    }
+
+    figure {
+        min-height: clamp(4rem, 30vw, 7.25rem);
+    }
+
+    .figure-wrapper {
+        padding-top: clamp(75px, 19vw, 150px);
+        padding-bottom: clamp(75px, 19vw, 150px);
+    }
+}
+
+@supports not (container-type: inline-size) {
+    @media (max-width: 540px) {
+        h5 {
+            font-size: clamp(2.1rem, 13vw, 4.25rem);
+            line-height: 1.12;
+        }
+
+        figure {
+            min-height: clamp(4.5rem, 26vw, 8.25rem);
+        }
+    }
+
+    @media (max-width: 400px) {
+        h5 {
+            font-size: clamp(2rem, 14vw, 4rem);
+            line-height: 1.1;
+        }
+
+        figure {
+            min-height: clamp(4.25rem, 28vw, 7.75rem);
+        }
+    }
+
+    @media (max-width: 320px) {
+        h5 {
+            font-size: clamp(1.9rem, 15.5vw, 3.75rem);
+            line-height: 1.08;
+            padding: 0 0.35rem;
+        }
+
+        figure {
+            min-height: clamp(4rem, 30vw, 7.25rem);
+        }
+
+        .figure-wrapper {
+            padding-top: clamp(75px, 19vw, 150px);
+            padding-bottom: clamp(75px, 19vw, 150px);
+        }
+    }
+}
   .contact .card{
     position: relative;
     width: 100%;
