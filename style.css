@@ -136,6 +136,7 @@ nav ul ul,
 /* Apply to multiple UI Elements */ 
 .footer,.title, .what-i-do .content .link a,.overview .text,
 .projects .content .link a,
+.projects .github-link,
 .testimonial .carousel .name,
 .input-fields .input, 
 .msg textarea,
@@ -1217,6 +1218,7 @@ section:hover {
     color:#01fff4;
     background: #000000;
     font-size: 16px;
+    line-height: 1;
     padding: 12px 50px;
     border: 2px solid #01fff4;
     transition: all 0.3s ease;
@@ -1240,9 +1242,68 @@ section:hover {
 
 }
 
+.projects .content .box .container .tags {
+    display: flex;
+    align-items: center;
+    align-self: center;
+    height: calc(16px + 24px + 4px);
+    line-height: 1;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: 45px;
+}
+
 .projects .container{
     display: flex;
-    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 20px;
+    margin-top: 35px;
+    margin-bottom: 25px;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.projects .container > .link {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+}
+
+.projects .project-links {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 12px 16px;
+    align-items: center;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.projects .project-links .link {
+    margin: 0;
+}
+
+.projects .github-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    height: calc(1em + 24px + 4px);
+    line-height: 1;
+    transition: all 0.3s ease;
+}
+
+.projects .github-link i {
+    font-size: calc(1em + 24px + 4px);
+    color: inherit;
+}
+
+.projects .github-link:hover {
+    color: black;
+    transform: scale(1.08);
 }
 .projects .container2{
     display: flex;
@@ -1744,6 +1805,65 @@ iframe, .plyr__video-wrapper iframe {
     background: black;
     height: 330px;
     margin-bottom: -20px;
+}
+
+body.research-page > .overview-research,
+body.research-page > .research-pdf {
+    flex: 0 0 auto;
+}
+
+body.subpage > .overview,
+body.subpage > .projects,
+body.subpage > .videos,
+body.subpage > .masonry {
+    flex: 0 0 auto;
+}
+
+body.subpage > .overview {
+    height: auto;
+    margin-bottom: 0;
+    padding: clamp(90px, 14vw, 130px) 0 clamp(24px, 4vw, 40px);
+    overflow: visible;
+}
+
+body.subpage > .overview .text {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: clamp(1.75rem, 7vw, 100px);
+    line-height: 1.15;
+}
+
+.overview.overview-research {
+    height: auto;
+    min-height: auto;
+    margin-bottom: 0;
+    padding: clamp(90px, 14vw, 130px) 0 clamp(28px, 5vw, 48px);
+    overflow: visible;
+}
+
+.overview.overview-research .text {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: clamp(2.5rem, 10vw, 100px);
+}
+
+.research-pdf {
+    background: black;
+    padding-bottom: 60px;
+}
+
+.research-pdf .pdf-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.research-pdf .pdf-viewer {
+    display: block;
+    width: 100%;
+    height: min(800px, 80vh);
+    border: none;
+    border-radius: 10px;
 }
 
 /* Footer from style.css */
@@ -2389,6 +2509,12 @@ body.svg-section-in-view section#svg-section {
         margin-left: 0px;
 
     }
+    .projects .project-links {
+        margin-left: 0;
+        justify-content: flex-start;
+        width: auto;
+        flex: 0 1 auto;
+    }
     .projects .content .box2 .link{
 
         margin-right: 0px;
@@ -2399,14 +2525,23 @@ body.svg-section-in-view section#svg-section {
         text-align: left;
     }
     .projects .content .card .container{
-        flex-direction: column;
-        text-align: center;
-        justify-content: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        text-align: left;
+        margin-left: 0;
+        margin-right: 0;
     }
 
     .projects .content .card .tags{
             text-align: right;
             margin-top: 0;
+            margin-left: auto;
+            align-self: center;
+            height: calc(16px + 24px + 4px);
+            display: flex;
+            align-items: center;
     }
     .projects .content .card .container2 .tags{
         text-align: right;
@@ -2424,10 +2559,20 @@ body.svg-section-in-view section#svg-section {
         justify-content: center;
         width: 100%;
         }
+    .projects .content .card .project-links .link,
+    .projects .content .card .container > .link {
+        width: auto;
+        text-align: left;
+    }
     .projects .content .card .link a{
         padding-left: calc(100%/2 - 75px);
         padding-right: calc(100%/2 - 75px);
 
+    }
+    .projects .content .card .project-links .link a,
+    .projects .content .card .container > .link a {
+        padding-left: 50px;
+        padding-right: 50px;
     }
     .projects .content .box img{
         width: calc(100% - 40px);
@@ -2790,18 +2935,5 @@ body.svg-section-in-view section#svg-section {
             .footer p{
                 font-size: 14px;
             }
-            .pdf-container {
-    width: 100%;
-    max-width: 1000px;
-    margin: 40px auto;
-}
-
-.pdf-viewer {
-    width: 100%;
-    height: 800px;
-    border: none;
-    border-radius: 10px;
-}
-
         
         }
