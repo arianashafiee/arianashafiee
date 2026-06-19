@@ -377,6 +377,7 @@ nav ul li a:hover{
     padding: 0;
     container-type: inline-size;
     container-name: svg-icons;
+    --svg-icon-max-height: calc(100svh - 11rem);
 }
   
 :root {
@@ -426,7 +427,8 @@ nav ul li a:hover{
     display: block;
     width: 100%;
     height: auto;
-    max-height: calc(100svh - 11rem);
+    max-height: var(--svg-icon-max-height);
+    margin-inline: auto;
     overflow: visible;
 }
 
@@ -528,15 +530,37 @@ nav ul li a:hover{
 
 /* When 4 columns become too small, switch to 2 rows of 2. */
 @container svg-icons (max-width: 720px) {
-    .svg-wrapper {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        column-gap: clamp(0.75rem, 3vw, 1.5rem);
-        row-gap: clamp(0.75rem, 2.5svh, 1.5rem);
+    .svg-max-width {
+        --svg-col-gap: clamp(0.5rem, 2vw, 1rem);
+        --svg-row-gap: 0.35rem;
+        --svg-cell-width: calc((100cqw - var(--svg-col-gap)) / 2);
+        --svg-icon-max-height: min(
+            calc((100svh - 8rem) / 2.15),
+            calc(var(--svg-cell-width) * 1.05)
+        );
     }
 
-    .svg-item > svg,
-    .glowing-svg {
-        max-height: calc((100svh - 11rem) / 2);
+    .svg-container {
+        padding-bottom: clamp(1rem, 3svh, 2rem);
+        align-items: center;
+        justify-content: center;
+    }
+
+    .svg-wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: var(--svg-col-gap);
+        row-gap: var(--svg-row-gap);
+        align-items: end;
+        width: 100%;
+    }
+
+    .svg-item {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
     }
 
     .large-text {
@@ -552,15 +576,37 @@ nav ul li a:hover{
 /* Fallback for older browsers without container query support. */
 @supports not (container-type: inline-size) {
     @media (max-width: 720px) {
-        .svg-wrapper {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            column-gap: clamp(0.75rem, 3vw, 1.5rem);
-            row-gap: clamp(0.75rem, 2.5svh, 1.5rem);
+        .svg-max-width {
+            --svg-col-gap: clamp(0.5rem, 2vw, 1rem);
+            --svg-row-gap: 0.35rem;
+            --svg-cell-width: calc((min(98vw, 1800px) - var(--svg-col-gap)) / 2);
+            --svg-icon-max-height: min(
+                calc((100svh - 8rem) / 2.15),
+                calc(var(--svg-cell-width) * 1.05)
+            );
         }
 
-        .svg-item > svg,
-        .glowing-svg {
-            max-height: calc((100svh - 11rem) / 2);
+        .svg-container {
+            padding-bottom: clamp(1rem, 3svh, 2rem);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .svg-wrapper {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            column-gap: var(--svg-col-gap);
+            row-gap: var(--svg-row-gap);
+            align-items: end;
+            width: 100%;
+        }
+
+        .svg-item {
+            width: 100%;
+            min-width: 0;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
         }
 
         .large-text {
@@ -585,18 +631,30 @@ nav ul li a:hover{
 @media (max-height: 650px) {
     .svg-container {
         padding-top: 4rem;
-        padding-bottom: calc(var(--ticker-height) + 1rem);
+        padding-bottom: clamp(0.75rem, 2svh, 1.5rem);
     }
 
-    .svg-item > svg,
-    .glowing-svg {
-        max-height: calc(100svh - 9rem);
+    .svg-max-width {
+        --svg-icon-max-height: calc(100svh - 9rem);
     }
 
     @container svg-icons (max-width: 720px) {
-        .svg-item > svg,
-        .glowing-svg {
-            max-height: calc((100svh - 9rem) / 2);
+        .svg-max-width {
+            --svg-icon-max-height: min(
+                calc((100svh - 7rem) / 2.15),
+                calc(var(--svg-cell-width, 40vw) * 1.05)
+            );
+        }
+    }
+
+    @supports not (container-type: inline-size) {
+        @media (max-width: 720px) {
+            .svg-max-width {
+                --svg-icon-max-height: min(
+                    calc((100svh - 7rem) / 2.15),
+                    calc(var(--svg-cell-width, 40vw) * 1.05)
+                );
+            }
         }
     }
 }
@@ -2165,6 +2223,18 @@ margin-top: 20px;
         justify-content: center;
     }
     
+}
+
+/* Blur background sections when the svg section is in view (scroll on touch/narrow screens). */
+body.svg-section-in-view section.home,
+body.svg-section-in-view section#svg-section ~ section {
+    filter: blur(8px);
+    opacity: 0.5;
+}
+
+body.svg-section-in-view section#svg-section {
+    filter: none;
+    opacity: 1;
 }
 
 

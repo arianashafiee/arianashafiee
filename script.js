@@ -1,4 +1,24 @@
 $(document).ready(function () {
+    const svgSection = document.getElementById('svg-section');
+
+    function updateSvgSectionFocus() {
+        if (!svgSection) {
+            return;
+        }
+
+        const viewportHeight = window.innerHeight;
+        const scrollY = window.scrollY;
+        const rect = svgSection.getBoundingClientRect();
+        const isInView = scrollY >= viewportHeight * 0.45
+            && rect.top <= viewportHeight * 0.2
+            && rect.bottom >= viewportHeight * 0.6;
+
+        document.body.classList.toggle('svg-section-in-view', isInView);
+    }
+
+    $(window).on('scroll resize', updateSvgSectionFocus);
+    updateSvgSectionFocus();
+
     $(window).scroll(function () {
         if (this.scrollY > 1056.4000244140625) {
             $('.navbar').addClass('sticky');
